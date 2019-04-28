@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 	<title>SISPED - Sistema de Análise de Dados Pediátricos</title>
 	<meta charset="UTF-8">
 	<meta http-equiv="cache-control" content="no-store, no-cache, must-revalidate, Post-Check=0, Pre-Check=0">
