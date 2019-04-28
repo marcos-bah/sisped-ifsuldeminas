@@ -1,6 +1,5 @@
 <?php
     // autor: Marcos init: 18:46 Finados
-
     include("dbconnection.php");
     $id = $_GET['id'];
     $time = $_GET['time'];

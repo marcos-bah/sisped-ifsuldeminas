@@ -219,16 +219,7 @@
             }
         break;
     }
-
-
-
-
-    //posição zero recebe o ultimo valor antes do fechamento de diferença de um ano
-
-
-    //print_r($week);
-    //print_r($month);
-    //print_r($year);
+    
     mysqli_close($conn);
 
 ?>

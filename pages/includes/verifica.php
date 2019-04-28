@@ -6,7 +6,4 @@ if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == tru
   unset($_SESSION['senha']);
   header('location:login.php');
 }
-
-$logado = $_SESSION['login'];
-
 ?>
