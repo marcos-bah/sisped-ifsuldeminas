@@ -18,7 +18,7 @@
 			<img src="../images/sisped-logo.png" alt="SISPED" style="height: 130px;" class=" w3-margin-top">
 		  </div>
 
-		  <form class="w3-container" action="includes/open.php" method="post">
+		  <form class="w3-container" action="includes/initLogin.php" method="post">
 			<div class="w3-section">
 			  <label><b>Usuário</b></label>
 			  <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Digite o nome de usuário" name="login">

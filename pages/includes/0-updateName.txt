@@ -12,4 +12,7 @@ acoes/ ->action/
 	delete.php (Arquivo conferido - 1/2)
 	consulta_up.php -> queryUpdate.php (Arquivo conferido - 1/2)
 	consulta_del -> queryDelete.php (Arquivo conferido - 1/2)
+
+js/
+	gerarCharts_font.js -> initTable.js
 	

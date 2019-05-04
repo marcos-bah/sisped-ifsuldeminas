@@ -1,4 +1,4 @@
-<?php include("includes/verifica.php"); ?>
+<?php include("includes/checkout.php"); ?>
 <!DOCTYPE html>
 <html>
 <head>

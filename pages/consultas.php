@@ -1,4 +1,4 @@
-<?php include("includes/verifica.php"); ?>
+<?php include("includes/checkout.php"); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +16,7 @@
 
 	<!-- INCLUDE funcoes ifsuldeminas -->
 	<script src="../js/funcoes.js"></script>
-	<script src="../js/gerarCharts_font.js"></script>
+	<script src="../js/initTable.js"></script>
 
 	<!-- INCLUDE W3 CSS -->
 	<link rel="stylesheet" href="../css/w3.css">
@@ -239,7 +239,7 @@
 
 	<h2>Editar Criança</h2>
 
-	<form class="w3-container" style=" background-color:#fff;" action="acoes/update.php" method="post">
+	<form class="w3-container" style=" background-color:#fff;" action="acoes/updateChildren.php" method="post">
 		<br>
 		<div class="w3-row-padding">
 			<input type="hidden" name = "id" id="id">
@@ -547,7 +547,7 @@
 
 		        jQuery.ajax({
 			        type: "POST",
-			        url: "acoes/consulta.php",
+			        url: "acoes/queryChildrenInsertion.php",
 			        data: dados,
 			        success: function( data )
 			        {
@@ -651,7 +651,7 @@
 
 		        jQuery.ajax({
 			        type: "POST",
-			        url: "acoes/consulta_up.php",
+			        url: "acoes/queryUpdate.php",
 			        data: dados,
 			        success: function( data )
 			        {

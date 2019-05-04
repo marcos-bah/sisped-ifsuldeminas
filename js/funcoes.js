@@ -16,7 +16,7 @@ function del(id) {
 
                     $.getJSON("acoes/delete.php",{id: id }, function(data){
                         //redirecionar, caregar pagina inicial
-                        $('body').load('consultas.php'); 
+                        $('body').load('queryChildrenInsertion.php'); 
 
                     });
                     
@@ -57,7 +57,7 @@ function gerarTable(){
     $('.load_top').css('font-size',20);  
     setTimeout(() => {
         var id = document.getElementById('Bkid').value;
-        $.getJSON("acoes/gerarTabelas.php",{id: id }, function(data){
+        $.getJSON("acoes/initTable.php",{id: id }, function(data){
         $("div.cc").html(data);
         $('.load_top').removeClass("fa fa-spinner fa-spin fa-3x fa-fw");
     });

@@ -1,4 +1,4 @@
-console.log("Chamada gerarCharts_font .done");
+console.log("Chamada initTable .done");
 
 function gerarCall(aux,time, pesq){
     var id = document.getElementById('Bkid').value;
@@ -17,7 +17,7 @@ function nextChart(nome, id, time, pesq){
     document.getElementById("Bktime").value = time;
     document.getElementById("Bkpesq").value = pesq;
     
-    $.getJSON("includes/gerarCharts_back.php",{name: nome, id : id, time : time, pesq : pesq}, function(data) {
+    $.getJSON("includes/buildChart.php",{name: nome, id : id, time : time, pesq : pesq}, function(data) {
       
       var dom = document.getElementById("container"); // gerar o gráfico
       var myChart = echarts.init(dom);
@@ -180,7 +180,7 @@ function chartUpdate(){
     var time = document.getElementById("Bktime").value;
     var pesq = document.getElementById("Bkpesq").value;
     
-    $.getJSON("includes/gerarCharts_back.php",{name: nome, id : id, time : time, pesq : pesq}, function(data) {
+    $.getJSON("includes/buildChart.php",{name: nome, id : id, time : time, pesq : pesq}, function(data) {
           console.log("Atualizando");
           var dom = document.getElementById("container"); // gerar o gráfico
           var myChart = echarts.init(dom);
