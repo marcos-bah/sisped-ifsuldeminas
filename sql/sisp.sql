@@ -38,7 +38,7 @@ create table dadosauxiliar(
 );
 
 create table dadosconsulta(
-  id_consultas int not null primary key auto_increment,
+  idcon int not null primary key auto_increment,
   perimetroCefalico double(6,2),
   peso float(6,2),
   altura float(6,2),
