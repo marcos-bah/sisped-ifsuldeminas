@@ -5,7 +5,8 @@ create table instituicao(
   idinst int not null auto_increment primary key,
   nome varchar(255) not null,
   endereco varchar(255) not null,
-  cnpj varchar(18) not null
+  cnpj varchar(18) not null,
+  ativo tinyint(1) default 0 
 );
 
 create table dadoscrianca(
