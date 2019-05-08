@@ -16,25 +16,23 @@ create table dadoscrianca(
   diasPrematuro int not null,
   sexo char(1) not null,
   idInstituicao int not null,
-  constraint fk_InstituicaoAuxiliar foreign key (idInstituicao) references instituicao(idinst)
 );
 
 create table dadosresponsavel(
   idres int not null auto_increment primary key,
-  cpf int not null,
+  cpf varchar(11) not null,
   nome varchar(225) not null,
   idCrianca int not null,
   idInstituicao int not null,
-  constraint fk_InstituicaoAuxiliar foreign key (idInstituicao) references instituicao(idinst),
   constraint fk_ResponsavelCrianca foreign key (idCrianca) references dadoscrianca(idcrian)
 );
 
 create table dadosauxiliar(
   idaux int not null auto_increment primary key,
-  crm int,
+  crm varchar(10),
   nome int not null,
+  cpf varchar(11) not null,
   idInstituicao int not null,
-  constraint fk_InstituicaoAuxiliar foreign key (idInstituicao) references instituicao(idinst)
 );
 
 create table dadosconsulta(
