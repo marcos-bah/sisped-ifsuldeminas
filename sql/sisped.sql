@@ -16,7 +16,7 @@ create table dadoscrianca(
   prematuro boolean not null,
   diasPrematuro int not null,
   sexo char(1) not null,
-  idInstituicao int not null,
+  idInstituicao int not null
 );
 
 create table dadosresponsavel(
@@ -33,7 +33,7 @@ create table dadosauxiliar(
   crm varchar(10),
   nome int not null,
   cpf varchar(11) not null,
-  idInstituicao int not null,
+  idInstituicao int not null
 );
 
 create table dadosconsulta(
