@@ -16,7 +16,6 @@ create table dadoscrianca(
   prematuro boolean not null,
   diasPrematuro int not null,
   sexo char(1) not null,
-  idInstituicao int not null
 );
 
 create table dadosresponsavel(
@@ -24,7 +23,6 @@ create table dadosresponsavel(
   cpf varchar(11) not null,
   nome varchar(225) not null,
   idCrianca int not null,
-  idInstituicao int not null,
   constraint fk_ResponsavelCrianca foreign key (idCrianca) references dadoscrianca(idcrian)
 );
 
@@ -33,7 +31,6 @@ create table dadosauxiliar(
   crm varchar(10),
   nome int not null,
   cpf varchar(11) not null,
-  idInstituicao int not null
 );
 
 create table dadosconsulta(
