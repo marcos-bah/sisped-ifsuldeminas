@@ -8,3 +8,9 @@ Banco de Dados em desenvolvimento:
 [Light]: https://github.com/marcos-bah/sisped-ifsuldeminas/blob/master/sql/Screenshot_2019-05-09%20SqlDBM%20-%20Online%20Database%20Modeler(1).png "SISPED Database - tema light"
 
 [Dark]: https://github.com/marcos-bah/sisped-ifsuldeminas/blob/master/sql/Screenshot_2019-05-09%20SqlDBM%20-%20Online%20Database%20Modeler(2).png "SISPED Database - tema dark"
+
+Diagrama Entidade - Relacionamento:
+
+![alt text][brmodelo]
+
+[brmodelo]:https://github.com/marcos-bah/sisped-ifsuldeminas/blob/master/sql/SispedMER.png "BrModelo - Diagrama ER"
