@@ -22,8 +22,6 @@
                 mysqli_close($conn);
 
                 $txt .= "</table></br>";
-                
-               
 
                 echo json_encode($txt);
 
