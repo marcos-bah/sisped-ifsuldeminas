@@ -15,7 +15,7 @@ create table dadoscrianca(
   nascimento date not null,
   prematuro boolean not null,
   diasPrematuro int not null,
-  sexo char(1) not null,
+  sexo char(1) not null
 );
 
 create table dadosresponsavel(
@@ -30,7 +30,7 @@ create table dadosauxiliar(
   idaux int not null auto_increment primary key,
   crm varchar(10),
   nome int not null,
-  cpf varchar(11) not null,
+  cpf varchar(11) not null
 );
 
 create table dadosconsulta(
