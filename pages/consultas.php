@@ -720,7 +720,7 @@
 		$('#childrenTable_filter input').attr('placeholder','Procurar..');
 
 		//Formata campos de 'DATA' e 'PREMATURO' da aba 'Editar'
-		$('.campoData').datepicker({dateFormat: 'dd-mm-yy'});
+		$('.campoData').datepicker({dateFormat: 'dd/mm/yy'});
 		$('.campoData').mask("99-99-9999", {placeholder:"__/__/____"});
 		$( ".myCheckBox" ).checkboxradio();
 		});
