@@ -283,7 +283,7 @@
 	$(document).ready(function(){
 
 		//Formata campos de 'DATA' e 'PREMATURO' da aba 'Editar'
-		$('.campoData').datepicker({dateFormat: 'dd/mm/yy'});
+		$('.campoData').datepicker({dateFormat: 'dd/mm/yyyy'});
 		$('.campoData').mask("99-99-9999", {placeholder:"__/__/____"});
 		$( ".myCheckBox" ).checkboxradio();
 	});
