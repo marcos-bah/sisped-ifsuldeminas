@@ -1,117 +1,206 @@
 <?php
-/* Carrega a classe DOMPdf */
-require_once("dompdf/dompdf_config.inc.php");
+require('fpdf.php');
 
-/* Faz as consultas SQL para alimentar o relatorio */
-$nomeInst = "APAE IFSULDEMINAS P. P. E.";
-$cnpjInst = "81.012.501/0001-90";
-$endeInst = "Rua XV Novembro";
-
+//consulta sql
 $nomeCrian = "Criança Número Um";
-$idenCrian = "0001";
-$nascCrian = "21/02/2005";
-$premCrian = "Não";
-$respCrian = "Responável Crinça Número Um";
-$respCpfCrian = "613.419.810-29";
+$nomeInst = "APAE BRASIL Federação Nacional das Apaes";
+$nomeMedico = "Médico Atual";
+$crm = 542344;
+$endereçoCrian = "Rua 9 de Julho";
+$enderecoInst = "EDIFÍCIO VENÂNCIO IV COBERTURA, CEP: 70393-903, Brasilia/DF";
+$sit = "Prematuro";
+$cnpj = "62.535.044/0001-73";
+$id = 1;
 
-$dados = ['22/05/2006', '22', '132', '17', '39', 'Dr. Douglas','22/05/2006', '22', '132', '18', '39', 'Dr. Douglas','22/05/2006', '22', '132', '17', '39', 'Dr. Douglas','22/05/2006', '22', '132', '18', '39', 'Dr. Douglas','22/05/2006', '22', '132', '17', '39', 'Dr. Douglas','22/05/2006', '22', '132', '18', '39', 'Dr. Douglas'];
 
-/* Cria a instância */
-$dompdf = new DOMPDF();
-
-$html = "
-
-<style>
-    *{font-family: 'Times New Roman', Times, serif;};
-    h1{margin-top: -20px; font-size: 25px;};
-    #customers {
-        border-collapse: collapse;
-        width: 100%;
-      }
-      
-      #customers td, #customers th {
-        border: 1px;
-        padding: 8px;
-        width: 100px;
-      }
-      
-      #customers tr:nth-child(even){background-color: #f2f2f2;}
-      
-      #customers th {
-        padding-top: 12px;
-        padding-bottom: 12px;
-        text-align: left;
-        background-color: #4CAF50;
-        color: white;
-      }
-</style>
-
-<div id='content'>
-    <h1 style='margin-top: -15px; font-size: 25px;'>SISPED: Sistema de Análises de Dados Pediatricos&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src='sisped-logo.png' width='100' height='50'></h1>
-        <table>
-            <tr>
-                <td style='width: 400px; text-align: left;'><span style='font-weight: bold'>INSTITUIÇÃO: </span>".$nomeInst."</td>
-                <td><span style='font-weight: bold'>CNPJ: </span>".$cnpjInst."</td>
-            </tr>
-            <tr>
-                <td style='width: 400px; text-align: left;'><span style='font-weight: bold'>ENDEREÇO: </span>".$endeInst."</td>
-            </tr>
-            <tr>
-                <td>___________</td><td>___________</td>
-            </tr>
-            <tr>
-                <td style='width: 400px; text-align: left;'><span style='font-weight: bold'>CRIANÇA: </span>".$nomeCrian."</td>
-                <td><span style='font-weight: bold'>DATA DE NASCIMENTO: </span>".$nascCrian."</td>
-            </tr>
-            <tr>
-                <td style='width: 400px; text-align: left;'><span style='font-weight: bold'>ENDEREÇO: </span>".$endeInst."</td>
-                <td><span style='font-weight: bold'>PREMATURO: </span>".$premCrian."</td>
-            </tr>
-            <tr>
-                <td>___________</td><td>___________</td>
-            </tr>
-            <tr>
-                <td style='width: 400px; text-align: left;'><span style='font-weight: bold'>RESPONSÁVEL: </span>".$respCrian."</td>
-                <td><span style='font-weight: bold'>CPF: </span>".$respCpfCrian."</td>
-            </tr>
-        </table> <br> <br>
-
-        <table id='customers'>
-            <tr>
-                <th>Data Consulta</th>
-                <th>Peso</th>
-                <th>Altura</th>
-                <th>IMC</th>
-                <th>P. Céfalico</th>
-                <th>R. Médico</th>
-            </tr><tr>";
-
-for ($i=0; $i < sizeof($dados); $i++) { 
-    if($i%6==0 and $i != 0){
-        $html .="</tr><tr>";
+class PDF extends FPDF
+{
+// Page header
+    function Header()
+    {
+        // Logo
+        $this->Image('if.png',null,5,17);
+        // Times bold 15
+        $this->Image('sisped-logo2.png',255,9,30);
+        $this->SetFont('Times','B',15);
+        // Title
+        $this->Cell(25);
+        $this->Cell(0,0,utf8_decode("Relatório SISPED"),0,0,'L');
+        // Times regular 12
+        $this->SetFont('Times','',12);
+        $this->Ln(3);
+        $this->Cell(25);
+        $this->Cell(190,10,utf8_decode("Instituto Federal de Educação, Ciência e Tecnologia do Sul de Minas Gerais (IFSULDEMINAS)"),0,0,'L');
+        $this->Ln(6);
+        $this->Cell(25);
+        $this->Cell(190,10,utf8_decode("Campus Avançado Carmo de Minas"),0,0,'L');
+        // Line break
     }
-    $html .= "<td>".$dados[$i]."</td>";
+
+    //loadData
+    function LoadData($file)
+    {
+        // Read file lines
+        $lines = file($file);
+        $data = array();
+        foreach($lines as $line)
+            $data[] = explode(',',trim($line));
+        return $data;
+    }
+
+    //generateTable
+    function FancyTable($header, $data)
+    {
+        // Colors, line width and bold font
+        $this->SetFillColor(0,110,0);
+        $this->SetTextColor(255);
+        $this->SetDrawColor(0,90,0);
+        $this->SetLineWidth(.3);
+        $this->SetFont('','B');
+        // Header
+        $w = array(35, 35, 35, 35, 38);
+        for($i=0;$i<count($header);$i++)
+            $this->Cell($w[$i],7,utf8_decode($header[$i]),1,0,'C',true);
+        $this->Ln();
+        // Color and font restoration
+        $this->SetFillColor(224,235,255);
+        $this->SetTextColor(0);
+        $this->SetFont('');
+        // Data
+        $fill = false;
+        foreach($data as $row)
+        {
+            $this->Cell(5);
+            $this->Cell($w[0],6,utf8_decode($row[0]),'LR',0,'C',$fill);
+            $this->Cell($w[1],6,utf8_decode($row[1]),'LR',0,'C',$fill);
+            $this->Cell($w[2],6,utf8_decode($row[2]),'LR',0,'C',$fill);
+            $this->Cell($w[3],6,utf8_decode($row[3]),'LR',0,'C',$fill);
+            $this->Cell($w[4],6,utf8_decode($row[4]),'LR',0,'C',$fill);
+            $this->Ln();
+            $fill = !$fill;
+        }
+        // Closing line
+        $this->Cell(5);
+        $this->Cell(array_sum($w),0,'','T');
+    }
+
+    // Page footer
+    function Footer()
+    {
+        // Position at 1.5 cm from bottom
+        $this->SetY(-15);
+        // Times italic 8
+        $this->SetFont('Times','',8);
+        $this->Image('sisped-logo2.png', 10,280,30);
+        // Page number
+        //$this->Cell(0,20,utf8_decode("Página: ").$this->PageNo().'',0,0,'R');
+    }
 }
 
-$html .= "</tr></table></div>";
+// Instanciation of inherited class
+$pdf = new PDF();
+$pdf->AliasNbPages();
+$pdf->AddPage();
 
-$html .= "
-    <footer style='position: fixed; bottom: 50; text-align: left;'><img src='testeqr.png' width='100' height='100'>&nbsp;&nbsp;&nbsp;&nbsp;<span style='border-top: 1px solid #222; font-style: italic; padding: 30px;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assinatura Pediatra / Médico&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></footer>
-";
+$pdf->Rect(10,33,190,15);
 
-/* Carrega seu HTML */
-$dompdf->load_html($html);
+$pdf->Ln(13);
 
-/* Renderiza */
-$dompdf->render();
+$pdf->SetFont('Times','B',12);
+$pdf->Cell(20,10,utf8_decode('Instituição: '),0,0);
+$pdf->Cell(5);
+$pdf->SetFont('Times','',12);
+$pdf->Cell(100,10,utf8_decode($nomeInst),0,0);
+$pdf->Cell(5);
+$pdf->SetFont('Times','B',12);
+$pdf->Cell(10,10,utf8_decode('CNPJ: '),0,0);
+$pdf->Cell(5);
+$pdf->SetFont('Times','',12);
+$pdf->Cell(20,10,utf8_decode($cnpj),0,1);
 
-/* Exibe */
-$dompdf->stream(
-    "saida.pdf", /* Nome do arquivo de saída */
-    array(
-        "Attachment" => false /* Para download, altere para true */
-    )
-);
+$pdf->SetFont('Times','B',12);
+$pdf->Cell(20,5,utf8_decode('Endereço: '),0,0);
+$pdf->Cell(5);
+$pdf->SetFont('Times','',12);
+$pdf->Cell(0,5,utf8_decode($enderecoInst),0,1);
+
+$pdf->Ln(2);
+
+$pdf->Rect(10,50,190,15);
+
+$pdf->SetFont('Times','B',12);
+$pdf->Cell(20,10,utf8_decode('Criança: '),0,0);
+$pdf->Cell(5);
+$pdf->SetFont('Times','',12);
+$pdf->Cell(100,10,utf8_decode($nomeCrian),0,0);
+$pdf->Cell(5);
+$pdf->SetFont('Times','B',12);
+$pdf->Cell(23,10,utf8_decode('Identificador: '),0,0);
+$pdf->Cell(5);
+$pdf->SetFont('Times','',12);
+$pdf->Cell(20,10,utf8_decode($id),0,1);
+
+$pdf->SetFont('Times','B',12);
+$pdf->Cell(20,5,utf8_decode('Endereço: '),0,0);
+$pdf->Cell(5);
+$pdf->SetFont('Times','',12);
+$pdf->Cell(100,5,utf8_decode($endereçoCrian),0,0);
+$pdf->Cell(5);
+$pdf->SetFont('Times','B',12);
+$pdf->Cell(23,5,utf8_decode('Situação: '),0,0);
+$pdf->Cell(5);
+$pdf->SetFont('Times','',12);
+$pdf->Cell(20,5,utf8_decode($sit),0,1);
+
+$pdf->Ln(2);
+
+$pdf->Rect(10,67,190,7.5);
+
+$pdf->SetFont('Times','B',12);
+$pdf->Cell(20,10,utf8_decode('Médico: '),0,0);
+$pdf->Cell(5);
+$pdf->SetFont('Times','',12);
+$pdf->Cell(100,10,utf8_decode($nomeMedico),0,0);
+$pdf->Cell(5);
+$pdf->SetFont('Times','B',12);
+$pdf->Cell(10,10,utf8_decode('CRM: '),0,0);
+$pdf->Cell(5);
+$pdf->SetFont('Times','',12);
+$pdf->Cell(20,10,utf8_decode($crm),0,1);
+
+$pdf->Ln(1);
+
+$pdf->SetFont('Times','B',14);
+$pdf->Cell(0,10,'Consultas ',0,1);
+$header = array('Data', 'Peso (kg)', 'Altura (cm)', 'Perimetro*', 'Situação*');
+// Data loading
+$data = $pdf->LoadData('data.txt');
+$pdf->SetFont('Times','',11);
+$pdf->Cell(5);
+$pdf->FancyTable($header,$data);
+
+$pdf->Ln(13);
+
+$pdf->SetDrawColor(0,0,0);
+$pdf->SetFont('Times','',10);
+$pdf->Rect(140,215,60,60);
+$pdf->Image('qr.png',145,220,50);
+$pdf->Cell(0,5,utf8_decode('¹ Perimetro se refere ao perimetro cefalico, logo, a circunferencia do encefalo.'),0,1);
+$pdf->Cell(0,5,utf8_decode('² Situação é determinada pelo algoritmo que avalia caso a caso os dados obtidos.'),0,1);
+$pdf->Cell(0,5,utf8_decode('³ Esse documento pode ser autenticado a qualquer momento pelo QR Code ao lado.'),0,1);
+
+$pdf->Ln(36);
+$pdf->Cell(20);
+
+$pdf->SetFont('Times','',12);
+$pdf->Cell(100,10,utf8_decode("Profissional Responsável"),'T',0,'C');
+
+$pdf->AddPage("L");
+
+$pdf->SetFont('Times','B',14);
+$pdf->Ln(10);
+$pdf->Cell(0,10,utf8_decode('Gráficos '),0,1);
+$pdf->Image('chart.png',10,40,280);
+
+$pdf->Output();
 ?>
-
-
