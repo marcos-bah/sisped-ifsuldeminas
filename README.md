@@ -15,3 +15,13 @@ Diagrama Entidade - Relacionamento:
 
 [brmodelo]:https://github.com/marcos-bah/sisped-ifsuldeminas/blob/master/sql/SispedMER.png "BrModelo - Diagrama ER"
 
+Modelo Relatório
+
+![alt text][pdf_paisagem]
+
+![alt text][pdf_retrato]
+
+[pdf_paisagem]:https://github.com/marcos-bah/sisped-ifsuldeminas/blob/master/pages/report/pdf-P.png
+[pdf_retrato]:https://github.com/marcos-bah/sisped-ifsuldeminas/blob/master/pages/report/pdf-R.png
+
+
