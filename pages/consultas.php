@@ -10,10 +10,6 @@
 	<link rel="icon" href="../images/sisped.ico">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- PDF -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
-
 	<!-- INCLUDE funcoes ifsuldeminas -->
 	<script src="../js/funcoes.js"></script>
 	<script src="../js/initTable.js"></script>
@@ -21,6 +17,9 @@
 	<!-- INCLUDE W3 CSS -->
 	<link rel="stylesheet" href="../css/w3.css">
 	<!-- <link rel="stylesheet" href="../css/select.css"> -->
+
+	<!-- INCLUDE SISPED CSS -->
+	<link rel="stylesheet" href="../css/sisped.css">
 
 	<!-- INCLUDE W3 JS -->
 	<script src="../js/w3.js"></script>
@@ -64,7 +63,6 @@
 	<!-- INCLUDE BOOTSTRAP confirma -->
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"> -->
 	<script src="../js/bootstrap.min.js"></script>
-	
 	
 	<!-- bootbox code -->
 	<script src="../js/bootbox.min.js"></script>
@@ -214,16 +212,16 @@
 		        <tbody>
 			";
 			while ($dados = $result->fetch_assoc()) {
-				$var = $dados['id'].",'".str_replace("\t", "%20", $dados['nome'])."','".$dados['sexo']."','".$dados['nascimento']."',".$dados['prematuro'].",".$dados['diasPrematuro'];
+				$var = $dados['idcrian'].",'".str_replace("\t", "%20", $dados['nome'])."','".$dados['sexo']."','".$dados['nascimento']."',".$dados['prematuro'].",".$dados['diasPrematuro'];
 				echo "
 					 <tr class='item'>
 						 <td>";?> <b> <?php echo "".$dados['nome']."</b></td>\n";
 				echo "\t\t\t\t\t\t\t<td class='w3-center'>".$dados['nascimento']."</td>\n";
 				echo "\t\t\t\t\t\t\t<td class='w3-center'>".$dados['diasPrematuro']."</td>\n";
-				echo "\t\t\t\t\t\t\t<td class='w3-center'>";?> <a onclick="setTimeout(function(){ nextChart('../../csv/Weight-for-age/Z-scores_boys/5_years.csv', <?php echo $dados['id'] ?>, 'm','peso'); document.getElementById('NCrianca').innerHTML= '<?php echo $dados['nome'] ?>';  }, 300);gerarTable();sexo('<?php echo $dados['sexo'] ?>');openPanel('analiseTabMenu','PainelAnalise');" class='w3-button w3-hover-aqua w3-light-blue w3-round editRemoveButton'><i class='fa fa-user-md editRemoveIcon'></i><?php echo"</a></td>\n";
+				echo "\t\t\t\t\t\t\t<td class='w3-center'>";?> <a onclick="setTimeout(function(){ nextChart('../../csv/Weight-for-age/Z-scores_boys/5_years.csv', <?php echo $dados['idcrian'] ?>, 'm','peso'); document.getElementById('NCrianca').innerHTML= '<?php echo $dados['nome'] ?>';  }, 300);gerarTable();sexo('<?php echo $dados['sexo'] ?>');openPanel('analiseTabMenu','PainelAnalise');" class='w3-button w3-hover-aqua w3-light-blue w3-round editRemoveButton'><i class='fa fa-user-md editRemoveIcon'></i><?php echo"</a></td>\n";
 				echo "\t\t\t\t\t\t\t<td class='w3-center'>";?> <a onclick="update( <?php echo $var;  ?> ),openPanel('editarTabMenu','PainelEditar');" class='w3-button w3-hover-sand w3-khaki w3-round editRemoveButton'><i class='fa fa-pencil editRemoveIcon'></i><?php echo"</a></td>\n";
-				echo "\t\t\t\t\t\t\t<td class='w3-center'>";?> <a onclick="modal( <?php echo $dados['id'] ?> )" class='w3-button w3-hover-sand w3-khaki w3-round editRemoveButton'><i class='fa fa-archive editRemoveIcon'></i><?php echo "</a> </td>\n";
-				echo "\t\t\t\t\t\t\t<td class='w3-center'>";?> <a onclick="del( <?php echo $dados['id'] ?> )" class='w3-button w3-pale-red w3-hover-sand w3-red w3-round editRemoveButton'><i class='fa fa-trash-o editRemoveIcon'></i></a></td><?php echo"
+				echo "\t\t\t\t\t\t\t<td class='w3-center'>";?> <a onclick="modal( <?php echo $dados['idcrian'] ?> )" class='w3-button w3-hover-sand w3-khaki w3-round editRemoveButton'><i class='fa fa-archive editRemoveIcon'></i><?php echo "</a> </td>\n";
+				echo "\t\t\t\t\t\t\t<td class='w3-center'>";?> <a onclick="del( <?php echo $dados['idcrian'] ?> )" class='w3-button w3-pale-red w3-hover-sand w3-red w3-round editRemoveButton'><i class='fa fa-trash-o editRemoveIcon'></i></a></td><?php echo"
 					 </tr>\n
 				";
 			}
@@ -471,6 +469,10 @@
 
 		 </div>
 
+		<br>
+		
+		<div id="teste"></div>
+
 		<h3>Consultas</h3>
 		<div class="cc" style="overflow: auto;"></div>
 
@@ -487,7 +489,7 @@
 
 <!-- End page content -->
 
-<!-- MODAL CONFIRMA EXCLUIR -->
+<!-- MODAL ADICIONAR CONSULTA -->
 <div id="modalConsulta" class="w3-modal">
 	<div class="w3-modal-content w3-card-4">
 	  <header class="w3-container w3-green">
@@ -549,7 +551,7 @@
 			        type: "POST",
 			        url: "acoes/queryChildrenInsertion.php",
 			        data: dados,
-			        success: function( data )
+			        success: function(data)
 			        {
 				        console.log("Adicionado...");
 				        $('#modalConsulta').hide();
@@ -655,13 +657,9 @@
 			        data: dados,
 			        success: function( data )
 			        {
-			            $('.loadModal').text("");
-			            $('.loadModal').addClass("fa fa-spinner fa-spin fa-3x fa-fw");
-			            $('.loadModal').css('font-size',18);  
 				        gerarTable();
 				        chartUpdate();
-				        setTimeout(function(){ $('#modalUp').hide(); $('.loadModal').text("Atualizar"); $('.loadModal').css('font-size',14); $('.loadModal').removeClass("fa fa-spinner fa-spin fa-3x fa-fw"); }, 200);
-				        
+				        $('#modalUp').hide();  
 			        }
 		        });
 		        
@@ -677,7 +675,7 @@
 	<script>
 		function excluirConsulta(){
 			var id = document.getElementById('ide').value;
-			$.getJSON("acoes/consulta_del.php",{id : id}, function(data){
+			$.getJSON("acoes/queryDelete.php",{id : id}, function(data){
 				//location.reload();
 				gerarTable();
 
@@ -721,13 +719,13 @@
 
 		//Formata campos de 'DATA' e 'PREMATURO' da aba 'Editar'
 		$('.campoData').datepicker({dateFormat: 'dd/mm/yyyy'});
-		$('.campoData').mask("99-99-9999", {placeholder:"__/__/____"});
+		$('.campoData').mask("99/99/9999", {placeholder:"__/__/____"});
 		$( ".myCheckBox" ).checkboxradio();
 		});
 
 		$(document).on("click", ".optionR", function(e){
 			bootbox.prompt({
-					title: "Escolha a Refêrencia:",
+					title: "Escolha a Referência:",
 					inputType: 'select',
 					inputOptions: [
 							{

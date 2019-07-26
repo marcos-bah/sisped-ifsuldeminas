@@ -1,0 +1,16 @@
+.s-link{
+    width: 49.6%;
+    padding: 5px;
+    margin: 0.2%;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: white;
+    background-color: lightcoral;
+    float: right;
+    text-align: center;
+    text-decoration: none;
+}
+
+.cc {
+    text-align: center;
+}

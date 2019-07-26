@@ -35,7 +35,7 @@
 	//echo "$nome, sexo = '$sexo', nascimento = '$nasc', prematuro = '$prematuro', dias = '$diasPrematuro' WHERE id = $id;";
 		
 	//$sql = "UPDATE TABLE crianca SET(nome = $nome, sexo = $sexo, nascimento = $nasc, prematuro = $prematuro, dias = $diasPrematuro) WHERE id = $id;";
-	$sql = "UPDATE dadoscrianca SET nome = '$nome', sexo = '$sexo', nascimento = '$nasc', prematuro = '$prematuro', diasPrematuro = '$diasPrematuro' WHERE id = $id;";
+	$sql = "UPDATE dadoscrianca SET nome = '$nome', sexo = '$sexo', nascimento = '$nasc', prematuro = '$prematuro', diasPrematuro = '$diasPrematuro' WHERE idcrian = $id;";
 	mysqli_query($conn, $sql);
 	mysqli_close($conn);
 	header("Location: ../consultas.php")

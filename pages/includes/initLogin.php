@@ -9,8 +9,8 @@ include("dbconnection.php");
 
 // A variavel $result pega as varias $login e $senha, faz uma
 //pesquisa na tabela de usuarios
-$result = mysqli_query($conn,"SELECT * FROM `usuario`
-WHERE `login` = '$login' AND `senha`= '$senha'");
+$result = mysqli_query($conn,"SELECT * FROM `sispeduser`
+WHERE `nameuser` = '$login' AND `password`= '$senha'");
 /* Logo abaixo temos um bloco com if e else, verificando se a variável $result foi
 bem sucedida, ou seja se ela estiver encontrado algum registro idêntico o seu valor
 será igual a 1, se não, se não tiver registros seu valor será 0. Dependendo do
@@ -25,6 +25,7 @@ header('location:../consultas.php');
 else{
   unset ($_SESSION['login']);
   unset ($_SESSION['senha']);
+  session_destroy();
   header('location:../login.php');
   }
 ?>

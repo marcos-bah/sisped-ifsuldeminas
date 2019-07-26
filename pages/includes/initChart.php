@@ -3,9 +3,8 @@
     $id = $_GET['id'];
     $time = $_GET['time'];
     $pesquisa = $_GET['pesq'];
-    $sql = "Select nascimento, dataConsulta, altura, peso, perimetroCefalico, diasPrematuro from dadosconsultas inner join dadoscrianca on codCrianca = id where id = $id order by dataConsulta asc";
+    $sql = "Select nascimento, dataConsulta, altura, peso, perimetroCefalico, diasPrematuro from dadosconsulta inner join dadoscrianca on idCrianca = idcrian where idcrian = $id order by dataConsulta asc";
     $r = mysqli_query($conn, $sql);
-    //$pesquisa = explode(',',$pesquisa);
 
     $dataCrianca = array();
     $aux = array();
@@ -69,7 +68,7 @@
                 $dataCrianca = array_slice($dataCrianca, 3,18);
         break;
 
-        case 'y': //it'ś not used
+        case 'y': 
             $tempo = 'meses';
             for ($l = 0; $l <= 20; $l++){
                 if(!array_key_exists($l, $dataCrianca)){
