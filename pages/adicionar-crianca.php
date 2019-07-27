@@ -29,6 +29,9 @@
 	<!-- INCLUDE JQuery UI Lib -->
 	<script src="../js/jquery-ui.min.js"></script>
 
+	<!-- INCLUDE SISPED CSS -->
+	<link rel="stylesheet" href="../css/sisped.css">
+
 	<!-- INCLUDE JQuery UI CSS -->
 	<link rel="stylesheet" href="../css/jquery-ui.min.css">
 
@@ -130,7 +133,7 @@
 		$sexo = $sexo == '1' ? 'm' : 'f';
 
 		$nasc = isset($_POST['nasc']) ? $_POST['nasc'] : null;
-		$aux = explode("-", $nasc);
+		$aux = explode("/", $nasc);
 
 		if(sizeof($aux) == 3 ){
 
@@ -202,19 +205,19 @@
 
 		<div class="w3-row-padding">
 
-			<div  class="w3-col" style="width:150px">
+			<div  class="w3-col" style="width:160px">
 				<label class="w3-text-red"><b>Nascimento: </b></label>
-				<input class="w3-input w3-border w3-border-blue-gray campoData" type="text" name="nasc" required> <!-- type = date -->
+				<input class="w3-input w3-border w3-border-blue-gray campoData" type="date" name="nasc" required> <!-- type = date -->
 			</div>
 
-			<div class="w3-col" style="width:150px">
+			<div class="w3-col" style="width:160px">
 				<br />
 				<label for="prematuro">Prematuro</label>
 				<input type="checkbox" onclick="habilitar();" class="myCheckBox w3-bottombar w3-bottom" style="top:100px;" name="prematuro" id="prematuro">
 
 			</div>
 
-			<div class="w3-col" style="width:160px">
+			<div class="w3-col" style="width:170px">
 				  <label class="w3-text-red"><b>Dias (se prematuro): </b></label>
 				  <input id="dias" class="w3-input w3-border w3-border-blue-gray" type="number" name="dias" min="1" disabled>
 			</div>
@@ -274,20 +277,17 @@
 		overlayBg.style.display = "none";
 	}
 	
-
 </script>
-
 
 <!-- Fields formating -->
 <script>
 	$(document).ready(function(){
 
 		//Formata campos de 'DATA' e 'PREMATURO' da aba 'Editar'
-		$('.campoData').datepicker({dateFormat: 'dd/mm/yyyy'});
-		$('.campoData').mask("99-99-9999", {placeholder:"__/__/____"});
+		/*$('.campoData').datepicker({dateFormat: 'dd/mm/yyyy'});
+		$('.campoData').mask("99/99/9999", {placeholder:"__/__/____"});*/
 		$( ".myCheckBox" ).checkboxradio();
 	});
-
 </script>
 <!-- END of Fields formating -->
 

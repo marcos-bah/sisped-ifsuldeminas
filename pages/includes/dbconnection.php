@@ -2,7 +2,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "servidorbd";
+    $dbname = "serve_sisped";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);

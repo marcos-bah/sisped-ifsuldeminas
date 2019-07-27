@@ -1,17 +1,35 @@
 <?php
 require('fpdf.php');
+$id = $_GET['q'];
 
 //consulta sql
-$nomeCrian = "Criança Número Um";
-$nomeInst = "APAE BRASIL Federação Nacional das Apaes";
-$nomeMedico = "Médico Atual";
-$crm = 542344;
-$enderecoCrian = "Rua 9 de Julho";
-$enderecoInst = "EDIFÍCIO VENÂNCIO IV COBERTURA, CEP: 70393-903, Brasilia/DF";
-$sit = "Prematuro";
-$cnpj = "62.535.044/0001-73";
-$id = 1;
+include("../includes/dbconnection.php");
+$sql = "SELECT * FROM dadosconsulta where idCrianca = $id order by dataConsulta desc";
+$result = $conn->query($sql);
+$lines = array();
 
+    while($row = $result->fetch_array())
+        {
+            array_push($lines, $row['dataConsulta'].",".$row['peso'].",".$row['altura'].",".$row['perimetroCefalico'].",".$row['obs']."\n");
+                            
+        }
+
+$sql = "SELECT instituicao.nome, instituicao.endereco, instituicao.cnpj, dadoscrianca.nome, dadoscrianca.sexo, dadosauxiliar.nome, dadosauxiliar.crm, dadoscrianca.prematuro  FROM `instituicao` inner join `dadosauxiliar` inner join `dadosconsulta` inner join dadoscrianca on idinst = idinstituicao and idaux = idauxiliar and idcrianca = 4 LIMIT 1";
+$result = $conn->query($sql);
+
+while($row = $result->fetch_array())
+        {
+            $nomeInst = $row['0'];
+            $nomeCrian = $row['3'];
+            $nomeMedico = $row['5'];
+            $crm = $row['6'];
+            $prematuroCrian = ($row['7'] == 1) ? "Sim" : "Não" ;
+            $enderecoInst = $row['1'];
+            $sexo = ($row['4'] == "m") ? "Masculino" : "Feminino" ;
+            $cnpj = $row['2'];             
+        }
+ 
+mysqli_close($conn);
 
 class PDF extends FPDF
 {
@@ -38,10 +56,9 @@ class PDF extends FPDF
     }
 
     //loadData
-    function LoadData($file)
+    function LoadData($lines)
     {
         // Read file lines
-        $lines = file($file);
         $data = array();
         foreach($lines as $line)
             $data[] = explode(',',trim($line));
@@ -87,13 +104,9 @@ class PDF extends FPDF
     // Page footer
     function Footer()
     {
-        // Position at 1.5 cm from bottom
         $this->SetY(-15);
-        // Times italic 8
         $this->SetFont('Times','',8);
         $this->Image('sisped-logo2.png', 10,280,30);
-        // Page number
-        //$this->Cell(0,20,utf8_decode("Página: ").$this->PageNo().'',0,0,'R');
     }
 }
 
@@ -141,16 +154,16 @@ $pdf->SetFont('Times','',12);
 $pdf->Cell(20,10,utf8_decode($id),0,1);
 
 $pdf->SetFont('Times','B',12);
-$pdf->Cell(20,5,utf8_decode('Endereço: '),0,0);
+$pdf->Cell(20,5,utf8_decode('Prematuro: '),0,0);
 $pdf->Cell(5);
 $pdf->SetFont('Times','',12);
-$pdf->Cell(100,5,utf8_decode($enderecoCrian),0,0);
+$pdf->Cell(100,5,utf8_decode($prematuroCrian),0,0);
 $pdf->Cell(5);
 $pdf->SetFont('Times','B',12);
-$pdf->Cell(23,5,utf8_decode('Situação: '),0,0);
+$pdf->Cell(23,5,utf8_decode('Sexo: '),0,0);
 $pdf->Cell(5);
 $pdf->SetFont('Times','',12);
-$pdf->Cell(20,5,utf8_decode($sit),0,1);
+$pdf->Cell(20,5,utf8_decode($sexo),0,1);
 
 $pdf->Ln(2);
 
@@ -174,7 +187,7 @@ $pdf->SetFont('Times','B',14);
 $pdf->Cell(0,10,'Consultas ',0,1);
 $header = array('Data', 'Peso (kg)', 'Altura (cm)', 'Perimetro*', 'Situação*');
 // Data loading
-$data = $pdf->LoadData('data.txt');
+$data = $pdf->LoadData($lines);
 $pdf->SetFont('Times','',11);
 $pdf->Cell(5);
 $pdf->FancyTable($header,$data);
@@ -185,6 +198,7 @@ $pdf->SetDrawColor(0,0,0);
 $pdf->SetFont('Times','',10);
 $pdf->Rect(140,215,60,60);
 $pdf->Image('qr.png',145,220,50);
+$pdf->SetY(-82);
 $pdf->Cell(0,5,utf8_decode('¹ Perimetro se refere ao perimetro cefalico, logo, a circunferencia do encefalo.'),0,1);
 $pdf->Cell(0,5,utf8_decode('² Situação é determinada pelo algoritmo que avalia caso a caso os dados obtidos.'),0,1);
 $pdf->Cell(0,5,utf8_decode('³ Esse documento pode ser autenticado a qualquer momento pelo QR Code ao lado.'),0,1);
