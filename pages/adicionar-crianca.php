@@ -286,8 +286,8 @@
 		//Formata campos de 'DATA' e 'PREMATURO' da aba 'Editar'
 		/*$('.campoData').datepicker({dateFormat: 'dd/mm/yyyy'});
 		$('.campoData').mask("99/99/9999", {placeholder:"__/__/____"});*/
-		$( ".myCheckBox" ).checkboxradio();
-	});
+
+		$( ".myCheckBox" ).checkboxradio();});
 </script>
 <!-- END of Fields formating -->
 

@@ -13,9 +13,7 @@
     $aux = explode("/", $data);
 
 		if(sizeof($aux) == 3 ){
-
 			$data = $aux[2]."-". $aux[1]."-".$aux[0];
-
 		}
 
     $sql = "INSERT INTO dadosconsulta (perimetroCefalico, peso, altura, dataConsulta, idCrianca, idinstituicao, idauxiliar, obs) VALUES ( $perCefalico, $peso, $altura, '$data', $id, 1, 1, '$obs')";

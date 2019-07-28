@@ -13,7 +13,6 @@
 
 .cc {
     text-align: center;
-}
 
 /* Removes the clear button from date inputs */
 input[type="date"]::-webkit-clear-button {
