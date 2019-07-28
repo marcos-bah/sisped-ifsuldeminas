@@ -7,12 +7,12 @@ $hash = strval($_SERVER['SERVER_NAME'])."?hash=".strval(md5($id.$vetEstados[rand
      
 // outputs image directly into browser, as PNG stream 
 include('phpqrcode/qrlib.php'); 
-$image = strval(rand(1,100)+rand(1,100)+rand(1,33)+rand(1,33));
+$image = strval(rand(1,100).rand(1,100).rand(1,33).rand(1,33));
 QRcode::png($hash, "tmp/".$image."-qr.png", QR_ECLEVEL_L, 4, 5);
 
 //consulta sql
 include("../includes/dbconnection.php");
-$sql = "SELECT * FROM dadosconsulta where idCrianca = $id order by dataConsulta desc limit 17";
+$sql = "SELECT * FROM dadosconsulta where idCrianca = $id order by dataConsulta desc";
 $result = $conn->query($sql);
 $lines = array();
 
@@ -21,7 +21,11 @@ $lines = array();
             array_push($lines, $row['dataConsulta'].",".$row['peso'].",".$row['altura'].",".$row['perimetroCefalico'].",".$row['obs']."\n");
         }
 
-$sql = "SELECT instituicao.nome, instituicao.endereco, instituicao.cnpj, dadoscrianca.nome, dadoscrianca.sexo, dadosauxiliar.nome, dadosauxiliar.crm, dadoscrianca.prematuro  FROM `instituicao` inner join `dadosauxiliar` inner join `dadosconsulta` inner join dadoscrianca on idinst = idinstituicao and idaux = idauxiliar and idcrianca = 4 LIMIT 1";
+$sql = "SELECT instituicao.nome, instituicao.endereco, instituicao.cnpj, dadoscrianca.nome, dadoscrianca.sexo, 
+dadosauxiliar.nome, dadosauxiliar.crm, dadoscrianca.prematuro  FROM `instituicao` inner join `dadosauxiliar` 
+inner join `dadosconsulta` inner join dadoscrianca on idinst = idinstituicao and idaux = idauxiliar and idCrianca = idcrian where idcrian = $id 
+LIMIT 1";
+
 $result = $conn->query($sql);
 
 while($row = $result->fetch_array())
@@ -48,20 +52,26 @@ $plot->SetFont('title', 5, 18);
 
 //Define some data
 $example_data = array(
-     array('a',3),
-     array('b',5),
-     array('c',7),
-     array('d',8),
+     array('a',1),
+     array('b',1.5),
+     array('c',1.75),
+     array('d',1.825),
      array('e',2),
-     array('f',6),
-     array('g',7)
+     array('f',2.5),
+     array('g',2.6)
 );
+
 $plot->SetDataValues($example_data);
+$plot->SetDataColors('red');
 
 //Set titles
-$plot->SetTitle("A Simple Plot\nMade with PHPlot");
+$plot->SetTitle(utf8_decode("Gráfico SISPED"));
 $plot->SetXTitle('X Data');
 $plot->SetYTitle('Y Data');
+
+# Draw both grids:
+$plot->SetDrawXGrid(True);
+$plot->SetDrawYGrid(True);
 
 //Turn off X axis ticks and labels because they get in the way:
 $plot->SetXTickLabelPos('none');
@@ -129,8 +139,10 @@ class PDF extends FPDF
         $this->SetFont('');
         // Data
         $fill = false;
+        $cont = 0;
         foreach($data as $row)
         {
+            $cont++;
             $this->Cell(5);
             $this->Cell($w[0],6,utf8_decode($row[0]),'LR',0,'C',$fill);
             $this->Cell($w[1],6,utf8_decode($row[1]),'LR',0,'C',$fill);
@@ -139,6 +151,11 @@ class PDF extends FPDF
             $this->Cell($w[4],6,utf8_decode($row[4]),'LR',0,'C',$fill);
             $this->Ln();
             $fill = !$fill;
+            if($cont>=30){ //resolver o alocamneto de consultas no pdf
+                $this->AddPage();
+                $cont = 0;
+                $this->Ln(15);
+            }
         }
         // Closing line
         $this->Cell(5);
@@ -217,7 +234,7 @@ $pdf->SetFont('Times','B',12);
 $pdf->Cell(20,10,utf8_decode('Médico: '),0,0);
 $pdf->Cell(5);
 $pdf->SetFont('Times','',12);
-$pdf->Cell(100,10,utf8_decode($nomeMedico),0,0);
+$pdf->Cell(100,10,$nomeMedico,0,0);
 $pdf->Cell(5);
 $pdf->SetFont('Times','B',12);
 $pdf->Cell(10,10,utf8_decode('CRM: '),0,0);

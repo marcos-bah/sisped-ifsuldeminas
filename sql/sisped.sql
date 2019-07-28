@@ -38,6 +38,7 @@ create table dadosconsulta(
   perimetroCefalico double(6,2),
   peso float(6,2),
   altura float(6,2),
+  obs varchar(255),
   dataConsulta date,
   idInstituicao int not null,
   idCrianca int not null,
@@ -53,7 +54,7 @@ create table sispeduser(
   password varchar(255)
 );
 
-ALTER TABLE `dadosconsulta` ADD `obs` VARCHAR(255) NOT NULL AFTER `altura`;
-
 INSERT INTO `instituicao` (`idinst`, `nome`, `endereco`, `cnpj`, `ativo`) VALUES (NULL, 'APAE', 'Rua XV de Novembro', '4243234-322', '1');
-INSERT INTO `dadosauxiliar` (`idaux`, `crm`, `nome`, `cpf`) VALUES (NULL, '2423-MG', 'Usuario Teste', '842349328');
+INSERT INTO `dadosauxiliar` (`idaux`, `crm`, `nome`, `cpf`) VALUES (NULL, '2423-MG', 'Médico Atual', '842349328');
+INSERT INTO `dadoscrianca` (`idcrian`, `nome`, `nascimento`, `prematuro`, `diasPrematuro`, `sexo`) VALUES (NULL, 'Crianca 0', '2019-02-02', false, 0, 'm');
+INSERT INTO `sispeduser` (`iduse`, `nameuser`, `password`) VALUES (NULL, 'sisped', 'd32129481a7f1fc4cb052f698e8792ca96477fc1');
