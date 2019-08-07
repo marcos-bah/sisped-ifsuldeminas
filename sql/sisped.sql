@@ -1,12 +1,20 @@
 create database serve_sisped;
 use serve_sisped;
 
-create table instituicao(
-  idinst int not null auto_increment primary key,
+create table sispeduser(
+  iduse int not null primary key auto_increment,
+  nameuser varchar(100),
   nome varchar(255) not null,
   endereco varchar(255) not null,
+  `password` varchar(255) not null
+);
+
+create table instituicao(
+  idinst int not null auto_increment primary key,
   cnpj varchar(18) not null,
-  ativo tinyint(1) default 0 
+  ativo tinyint(1) default 0,
+  iduser int not null,
+  constraint fk_InstituicaoUser foreign key (iduser) references sispeduser(iduse)
 );
 
 create table dadoscrianca(
@@ -21,16 +29,18 @@ create table dadoscrianca(
 create table dadosresponsavel(
   idres int not null auto_increment primary key,
   cpf varchar(11) not null,
-  nome varchar(225) not null,
   idCrianca int not null,
+  iduser int not null,
+  constraint fk_ResponsavelUser foreign key (iduser) references sispeduser(iduse),
   constraint fk_ResponsavelCrianca foreign key (idCrianca) references dadoscrianca(idcrian)
 );
 
 create table dadosauxiliar(
   idaux int not null auto_increment primary key,
   crm varchar(10),
-  nome varchar(255) not null,
-  cpf varchar(11) not null
+  cpf varchar(11) not null,
+  iduser int not null,
+  constraint fk_AuxiliarUser foreign key(iduser) references sispeduser(iduse)
 );
 
 create table dadosconsulta(
@@ -46,12 +56,6 @@ create table dadosconsulta(
   constraint fk_CriancaConsulta foreign key (idCrianca) references dadoscrianca(idcrian),
   constraint fk_AuxiliarConsulta foreign key (idAuxiliar) references dadosauxiliar(idaux),
   constraint fk_InstituicaoConsulta foreign key (idInstituicao) references instituicao(idinst)
-);
-
-create table sispeduser(
-  iduse int not null primary key auto_increment,
-  nameuser varchar(100),
-  password varchar(255)
 );
 
 INSERT INTO `instituicao` (`idinst`, `nome`, `endereco`, `cnpj`, `ativo`) VALUES (NULL, 'APAE', 'Rua XV de Novembro', '4243234-322', '1');
