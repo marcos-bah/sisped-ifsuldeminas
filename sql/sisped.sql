@@ -60,5 +60,5 @@ create table dadosconsulta(
 
 INSERT INTO `instituicao` (`idinst`, `nome`, `endereco`, `cnpj`, `ativo`) VALUES (NULL, 'APAE', 'Rua XV de Novembro', '4243234-322', '1');
 INSERT INTO `dadosauxiliar` (`idaux`, `crm`, `nome`, `cpf`) VALUES (NULL, '2423-MG', 'Médico Atual', '842349328');
-INSERT INTO `dadoscrianca` (`idcrian`, `nome`, `nascimento`, `prematuro`, `diasPrematuro`, `sexo`) VALUES (NULL, 'Crianca 0', '2019-02-02', false, 0, 'm');
+INSERT INTO `dadoscrianca` (`idcrian`, `nome`, `nascimento`, `prematuro`, `diasPrematuro`, `sexo`) VALUES (NULL, 'Crianca Zero', '2010-02-02', false, 0, 'm');
 INSERT INTO `sispeduser` (`iduse`, `nameuser`, `password`) VALUES (NULL, 'sisped', 'd32129481a7f1fc4cb052f698e8792ca96477fc1');
