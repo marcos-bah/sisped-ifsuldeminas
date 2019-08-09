@@ -10,17 +10,14 @@
       $obs = "Sem Observações";
     }
 
-    $aux = explode("-", $data);
+    $aux = explode("/", $data);
 
 		if(sizeof($aux) == 3 ){
-
 			$data = $aux[2] . "-" . $aux[1] . "-" . $aux[0];
-
 		}
 
 
-    $sql = "UPDATE dadosconsultas SET peso = '$peso', altura = '$altura', dataConsulta = '$data', obs = '$obs', perimetroCefalico = '$perCefalico' WHERE id_consultas = $id;";
+    $sql = "UPDATE dadosconsulta SET peso = '$peso', altura = '$altura', dataConsulta = '$data', obs = '$obs', perimetroCefalico = '$perCefalico' WHERE idcon = $id;";
     mysqli_query($conn, $sql);
     mysqli_close($conn);
-    header("Location: ../consultas.php")
 ?>

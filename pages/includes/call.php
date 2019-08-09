@@ -41,7 +41,7 @@
     //end chamada
 
     function BMI(){
-        $sql = "Select nascimento, dataConsulta, altura, peso from dadosconsultas inner join dadoscrianca on codCrianca = id where id = $id order by dataConsulta asc";
+        $sql = "Select nascimento, dataConsulta, altura, peso from dadosconsultas inner join dadoscrianca on idCrianca = idcrian where idcrian = $id order by dataConsulta asc";
         $r = mysqli_query($conn, $sql);
         
 

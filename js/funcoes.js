@@ -16,7 +16,7 @@ function del(id) {
 
                     $.getJSON("acoes/delete.php",{id: id }, function(data){
                         //redirecionar, caregar pagina inicial
-                        $('body').load('queryChildrenInsertion.php'); 
+                        $('body').load('consultas.php'); 
 
                     });
                     
@@ -53,13 +53,10 @@ function IdGlobal(id){
 }
 
 function gerarTable(){
-    $('.load_top').addClass("fa fa-spinner fa-spin fa-3x fa-fw");
-    $('.load_top').css('font-size',20);  
     setTimeout(() => {
         var id = document.getElementById('Bkid').value;
         $.getJSON("acoes/initTable.php",{id: id }, function(data){
         $("div.cc").html(data);
-        $('.load_top').removeClass("fa fa-spinner fa-spin fa-3x fa-fw");
     });
 
 
@@ -107,13 +104,10 @@ function update(id,nome,sexo,nasc,prematuro,dias){
         nasc = nasc.split("-");
 
 
-        //console.log(a);
-
-
         document.getElementById("id").value = id;
         document.getElementById("nome").value = nome;
         document.getElementById("sexo").value = sexo;
-        document.getElementById("nascimento").value = nasc[2] + '-'+ nasc[1] + '-' + nasc[0];
+        document.getElementById("nascimento").value = nasc[0] + '-'+ nasc[1] + '-' + nasc[2];
         document.getElementById("dias").value = dias;
 
     }
@@ -125,7 +119,7 @@ function consultaUp(data, peso, altura, obs, per, id){
     document.getElementById("ConPeso").value = peso;
     document.getElementById("ConPer").value = per;
     data = data.split("-");
-    document.getElementById("ConData").value = data[2] + '-'+ data[1] + '-' + data[0];
+    document.getElementById("ConData").value = data[0] + '-'+ data[1] + '-' + data[2];
     document.getElementById("ConObs").value = obs;
 }
 

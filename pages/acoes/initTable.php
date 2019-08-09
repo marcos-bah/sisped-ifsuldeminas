@@ -3,7 +3,7 @@
                //header('Content-type: application/json');
                include("../includes/dbconnection.php");
                $aux = $_GET['id'];	
-               $sql = "SELECT * FROM dadosconsultas where codCrianca = $aux order by dataConsulta desc";
+               $sql = "SELECT * FROM dadosconsulta where idCrianca = $aux order by dataConsulta desc";
 
 
                 $result = $conn->query($sql);
@@ -13,7 +13,7 @@
                 while($row = $result->fetch_array())
                 {
                     
-                    $par = "\"".$row['dataConsulta']."\",".$row['peso'].",".$row['altura'].",\"".$row['obs']."\",".$row['perimetroCefalico'].",".$row['id_consultas']."";
+                    $par = "\"".$row['dataConsulta']."\",".$row['peso'].",".$row['altura'].",\"".$row['obs']."\",".$row['perimetroCefalico'].",".$row['idcon']."";
                     
                    
                     $txt .= "<tr onclick='consultaUp(".$par.")'><td>".$row['dataConsulta']."</td><td>".$row['peso']."</td><td>".$row['altura']."</td><td>".$row['perimetroCefalico']."</td><td >".$row['obs']."</td></tr>";                   

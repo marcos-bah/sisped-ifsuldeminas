@@ -29,7 +29,7 @@ create table dadosresponsavel(
 create table dadosauxiliar(
   idaux int not null auto_increment primary key,
   crm varchar(10),
-  nome int not null,
+  nome varchar(255) not null,
   cpf varchar(11) not null
 );
 
@@ -46,3 +46,14 @@ create table dadosconsulta(
   constraint fk_AuxiliarConsulta foreign key (idAuxiliar) references dadosauxiliar(idaux),
   constraint fk_InstituicaoConsulta foreign key (idInstituicao) references instituicao(idinst)
 );
+
+create table sispeduser(
+  iduse int not null primary key auto_increment,
+  nameuser varchar(100),
+  password varchar(255)
+);
+
+ALTER TABLE `dadosconsulta` ADD `obs` VARCHAR(255) NOT NULL AFTER `altura`;
+
+INSERT INTO `instituicao` (`idinst`, `nome`, `endereco`, `cnpj`, `ativo`) VALUES (NULL, 'APAE', 'Rua XV de Novembro', '4243234-322', '1');
+INSERT INTO `dadosauxiliar` (`idaux`, `crm`, `nome`, `cpf`) VALUES (NULL, '2423-MG', 'Usuario Teste', '842349328');
