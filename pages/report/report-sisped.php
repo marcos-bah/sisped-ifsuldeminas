@@ -7,12 +7,14 @@ $hash = strval($_SERVER['SERVER_NAME'])."?hash=".strval(md5($id.$vetEstados[rand
      
 // outputs image directly into browser, as PNG stream 
 include('phpqrcode/qrlib.php'); 
+
 $image = strval(rand(1,100)+rand(1,100)+rand(1,33)+rand(1,33));
 QRcode::png("SISPED Projeto 2019", "tmp/".$image."-qr.png", QR_ECLEVEL_L, 4, 5);
 
 //consulta sql
 include("../includes/dbconnection.php");
 $sql = "SELECT * FROM dadosconsulta where idCrianca = $id order by dataConsulta desc limit 17";
+
 $result = $conn->query($sql);
 $lines = array();
 
@@ -21,7 +23,12 @@ $lines = array();
             array_push($lines, $row['dataConsulta'].",".$row['peso'].",".$row['altura'].",".$row['perimetroCefalico'].",".$row['obs']."\n");
         }
 
-$sql = "SELECT instituicao.nome, instituicao.endereco, instituicao.cnpj, dadoscrianca.nome, dadoscrianca.sexo, dadosauxiliar.nome, dadosauxiliar.crm, dadoscrianca.prematuro  FROM `instituicao` inner join `dadosauxiliar` inner join `dadosconsulta` inner join dadoscrianca on idinst = idinstituicao and idaux = idauxiliar and idcrianca = $id LIMIT 1";
+
+$sql = "SELECT instituicao.nome, instituicao.endereco, instituicao.cnpj, dadoscrianca.nome, dadoscrianca.sexo, 
+dadosauxiliar.nome, dadosauxiliar.crm, dadoscrianca.prematuro  FROM `instituicao` inner join `dadosauxiliar` 
+inner join `dadosconsulta` inner join dadoscrianca on idinst = idinstituicao and idaux = idauxiliar and idCrianca = idcrian where idcrian = $id 
+LIMIT 1";
+
 $result = $conn->query($sql);
 
 while($row = $result->fetch_array())
@@ -48,6 +55,7 @@ $plot->SetFont('title', 5, 18);
 
 //Define some data
 $example_data = array(
+<<<<<<< HEAD:pages/report/report-sisped.php
      array('a',5),
      array('b',5.2),
      array('c',6),
@@ -63,7 +71,7 @@ $plot->SetTitle("SISPED Chart \nMade with PHPlot");
 $plot->SetXTitle('X Data');
 $plot->SetYTitle('Y Data');
 
-//Turn off X axis ticks and labels because they get in the way:
+
 $plot->SetXTickLabelPos('none');
 $plot->SetXTickPos('none');
 
@@ -129,8 +137,10 @@ class PDF extends FPDF
         $this->SetFont('');
         // Data
         $fill = false;
+        $cont = 0;
         foreach($data as $row)
         {
+            $cont++;
             $this->Cell(5);
             $this->Cell($w[0],6,utf8_decode($row[0]),'LR',0,'C',$fill);
             $this->Cell($w[1],6,utf8_decode($row[1]),'LR',0,'C',$fill);
@@ -139,6 +149,11 @@ class PDF extends FPDF
             $this->Cell($w[4],6,utf8_decode($row[4]),'LR',0,'C',$fill);
             $this->Ln();
             $fill = !$fill;
+            if($cont>=30){ //resolver o alocamneto de consultas no pdf
+                $this->AddPage();
+                $cont = 0;
+                $this->Ln(15);
+            }
         }
         // Closing line
         $this->Cell(5);
@@ -217,7 +232,7 @@ $pdf->SetFont('Times','B',12);
 $pdf->Cell(20,10,utf8_decode('Médico: '),0,0);
 $pdf->Cell(5);
 $pdf->SetFont('Times','',12);
-$pdf->Cell(100,10,utf8_decode($nomeMedico),0,0);
+$pdf->Cell(100,10,$nomeMedico,0,0);
 $pdf->Cell(5);
 $pdf->SetFont('Times','B',12);
 $pdf->Cell(10,10,utf8_decode('CRM: '),0,0);
@@ -243,9 +258,15 @@ $pdf->SetFont('Times','',10);
 $pdf->Rect(140,215,60,60);
 $pdf->Image("tmp/".$image.'-qr.png',145,220,50);
 $pdf->SetY(-82);
+<<<<<<< HEAD:pages/report/report-sisped.php
 $pdf->Cell(0,5,utf8_decode('¹ Perímetro se refere ao perímetro cefálico, logo, a circunferência do encéfalo.'),0,1);
 $pdf->Cell(0,5,utf8_decode('² Observações são submetidas pelos pediatras.'),0,1);
 $pdf->Cell(0,5,utf8_decode('³ Este documento pode ser autenticado a qualquer momento pelo QR Code ao lado.'),0,1);
+=======
+$pdf->Cell(0,5,utf8_decode('¹ Perimetro se refere ao perimetro cefalico, logo, a circunferencia do encefalo.'),0,1);
+$pdf->Cell(0,5,utf8_decode('² Situação é determinada pelo algoritmo que avalia caso a caso os dados obtidos.'),0,1);
+$pdf->Cell(0,5,utf8_decode('³ Esse documento pode ser autenticado a qualquer momento pelo QR Code ao lado.'),0,1);
+>>>>>>> 5f5e8e24dce5b8b41df94e5ce3bf76302edaeb84:pages/report/report-sisped.php
 
 $pdf->Ln(36);
 $pdf->Cell(20);

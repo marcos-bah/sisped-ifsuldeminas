@@ -14,7 +14,9 @@
 
 		if(sizeof($aux) == 3 ){
 
+
 			$data = $aux[2]."-". $aux[1]."-".$aux[0];
+
 
 		}
 
