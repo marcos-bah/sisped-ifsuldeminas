@@ -5,7 +5,7 @@
 
 	<title>SISPED - Sistema de Análise de Dados Pediátricos</title>
 	<meta charset="UTF-8">
-	<link rel="icon" href="../images/sisped.ico">
+	<link rel="icon" href="../image/sisped.ico">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- INCLUDE W3 CSS -->
@@ -83,7 +83,7 @@
 
 	<!-- SISPED logo -->
 	<div class="w3-col s4">
-		<img src="../images/sisped-logo.png" style="height:140px">
+		<img src="../image/sisped-logo.png" style="height:140px">
 	</div>
 
 	</div>
@@ -242,7 +242,7 @@
 
   <!-- Footer -->
   <footer class="w3-container w3-padding-16 w3-center w3-light-grey">
-    <p><img src="../images/ifsuldeminas.png" height="40" /></p>
+    <p><img src="../image/ifsuldeminas.png" height="40" /></p>
   </footer>
 
 

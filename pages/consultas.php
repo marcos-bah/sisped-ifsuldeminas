@@ -7,7 +7,7 @@
 	<meta http-equiv="cache-control" content="no-store, no-cache, must-revalidate, Post-Check=0, Pre-Check=0">
 	<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
 	<META HTTP-EQUIV="Expires" CONTENT="-1">
-	<link rel="icon" href="../images/sisped.ico">
+	<link rel="icon" href="../image/sisped.ico">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- INCLUDE funcoes ifsuldeminas -->
@@ -133,7 +133,7 @@
 	<div class="w3-container w3-row">
 		<!-- SISPED logo -->
 		<div class="w3-col s4">
-			<img src="../images/sisped-logo.png" style="height:130px; margin-top:10px;">
+			<img src="../image/sisped-logo.png" style="height:130px; margin-top:10px;">
 		</div>
 	</div>
 
@@ -481,7 +481,7 @@
 
  	<!-- Footer -->
 	<footer class="w3-container w3-padding-16 w3-center w3-light-grey">
-		<p ><img src="../images/ifsuldeminas.png" height="40" /></p>
+		<p ><img src="../image/ifsuldeminas.png" height="40" /></p>
 	</footer>
 
 	</div>

@@ -1,20 +1,22 @@
+drop database serve_sisped;
 create database serve_sisped;
 use serve_sisped;
+
+create table instituicao(
+  idinst int not null auto_increment primary key,
+  nome varchar(255) not null,
+  cnpj varchar(18) not null,
+  ativo tinyint(1) default 0
+);
 
 create table sispeduser(
   iduse int not null primary key auto_increment,
   nameuser varchar(100),
   nome varchar(255) not null,
   endereco varchar(255) not null,
-  `password` varchar(255) not null
-);
-
-create table instituicao(
-  idinst int not null auto_increment primary key,
-  cnpj varchar(18) not null,
-  ativo tinyint(1) default 0,
-  iduser int not null,
-  constraint fk_InstituicaoUser foreign key (iduser) references sispeduser(iduse)
+  `password` varchar(255) not null,
+  idinst int not null,
+  constraint fk_UserInstituicao foreign key (idinst) references instituicao(idinst)
 );
 
 create table dadoscrianca(
@@ -58,14 +60,10 @@ create table dadosconsulta(
   constraint fk_InstituicaoConsulta foreign key (idInstituicao) references instituicao(idinst)
 );
 
+INSERT INTO `instituicao` (`idinst`, `nome`, `cnpj`, `ativo`) VALUES (NULL, 'Local', '00000-0', '0');
+INSERT INTO `sispeduser` (`iduse`, `nameuser`, `nome`, `endereco`, `password`, `idinst`) VALUES (NULL, 'admin', 'Admistrador', 'localhost', 'd32129481a7f1fc4cb052f698e8792ca96477fc1', '1'); /*md5 for sha1*/
 
 
 
-INSERT INTO `instituicao` (`idinst`, `nome`, `endereco`, `cnpj`, `ativo`) VALUES (NULL, 'APAE', 'Rua XV de Novembro', '4243234-322', '1');
-INSERT INTO `dadosauxiliar` (`idaux`, `crm`, `nome`, `cpf`) VALUES (NULL, '2423-MG', 'Usuario Teste', '842349328');
 
-INSERT INTO `instituicao` (`idinst`, `nome`, `endereco`, `cnpj`, `ativo`) VALUES (NULL, 'APAE', 'Rua XV de Novembro', '4243234-322', '1');
-INSERT INTO `dadosauxiliar` (`idaux`, `crm`, `nome`, `cpf`) VALUES (NULL, '2423-MG', 'Médico Atual', '842349328');
-INSERT INTO `dadoscrianca` (`idcrian`, `nome`, `nascimento`, `prematuro`, `diasPrematuro`, `sexo`) VALUES (NULL, 'Crianca Zero', '2010-02-02', false, 0, 'm');
-INSERT INTO `sispeduser` (`iduse`, `nameuser`, `password`) VALUES (NULL, 'sisped', 'd32129481a7f1fc4cb052f698e8792ca96477fc1');
 

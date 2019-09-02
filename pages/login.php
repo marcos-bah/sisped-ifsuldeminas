@@ -15,7 +15,7 @@
 		<div class="w3-modal-content w3-card-4  w3-animate-zoom" style="max-width:600px">
 
 		  <div class="w3-center"><br>
-			<img src="../images/sisped-logo.png" alt="SISPED" style="height: 130px;" class=" w3-margin-top">
+			<img src="../image/sisped-logo.png" alt="SISPED" style="height: 130px;" class=" w3-margin-top">
 		  </div>
 
 		  <form class="w3-container" action="includes/initLogin.php" method="post">
@@ -35,7 +35,7 @@
 	</div>
 
 	<div class="w3-container w3-bottom w3-center" style="bottom: 15px;">
-		 <img src="../images/ifsuldeminas.png" style="width: 250px" />
+		 <img src="../image/ifsuldeminas.png" style="width: 250px" alt="Logo IFSULDEMINAS"/>
 	</div>
 
 </body>
