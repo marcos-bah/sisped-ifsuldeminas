@@ -1,5 +1,6 @@
 <?php
 require('fpdf/fpdf.php');
+include("sisped.php");
 
 $id = $_GET['q'];
 $vetEstados = array("Acre", "Alagoas", "Amazonas", "Amapá", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rondônia", "Rio Grande do Sul", "Roraima", "Santa Catarina", "Sergipe", "São Paulo", "Tocantins");
@@ -55,13 +56,12 @@ $plot->SetFont('title', 5, 18);
 
 //Define some data
 $example_data = array(
-<<<<<<< HEAD:pages/report/report-sisped.php
      array('a',5),
      array('b',5.2),
      array('c',6),
      array('d',6.4),
      array('e',6.8),
-     array('f',7),
+     array('ff',7),
      array('g',7.1)
 );
 $plot->SetDataValues($example_data);
@@ -80,8 +80,6 @@ $plot->SetOutputFile("tmp/test.png");
 
 //Draw it
 $plot->DrawGraph();
-
-
 
 class PDF extends FPDF
 {
@@ -258,15 +256,10 @@ $pdf->SetFont('Times','',10);
 $pdf->Rect(140,215,60,60);
 $pdf->Image("tmp/".$image.'-qr.png',145,220,50);
 $pdf->SetY(-82);
-<<<<<<< HEAD:pages/report/report-sisped.php
-$pdf->Cell(0,5,utf8_decode('¹ Perímetro se refere ao perímetro cefálico, logo, a circunferência do encéfalo.'),0,1);
-$pdf->Cell(0,5,utf8_decode('² Observações são submetidas pelos pediatras.'),0,1);
-$pdf->Cell(0,5,utf8_decode('³ Este documento pode ser autenticado a qualquer momento pelo QR Code ao lado.'),0,1);
-=======
+
 $pdf->Cell(0,5,utf8_decode('¹ Perimetro se refere ao perimetro cefalico, logo, a circunferencia do encefalo.'),0,1);
 $pdf->Cell(0,5,utf8_decode('² Situação é determinada pelo algoritmo que avalia caso a caso os dados obtidos.'),0,1);
 $pdf->Cell(0,5,utf8_decode('³ Esse documento pode ser autenticado a qualquer momento pelo QR Code ao lado.'),0,1);
->>>>>>> 5f5e8e24dce5b8b41df94e5ce3bf76302edaeb84:pages/report/report-sisped.php
 
 $pdf->Ln(36);
 $pdf->Cell(20);
