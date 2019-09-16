@@ -1,34 +1,34 @@
 <?php
-require('fpdf/fpdf.php');
-include("sisped.php");
+require('fpdf/fpdf.php'); // biblioteca para gerar o pdf
+include("sisped.php"); // funcoes para gerar o grafico
+include('phpqrcode/qrlib.php'); // outputs image directly into browser, as PNG stream 
+include("../includes/dbconnection.php"); // funcoes para se conectar ao banco de dados
+include('phplot/phplot.php'); // biblioteca para geracao de graficos
 
-$id = $_GET['q'];
-$vetEstados = array("Acre", "Alagoas", "Amazonas", "Amapá", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rondônia", "Rio Grande do Sul", "Roraima", "Santa Catarina", "Sergipe", "São Paulo", "Tocantins");
-$hash = strval($_SERVER['SERVER_NAME'])."?hash=".strval(md5($id.$vetEstados[rand(0,25)])).strval(11);
+$id = $_GET['id']; // identificador da crianca
+
+$hash = "SISPED Projeto 2019"; // hash com a validacao do relatorio
      
-// outputs image directly into browser, as PNG stream 
-include('phpqrcode/qrlib.php'); 
+$image = $id; // filename da imagem a ser gerado pela biblioteca de QR Code
 
-$image = strval(rand(1,100)+rand(1,100)+rand(1,33)+rand(1,33));
-QRcode::png("SISPED Projeto 2019", "tmp/".$image."-qr.png", QR_ECLEVEL_L, 4, 5);
+QRcode::png($hash, "tmp/".$image."-qr.png", QR_ECLEVEL_L, 4, 5);
 
-//consulta sql
-include("../includes/dbconnection.php");
-$sql = "SELECT * FROM dadosconsulta where idCrianca = $id order by dataConsulta desc limit 17";
+// inicio das consultas ao banco de dados
 
+$sql = "SELECT * FROM dadosconsulta where idCrianca = $id order by dataConsulta desc"; // retorna dados referentes a crinca, dados das consultas
 $result = $conn->query($sql);
 $lines = array();
 
-    while($row = $result->fetch_array())
-        {
-            array_push($lines, $row['dataConsulta'].",".$row['peso'].",".$row['altura'].",".$row['perimetroCefalico'].",".$row['obs']."\n");
-        }
-
+while($row = $result->fetch_array()){
+    array_push($lines, $row['dataConsulta'].",".$row['peso'].",".$row['altura'].",".$row['perimetroCefalico'].",".$row['obs']."\n");
+}
 
 $sql = "SELECT instituicao.nome, instituicao.endereco, instituicao.cnpj, dadoscrianca.nome, dadoscrianca.sexo, 
-dadosauxiliar.nome, dadosauxiliar.crm, dadoscrianca.prematuro  FROM `instituicao` inner join `dadosauxiliar` 
-inner join `dadosconsulta` inner join dadoscrianca on idinst = idinstituicao and idaux = idauxiliar and idCrianca = idcrian where idcrian = $id 
-LIMIT 1";
+dadosauxiliar.nome, dadosauxiliar.crm, dadoscrianca.prematuro  FROM `instituicao` 
+inner join `dadosauxiliar` 
+inner join `dadosconsulta` 
+inner join dadoscrianca 
+on idinst = idinstituicao and idaux = idauxiliar and idCrianca = idcrian where idcrian = $id LIMIT 1"; //retorna dados da instituicao e crianca
 
 $result = $conn->query($sql);
 
@@ -46,46 +46,79 @@ while($row = $result->fetch_array())
  
 mysqli_close($conn);
 
-//Include the code
-include('phplot/phplot.php');
+function chart($dataCrianca, $x, $y){
 
-//create a PHPlot object with pixel image
-$plot = new PHPlot(1080,620);
+    //create a PHPlot object with pixel image
+    $plot = new PHPlot(1900,1020);
 
-$plot->SetFont('title', 5, 18);
+    $plot->SetXScaleType("linear");
+    $plot->SetXDataLabelType('custom');
+    $plot->SetFont('title', 5, 18);
+    $plot->SetFont('y_label', 5, 18);
+    //$plot->SetFont('y_title', 5, 18);
+    //$plot->SetFont('x_title', 5, 18);
+    
+    $plot->SetFontTTF('y_title', 'C:\WINDOWS\FONTS\ARIAL.TTF', 14);
+    $plot->SetFontTTF('x_title', 'C:\WINDOWS\FONTS\ARIAL.TTF', 18);
+    $plot->SetFontTTF('title', 'C:\WINDOWS\FONTS\ARIAL.TTF', 28);
+    
+    $plot->SetDrawDataBorders(true);
+    $plot->SetDataColors(array('black', 'red', 'DarkGreen', 'red', "black", "blue" ));
+    $plot->SetPlotType('lines');
+    $plot->SetLineWidths(4);
+    $plot->SetLegend(array('SD3', 'SD2', 'SD0', 'SD2neg', 'SD3neg', "Crianca"));
+    $plot->SetLegendPosition(1, 0, 'plot', 1, 0, -10, 800);
+    
 
-//Define some data
-$example_data = array(
-     array('a',5),
-     array('b',5.2),
-     array('c',6),
-     array('d',6.4),
-     array('e',6.8),
-     array('ff',7),
-     array('g',7.1)
-);
-$plot->SetDataValues($example_data);
+    $res = parametros($_GET['p']);
 
-//Set titles
-$plot->SetTitle("SISPED Chart \nMade with PHPlot");
-$plot->SetXTitle('X Data');
-$plot->SetYTitle('Y Data');
+    if(count($res['meses'])<=61){
+        $plot->SetFont('x_label', 5, 18);
+    }else{
+        $plot->SetFont('x_label', 3, 18);
+    }
+
+    $result = array();
+    $validador = (count($res['meses'])>61) ? true : false ;
+
+    for ($i=0; $i < count($res['meses']); $i++) { 
+        if(!isset($dataCrianca[$i])){
+            $dataCrianca[$i] = null;
+        }
+        if($validador){
+            if(!($i%3==0)){
+                $res['meses'][$i] = " ";
+            }
+        }
+        $aux = array();
+        array_push($aux, $res['meses'][$i], $res['SD3'][$i], $res['SD2'][$i], $res['SD0'][$i], $res['SD2neg'][$i], $res['SD3neg'][$i], $dataCrianca[$i]);
+        array_push($result, $aux);
+    }
+
+    //Define some data
+    $plot->SetDataValues($result);
+
+    //Set titles
+    $plot->SetTitle(str_replace(".csv", "", substr($res['grafico_name'], 10)));
+    $plot->SetXTitle($x);
+    $plot->SetYTitle($y, 'both');
 
 
-$plot->SetXTickLabelPos('none');
-$plot->SetXTickPos('none');
+    $plot->SetXTickLabelPos('none');
+    $plot->SetXTickPos('none');
 
-$plot->SetIsInline(True);
-$plot->SetOutputFile("tmp/test.png"); 
+    $plot->SetIsInline(True);
+    $plot->SetOutputFile("tmp/test.png"); 
 
-//Draw it
-$plot->DrawGraph();
+    //Draw it
+    $plot->DrawGraph();
+}
 
-class PDF extends FPDF
-{
-// Page header
-    function Header()
-    {
+chart($dataCrianca, $tempo, $_GET['pesq']);
+
+class PDF extends FPDF{
+    // Page header
+    function Header(){
         // Logo
         $this->Image('image/if.png',null,5,17);
         // Times bold 15
@@ -106,8 +139,7 @@ class PDF extends FPDF
     }
 
     //loadData
-    function LoadData($lines)
-    {
+    function LoadData($lines){
         // Read file lines
         $data = array();
         foreach($lines as $line)
@@ -116,8 +148,7 @@ class PDF extends FPDF
     }
 
     //generateTable
-    function FancyTable($header, $data)
-    {
+    function FancyTable($header, $data){
         // Colors, line width and bold font
         $this->SetFillColor(0,110,0);
         $this->SetTextColor(255);
@@ -136,21 +167,26 @@ class PDF extends FPDF
         // Data
         $fill = false;
         $cont = 0;
-        foreach($data as $row)
-        {
+        $limite = 17;
+        foreach($data as $row){
+            $this->SetDrawColor(0,90,0);
             $cont++;
+            
             $this->Cell(5);
-            $this->Cell($w[0],6,utf8_decode($row[0]),'LR',0,'C',$fill);
-            $this->Cell($w[1],6,utf8_decode($row[1]),'LR',0,'C',$fill);
-            $this->Cell($w[2],6,utf8_decode($row[2]),'LR',0,'C',$fill);
-            $this->Cell($w[3],6,utf8_decode($row[3]),'LR',0,'C',$fill);
-            $this->Cell($w[4],6,utf8_decode($row[4]),'LR',0,'C',$fill);
+            $this->Cell($w[0],6,utf8_decode($row[0]),1,0,'C',$fill);
+            $this->Cell($w[1],6,utf8_decode($row[1]),1,0,'C',$fill);
+            $this->Cell($w[2],6,utf8_decode($row[2]),1,0,'C',$fill);
+            $this->Cell($w[3],6,utf8_decode($row[3]),1,0,'C',$fill);
+            $this->Cell($w[4],6,utf8_decode($row[4]),1,0,'C',$fill);
             $this->Ln();
             $fill = !$fill;
-            if($cont>=30){ //resolver o alocamneto de consultas no pdf
+            if($cont>=$limite){ //resolver o alocamneto de consultas no pdf
+                // Closing line
+                footerPage($this);
                 $this->AddPage();
                 $cont = 0;
                 $this->Ln(15);
+                $limite = 30;
             }
         }
         // Closing line
@@ -159,8 +195,7 @@ class PDF extends FPDF
     }
 
     // Page footer
-    function Footer()
-    {
+    function Footer(){
         $this->SetY(-15);
         $this->SetFont('Times','',8);
         $this->Image('image/sisped-logo2.png', 10,280,30);
@@ -251,30 +286,38 @@ $pdf->FancyTable($header,$data);
 
 $pdf->Ln(13);
 
-$pdf->SetDrawColor(0,0,0);
-$pdf->SetFont('Times','',10);
-$pdf->Rect(140,215,60,60);
-$pdf->Image("tmp/".$image.'-qr.png',145,220,50);
-$pdf->SetY(-82);
+function footerPage($pdf){
+    $pdf->SetDrawColor(0,0,0);
+    $pdf->SetFont('Times','',10);
+    $pdf->Rect(140,215,60,60);
+    $pdf->Image("tmp/".$_GET['id'].'-qr.png',145,220,50);
+    $pdf->SetY(-82);
 
-$pdf->Cell(0,5,utf8_decode('¹ Perimetro se refere ao perimetro cefalico, logo, a circunferencia do encefalo.'),0,1);
-$pdf->Cell(0,5,utf8_decode('² Situação é determinada pelo algoritmo que avalia caso a caso os dados obtidos.'),0,1);
-$pdf->Cell(0,5,utf8_decode('³ Esse documento pode ser autenticado a qualquer momento pelo QR Code ao lado.'),0,1);
+    $pdf->Cell(0,5,utf8_decode('¹ Perimetro se refere ao perimetro cefalico, logo, a circunferencia do encefalo.'),0,1);
+    $pdf->Cell(0,5,utf8_decode('² Situação é determinada pelo algoritmo que avalia caso a caso os dados obtidos.'),0,1);
+    $pdf->Cell(0,5,utf8_decode('³ Esse documento pode ser autenticado a qualquer momento pelo QR Code ao lado.'),0,1);
 
-$pdf->Ln(36);
-$pdf->Cell(20);
+    $pdf->Ln(36);
+    $pdf->Cell(20);
 
-$pdf->SetFont('Times','',12);
-$pdf->Cell(100,10,utf8_decode("Profissional Responsável"),'T',0,'C');
+    $pdf->SetFont('Times','',12);
+    $pdf->Cell(100,10,utf8_decode("Profissional Responsável"),'T',0,'C');
+}
 
-$pdf->AddPage("L");
+function chartPage($pdf){ //geracao de pagina com grafico
+    $pdf->AddPage("L");
 
-$pdf->SetFont('Times','B',14);
-$pdf->Ln(10);
-$pdf->Cell(0,10,utf8_decode('Gráficos '),0,1);
-$pdf->Image('tmp/test.png',10,40,280);
+    $pdf->SetFont('Times','B',14);
+    $pdf->Ln(10);
+    $pdf->Cell(0,10,utf8_decode('Gráficos '),0,1);
+    $pdf->Image('tmp/test.png',10,40,280);
+}
+
+
+chartPage($pdf);
 
 $pdf->Output();
 
 unlink("tmp/".$image."-qr.png");
+unlink("tmp/test.png");
 ?>

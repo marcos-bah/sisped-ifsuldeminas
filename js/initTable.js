@@ -17,7 +17,7 @@ function nextChart(nome, id, time, pesq){
     document.getElementById("Bktime").value = time;
     document.getElementById("Bkpesq").value = pesq;
     
-    document.getElementById("teste").innerHTML = "<a class='s-link' onclick='modal("+id+")' rel='noopener noreferrer'>Adicionar Consulta</a><a href='report/report-sisped.php?q="+id+"' class='s-link' rel='noopener noreferrer'>Relatorio Padrão</a>";
+    document.getElementById("teste").innerHTML = "<a class='s-link' onclick='modal("+id+")' rel='noopener noreferrer'>Adicionar Consulta</a><a href='report/report-sisped.php?id="+id+"&p="+nome+"&time="+time+"&pesq="+pesq+"' target='_blank' class='s-link' rel='noopener noreferrer'>Relatorio Padrão</a>";
     
     $.getJSON("includes/buildChart.php",{name: nome, id : id, time : time, pesq : pesq}, function(data) {
       

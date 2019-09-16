@@ -1,5 +1,7 @@
 <?php
 
+
+
 function parametros($filename){ //retorna os parametros
     $handle = fopen($filename, "r");
     $cabecalho  = fgetcsv($handle, 1000, ";"); //para que o codigo seja dinamico, ele procura o indice de cada coluna
@@ -63,7 +65,11 @@ function prematuro($data, $days){ //retorna o periodo em semanas
     return array_slice($data, round($days/7));
 }
 
-print_r(parametros("../../csv/BMI-for-age/percentiles-boys/2_years.csv"));
+$res = parametros($_GET['p']);
+
+$meses = $res['meses'];
+
+include("../includes/initChart.php");
 
 
 ?>
