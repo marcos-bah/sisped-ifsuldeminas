@@ -6,6 +6,7 @@ create table instituicao(
   idinst int not null auto_increment primary key,
   nome varchar(255) not null,
   cnpj varchar(18) not null,
+  endereco varchar(255) not null,
   ativo tinyint(1) default 0
 );
 
@@ -13,7 +14,6 @@ create table sispeduser(
   iduse int not null primary key auto_increment,
   nameuser varchar(100),
   nome varchar(255) not null,
-  endereco varchar(255) not null,
   `password` varchar(255) not null,
   idinst int not null,
   constraint fk_UserInstituicao foreign key (idinst) references instituicao(idinst)
@@ -22,6 +22,7 @@ create table sispeduser(
 create table dadoscrianca(
   idcrian int not null auto_increment primary key,
   nome varchar(225) not null,
+  endereco varchar(255) not null,
   nascimento date not null,
   prematuro boolean not null,
   diasPrematuro int not null,
