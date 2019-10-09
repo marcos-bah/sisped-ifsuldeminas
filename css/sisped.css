@@ -56,3 +56,46 @@ input[type="date"], focus {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
 }
+
+html,body,h1,h2,h3,h4,h5 {
+    font-family: "Raleway", sans-serif
+}
+.editRemoveButton{
+    height: 28px;
+    margin: 0px;
+}
+.editRemoveIcon{
+    vertical-align: top;
+}
+.dropdown-menu li {
+    cursor: pointer;
+}
+.titleConsulta{
+    color: black;
+}
+.titleConsulta:hover{
+    opacity: 0.7;
+}
+/* tabela de consultas */
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}

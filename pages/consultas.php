@@ -16,7 +16,6 @@
 
 	<!-- INCLUDE W3 CSS -->
 	<link rel="stylesheet" href="../css/w3.css">
-	<!-- <link rel="stylesheet" href="../css/select.css"> -->
 
 	<!-- INCLUDE SISPED CSS -->
 	<link rel="stylesheet" href="../css/sisped.css">
@@ -29,7 +28,6 @@
 
 	<!-- INCLUDE custom Pagination Style -->
 	<link rel="stylesheet" href="../css/pagination.css">
-	<!-- <link rel="stylesheet" href="../css/datatable.min.css"> -->
 
 	<!-- INCLUDE Font Awesome -->
 	<link rel="stylesheet" href="../css/font-awesome/css/font-awesome.min.css">
@@ -67,52 +65,6 @@
 	<!-- bootbox code -->
 	<script src="../js/bootbox.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
-
-	<style>
-
-		html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
-		.editRemoveButton{
-			height: 28px;
-			margin: 0px;
-		}
-		.editRemoveIcon{
-			vertical-align: top;
-		}
-		.dropdown-menu li {
-			cursor: pointer;
-		}
-		.titleConsulta{
-		    color: black;
-		}
-		.titleConsulta:hover{
-		    opacity: 0.7;
-		}
-		/* tabela de consultas */
-		#customers {
-			font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-			border-collapse: collapse;
-			width: 100%;
-		}
-
-		#customers td, #customers th {
-			border: 1px solid #ddd;
-			padding: 8px;
-		}
-
-		#customers tr:nth-child(even){background-color: #f2f2f2;}
-
-		#customers tr:hover {background-color: #ddd;}
-
-		#customers th {
-			padding-top: 12px;
-			padding-bottom: 12px;
-			text-align: left;
-			background-color: #4CAF50;
-			color: white;
-		}
-
-	</style>
-
 </head>
 
 <body class="w3-light-grey">
@@ -126,36 +78,36 @@
 	</div>
 
 
-<!-- Sidebar/menu -->
+	<!-- Sidebar/menu -->
 
-<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar">
-	<br>
-	<div class="w3-container w3-row">
-		<!-- SISPED logo -->
-		<div class="w3-col s4">
-			<img src="../image/sisped-logo.png" style="height:130px; margin-top:10px;">
+	<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar">
+		<br>
+		<div class="w3-container w3-row">
+			<!-- SISPED logo -->
+			<div class="w3-col s4">
+				<img src="../image/sisped-logo.png" style="height:130px; margin-top:10px;">
+			</div>
 		</div>
-	</div>
 
-	<div class="w3-container">
-		<h5>IFSULDEMINAS</h5>
-	</div>
+		<div class="w3-container">
+			<h5>IFSULDEMINAS</h5>
+		</div>
 
-	<!-- Menu/OPTIONS -->
-	<div class="w3-bar-block">
-		<a onclick="openPanel('listarTabMenu','PainelListar');" href="#" class="w3-bar-item w3-button w3-padding w3-red">
-			<i class="fa fa-stethoscope fa-fw"></i> Consultas
-		</a>
-		<a href="adicionar-crianca.php" class="w3-bar-item w3-button w3-padding">
-			<i class="fa fa-child"></i> Adicionar Criança
-		</a>
-		<a href="includes/exit.php" class="w3-bar-item w3-button w3-padding">
-			<i class="fa fa-sign-out fa-fw"></i>Sair
-		</a>
-		<br><br>
-	</div>
+		<!-- Menu/OPTIONS -->
+		<div class="w3-bar-block">
+			<a onclick="openPanel('listarTabMenu','PainelListar');" href="#" class="w3-bar-item w3-button w3-padding w3-red">
+				<i class="fa fa-stethoscope fa-fw"></i> Consultas
+			</a>
+			<a href="adicionar-crianca.php" class="w3-bar-item w3-button w3-padding">
+				<i class="fa fa-child"></i> Adicionar Criança
+			</a>
+			<a href="includes/exit.php" class="w3-bar-item w3-button w3-padding">
+				<i class="fa fa-sign-out fa-fw"></i>Sair
+			</a>
+			<br><br>
+		</div>
 
-</nav>
+	</nav>
 
 
 	<!-- Overlay effect when opening sidebar on small screens -->
@@ -230,7 +182,7 @@
 			echo "\t\t\t</table>\n";
 		?>
 		</div>
-	  </div>
+	</div>
 
 	   <!-- END of Painel Listar -->
 
@@ -238,7 +190,7 @@
 
 	<h2>Editar Criança</h2>
 
-	<form class="w3-container" style=" background-color:#fff;" action="acoes/updateChildren.php" method="post">
+	<form class="w3-container" style="background-color:#fff;" action="acoes/updateChildren.php" method="post">
 		<br>
 		<div class="w3-row-padding">
 			<input type="hidden" name = "id" id="id">
@@ -799,13 +751,9 @@
             mySidebar.style.display = "none";
             overlayBg.style.display = "none";
         }
-
-
-
+		// END of DataTable 
 
 	</script>
-
-	<!-- END of DataTable -->
-
+	
 	</body>
 </html>
