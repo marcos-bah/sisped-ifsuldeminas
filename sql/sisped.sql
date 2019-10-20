@@ -23,7 +23,6 @@ create table dadoscrianca(
   idcrian int not null auto_increment primary key,
   nome varchar(225) not null,
   nascimento date not null,
-  prematuro boolean not null,
   diasPrematuro int not null,
   sexo char(1) not null
 );

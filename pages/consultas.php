@@ -3,6 +3,7 @@
 <html>
 <head>
 	<title>SISPED - Sistema de Análise de Dados Pediátricos</title>
+
 	<meta charset="UTF-8">
 	<meta http-equiv="cache-control" content="no-store, no-cache, must-revalidate, Post-Check=0, Pre-Check=0">
 	<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
@@ -10,16 +11,16 @@
 	<link rel="icon" href="../image/sisped.ico">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- INCLUDE funcoes ifsuldeminas -->
+	<!-- INCLUDE SISPED FUNCTIONS -->
 	<script src="../js/funcoes.js"></script>
 	<script src="../js/initTable.js"></script>
 
-	<!-- INCLUDE W3 CSS -->
-	<link rel="stylesheet" href="../css/w3.css">
-	<!-- <link rel="stylesheet" href="../css/select.css"> -->
-
 	<!-- INCLUDE SISPED CSS -->
 	<link rel="stylesheet" href="../css/sisped.css">
+
+	<!-- INCLUDE W3 CSS -->
+	<link rel="stylesheet" href="../css/w3.css">
+	<link rel="stylesheet" href="../css/select.css">
 
 	<!-- INCLUDE W3 JS -->
 	<script src="../js/w3.js"></script>
@@ -29,13 +30,13 @@
 
 	<!-- INCLUDE custom Pagination Style -->
 	<link rel="stylesheet" href="../css/pagination.css">
-	<!-- <link rel="stylesheet" href="../css/datatable.min.css"> -->
+	<link rel="stylesheet" href="../css/datatable.min.css"> 
+
+	<!-- INCLUDE Table Pagination DataTable -->
+	<script src="../js/datatable/datatables.min.js"></script>
 
 	<!-- INCLUDE Font Awesome -->
 	<link rel="stylesheet" href="../css/font-awesome/css/font-awesome.min.css">
-
-	<!-- INCLUDE JQuery Library -->
-	<script src="../js/jquery-3.3.1.min.js"></script>
 
 	<!-- INCLUDE JQuery Library -->
 	<script src="../js/jquery-3.3.1.js"></script>
@@ -46,10 +47,6 @@
 	<!-- INCLUDE ECharts -->
 	<script src="../js/echarts.min.js"></script>
 	<script src="../js/echarts.common.min.js"></script>
-	<script src="../js/echarts-stat/dist/ecStat.js"></script>
-
-	<!-- INCLUDE Table Pagination DataTable -->
-	<script src="../js/datatable/datatables.min.js"></script>
 
 	<!-- INCLUDE Balloon Style for Tooltips -->
 	<link rel="stylesheet" href="../css/balloon.css">
@@ -60,58 +57,12 @@
 	<!-- INCLUDE JQuery UI CSS -->
 	<link rel="stylesheet" href="../css/jquery-ui.min.css">
 	
-	<!-- INCLUDE BOOTSTRAP confirma -->
+	<!-- INCLUDE BOOTSTRAP -->
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"> -->
 	<script src="../js/bootstrap.min.js"></script>
 	
-	<!-- bootbox code -->
+	<!-- INCLIDE BOOTBOX -->
 	<script src="../js/bootbox.min.js"></script>
-	<script src="../js/bootstrap.min.js"></script>
-
-	<style>
-
-		html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
-		.editRemoveButton{
-			height: 28px;
-			margin: 0px;
-		}
-		.editRemoveIcon{
-			vertical-align: top;
-		}
-		.dropdown-menu li {
-			cursor: pointer;
-		}
-		.titleConsulta{
-		    color: black;
-		}
-		.titleConsulta:hover{
-		    opacity: 0.7;
-		}
-		/* tabela de consultas */
-		#customers {
-			font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-			border-collapse: collapse;
-			width: 100%;
-		}
-
-		#customers td, #customers th {
-			border: 1px solid #ddd;
-			padding: 8px;
-		}
-
-		#customers tr:nth-child(even){background-color: #f2f2f2;}
-
-		#customers tr:hover {background-color: #ddd;}
-
-		#customers th {
-			padding-top: 12px;
-			padding-bottom: 12px;
-			text-align: left;
-			background-color: #4CAF50;
-			color: white;
-		}
-
-	</style>
 
 </head>
 
@@ -119,43 +70,39 @@
 
 	<!-- Top container -->
 	<div class="w3-bar w3-top w3-green w3-large" style="z-index:4">
-	<button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey"  onclick="w3_open();" id="sideMenuCollapseButton"><i class="fa fa-bars"></i>  Menu</button>
-	<a href="includes/exit.php" class="w3-bar-item w3-right w3-button"><i class="fa fa-sign-in"></i></a>
-	<a href="#" id="bootbox" class="w3-bar-item w3-right w3-button optionR"><i class="fa fa-wrench"></i></a>
-	<a href="#" class="w3-bar-item w3-right "><i class="load_top"></i></a>
+		<button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey"  onclick="w3_open();" id="sideMenuCollapseButton"><i class="fa fa-bars"></i>  Menu</button>
+		<a href="includes/exit.php" class="w3-bar-item w3-right w3-button"><i class="fa fa-sign-in"></i></a>
+		<a href="#" id="bootbox" class="w3-bar-item w3-right w3-button optionR"><i class="fa fa-wrench"></i></a>
 	</div>
 
 
-<!-- Sidebar/menu -->
+	<!-- Sidebar/menu -->
 
-<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar">
-	<br>
-	<div class="w3-container w3-row">
-		<!-- SISPED logo -->
-		<div class="w3-col s4">
-			<img src="../image/sisped-logo.png" style="height:130px; margin-top:10px;">
+	<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar">
+		<div class="w3-container w3-row">
+			<!-- SISPED logo -->
+			<div class="w3-col s4">
+				<img src="../image/sisped-logo.png" style="height:130px; margin-top:30px;">
+			</div>
 		</div>
-	</div>
 
-	<div class="w3-container">
-		<h5>IFSULDEMINAS</h5>
-	</div>
+		<div class="w3-container">
+			<h5>SISPED - IFSULDEMINAS</h5>
+		</div>
 
-	<!-- Menu/OPTIONS -->
-	<div class="w3-bar-block">
-		<a onclick="openPanel('listarTabMenu','PainelListar');" href="#" class="w3-bar-item w3-button w3-padding w3-red">
-			<i class="fa fa-stethoscope fa-fw"></i> Consultas
-		</a>
-		<a href="adicionar-crianca.php" class="w3-bar-item w3-button w3-padding">
-			<i class="fa fa-child"></i> Adicionar Criança
-		</a>
-		<a href="includes/exit.php" class="w3-bar-item w3-button w3-padding">
-			<i class="fa fa-sign-out fa-fw"></i>Sair
-		</a>
-		<br><br>
-	</div>
-
-</nav>
+		<!-- Menu/OPTIONS -->
+		<div class="w3-bar-block slidebar">
+			<a onclick="openPanel('listarTabMenu','PainelListar');" href="#" class="w3-bar-item w3-button w3-padding w3-red">
+				<i class="fa fa-stethoscope fa-fw"></i> Consultas
+			</a>
+			<a href="adicionar-crianca.php" class="w3-bar-item w3-button w3-padding">
+				<i class="fa fa-child"></i> Adicionar Criança
+			</a>
+			<a href="includes/exit.php" class="w3-bar-item w3-button w3-padding">
+				<i class="fa fa-sign-out fa-fw"></i> Sair
+			</a>
+		</div>
+	</nav>
 
 
 	<!-- Overlay effect when opening sidebar on small screens -->
@@ -187,116 +134,111 @@
 			</a>
 	  	</div>
 
-	  <!-- Painel Listar -->
-	  <div id="PainelListar" class="w3-container contentPanel w3-animate-opacity w3-card-4">
-		<h2>Crianças</h2>
-		<div id="t">
-		<?php
-		include("includes/dbconnection.php");
+	    <!-- Painel Listar -->
+	    <div id="PainelListar" class="w3-container contentPanel w3-animate-opacity w3-card-4">
+			<h2>Crianças</h2>
+			<div>
+				<?php
+				include("includes/dbconnection.php");
 
-		$sql = "SELECT * FROM dadoscrianca where true";
-		$result = $conn->query($sql);
-			echo "<table width='100%' class='w3-table-all w3-card w3-hoverable' id='childrenTable'>\n";
-			echo "
-			<thead>
-				<tr class='w3-pale-red'>
-					<th>Criança</th>
-					<th class='w3-center'>Nascimento</th>
-					<th class='w3-center'>Prematuro (dias)</th>
-					<th class='w3-center'>Análise</th>
-					<th class='w3-center'>Editar</th>
-					<th class='w3-center'>Consulta</th>
-					<th class='w3-center'>Apagar</th>
-				</tr>
-			</thead>
-		        <tbody>
-			";
-			while ($dados = $result->fetch_assoc()) {
-				$var = $dados['idcrian'].",'".str_replace("\t", "%20", $dados['nome'])."','".$dados['sexo']."','".$dados['nascimento']."',".$dados['prematuro'].",".$dados['diasPrematuro'];
-				$data = explode('-', $dados['nascimento']);
-				echo "
-					 <tr class='item'>
-						 <td>";?> <b> <?php echo "".$dados['nome']."</b></td>\n";
-				echo "\t\t\t\t\t\t\t<td class='w3-center'>".$data[2]."/".$data[1]."/".$data[0]."</td>\n";
-				echo "\t\t\t\t\t\t\t<td class='w3-center'>".$dados['diasPrematuro']."</td>\n";
-				echo "\t\t\t\t\t\t\t<td class='w3-center'>";?> <a onclick="setTimeout(function(){ nextChart('../../csv/Weight-for-age/Z-scores_boys/5_years.csv', <?php echo $dados['idcrian'] ?>, 'm','peso'); document.getElementById('NCrianca').innerHTML= '<?php echo $dados['nome'] ?>';  }, 300);gerarTable();sexo('<?php echo $dados['sexo'] ?>');openPanel('analiseTabMenu','PainelAnalise');" class='w3-button w3-hover-aqua w3-light-blue w3-round editRemoveButton'><i class='fa fa-user-md editRemoveIcon'></i><?php echo"</a></td>\n";
-				echo "\t\t\t\t\t\t\t<td class='w3-center'>";?> <a onclick="update( <?php echo $var;  ?> ),openPanel('editarTabMenu','PainelEditar');" class='w3-button w3-hover-sand w3-khaki w3-round editRemoveButton'><i class='fa fa-pencil editRemoveIcon'></i><?php echo"</a></td>\n";
-				echo "\t\t\t\t\t\t\t<td class='w3-center'>";?> <a onclick="modal( <?php echo $dados['idcrian'] ?> )" class='w3-button w3-hover-sand w3-khaki w3-round editRemoveButton'><i class='fa fa-archive editRemoveIcon'></i><?php echo "</a> </td>\n";
-				echo "\t\t\t\t\t\t\t<td class='w3-center'>";?> <a onclick="del( <?php echo $dados['idcrian'] ?> )" class='w3-button w3-pale-red w3-hover-sand w3-red w3-round editRemoveButton'><i class='fa fa-trash-o editRemoveIcon'></i></a></td><?php echo"
-					 </tr>\n
-				";
-			}
-			echo "</tbody>\n";
-			echo "\t\t\t</table>\n";
-		?>
-		</div>
-	  </div>
+				$sql = "SELECT * FROM dadoscrianca where true";
+				$result = $conn->query($sql);
+					echo "<table width='100%' class='w3-table-all w3-card w3-hoverable' id='childrenTable'>\n";
+					echo "
+					<thead>
+						<tr class='w3-pale-red'>
+							<th>Criança</th>
+							<th class='w3-center'>Nascimento</th>
+							<th class='w3-center'>Prematuro (dias)</th>
+							<th class='w3-center'>Análise</th>
+							<th class='w3-center'>Editar</th>
+							<th class='w3-center'>Consulta</th>
+							<th class='w3-center'>Apagar</th>
+						</tr>
+					</thead>
+						<tbody>
+					";
+					while ($dados = $result->fetch_assoc()) {
+						$var = $dados['idcrian'].",'".str_replace("\t", "%20", $dados['nome'])."','".$dados['sexo']."','".$dados['nascimento']."',".$dados['diasPrematuro'];
+						$data = explode('-', $dados['nascimento']);
+						echo "
+							<tr class='item'>
+								<td>";?> <b> <?php echo "".$dados['nome']."</b></td>\n";
+						echo "<td class='w3-center'>".$data[2]."/".$data[1]."/".$data[0]."</td>\n";
+						echo "<td class='w3-center'>".$dados['diasPrematuro']."</td>\n";
+						echo "<td class='w3-center'>";?> <a onclick="setTimeout(function(){ nextChart('../../csv/Weight-for-age/Z-scores_boys/5_years.csv', <?php echo $dados['idcrian'] ?>, 'm','peso'); document.getElementById('NCrianca').innerHTML= '<?php echo $dados['nome'] ?>';  }, 300);gerarTable();sexo('<?php echo $dados['sexo'] ?>');openPanel('analiseTabMenu','PainelAnalise');" class='w3-button w3-hover-aqua w3-light-blue w3-round editRemoveButton'><i class='fa fa-user-md editRemoveIcon'></i><?php echo"</a></td>\n";
+						echo "<td class='w3-center'>";?> <a onclick="update( <?php echo $var;  ?> ),openPanel('editarTabMenu','PainelEditar');" class='w3-button w3-hover-sand w3-khaki w3-round editRemoveButton'><i class='fa fa-pencil editRemoveIcon'></i><?php echo"</a></td>\n";
+						echo "<td class='w3-center'>";?> <a onclick="consulta( <?php echo $dados['idcrian'] ?> )" class='w3-button w3-hover-sand w3-khaki w3-round editRemoveButton'><i class='fa fa-archive editRemoveIcon'></i><?php echo "</a> </td>\n";
+						echo "<td class='w3-center'>";?> <a onclick="del( <?php echo $dados['idcrian'] ?> )" class='w3-button w3-pale-red w3-hover-sand w3-red w3-round editRemoveButton'><i class='fa fa-trash-o editRemoveIcon'></i></a></td><?php echo"
+							</tr>\n
+						";
+					}
+					echo "</tbody>\n";
+					echo "</table>\n";
+				?>
+			</div>
+	    </div>
 
 	   <!-- END of Painel Listar -->
 
 	<div id="PainelEditar" class="w3-container contentPanel w3-card-4 w3-animate-opacity" style="display:none">
 
-	<h2>Editar Criança</h2>
+		<h2>Editar Criança</h2>
 
-	<form class="w3-container" style=" background-color:#fff;" action="acoes/updateChildren.php" method="post">
-		<br>
-		<div class="w3-row-padding">
-			<input type="hidden" name = "id" id="id">
-			<div class="w3-half">
-					<label class="w3-text-red"><b>Nome: </b></label>
-					<input id="nome" name="nome" class="w3-input w3-border w3-border-blue-gray" type="text" required>
+		<form class="w3-container" style=" background-color:#fff;" action="acoes/updateChildren.php" method="post">
+			<br>
+			<div class="w3-row-padding">
+				<input type="hidden" name="id" id="id">
+				<div class="w3-half">
+						<label class="w3-text-red"><b>Nome: </b></label>
+						<input id="nome" name="nome" class="w3-input w3-border w3-border-blue-gray" type="text" required>
+				</div>
+				<div class="w3-half">
+					<label class="w3-text-red"><b>Sexo: </b></label>
+						<select id="sexo" class="w3-select w3-border w3-border-blue-gray" name="option" required>
+						<option value="" disabled selected>Escolha..</option>
+						<option value="1">Menino</option>
+						<option value="2">Menina</option>
+						</select>
+				</div>
 			</div>
-			<div class="w3-half">
-				<label class="w3-text-red"><b>Sexo: </b></label>
-					<select id="sexo" class="w3-select w3-border w3-border-blue-gray" name="option" required>
-					<option value="" disabled selected>Escolha..</option>
-					<option value="1">Menino</option>
-					<option value="2">Menina</option>
-					</select>
-			</div>
-		</div>
-		<br>
-		<div class="w3-row-padding">
-			<div  class="w3-col" style="width:150px">
-				<label class="w3-text-red"><b>Nascimento: </b></label>
-				<input id="nascimento" name="nascimento" class="w3-input w3-border w3-border-blue-gray campoData" type="date" required>
-			</div>
+			<br>
+			<div class="w3-row-padding">
+				<div  class="w3-col" style="width:150px">
+					<label class="w3-text-red"><b>Nascimento: </b></label>
+					<input id="nascimento" name="nascimento" class="w3-input w3-border w3-border-blue-gray campoData" type="date" required>
+				</div>
 
-			<div class="w3-col" style="width:150px">
-				<br>
-				<label for="prematuro">Prematuro</label>
-				<input id="prematuro" type="checkbox" class="myCheckBox w3-bottombar w3-bottom" style="top:100px;" name="prematuro" onclick="habilitar();">
+				<div class="w3-col" style="width:160px">
+					<label class="w3-text-red"><b>Prematuro: </b></label><br>
+					<button onclick="habilitar(); return false;" id="prematuro" class="w3-input w3-border w3-border-blue-gray w3-center" name="prematuro">Não</button>
+				</div>
 
+				<div class="w3-col" style="width:160px">
+					<label class="w3-text-red"><b>Dias (se prematuro): </b></label>
+					<input id="dias" name="dias" class="w3-input w3-border w3-border-blue-gray" type="number" name="dias" min="1" disabled>
+				</div>
 			</div>
 
-			<div class="w3-col" style="width:160px">
-				<label class="w3-text-red"><b>Dias (se prematuro): </b></label>
-				<input id="dias" name="dias" class="w3-input w3-border w3-border-blue-gray" type="number" name="dias" min="1" disabled>
+			<br>
+			<br>
+
+			<div class="w3-center">
+				<button onclick="openPanel('listarTabMenu','PainelListar'); return false;" class="w3-btn w3-border w3-border-red w3-round w3-pale-red"><b>Voltar</b></button>
+				<button class="w3-btn w3-border w3-border-green w3-round w3-pale-green"><b>Confirmar</b></button>
 			</div>
-		</div>
-
-		<br>
-		<br>
-
-		<div class="w3-center">
-			<button class="w3-btn w3-border w3-border-red w3-round w3-pale-red"><b>Confirma</b></button>
-		</div>
-
-		<br>
-
-	</form>
-
-</div>
-<!-- END of Painel Editar -->
+			<br>
+		</form>
+	</div>
+	<!-- END of Painel Editar -->
 
 	<!-- Painel Analise -->
-	<div id="PDF">
+	<div>
 		<link rel="stylesheet" href="../css/options_horizontal.css">
 		<div id="PainelAnalise" class="w3-container contentPanel w3-card-4 w3-animate-opacity" style="display:none">
 
 			<div id="topo">
 				<h2 id="NCrianca"></h2>
-
 				<nav class="navbar navbar-default" id="masculino">
 					<div class="container-fluid">
 					<div class="navbar-header">
@@ -483,7 +425,6 @@
 	<footer class="w3-container w3-padding-16 w3-center w3-light-grey">
 		<p ><img src="../image/ifsuldeminas.png" height="40" /></p>
 	</footer>
-
 	</div>
 </div>
 
@@ -505,28 +446,28 @@
 							<div class="w3-row-padding">
 							<input type="hidden" name='id' id="idem">
 								<div class="w3-half">
-									<label class="w3-text-red"><b>Peso: </b></label>
-									<input class="w3-input w3-border w3-border-blue-gray"  autocomplete="off" type="text" pattern="[0-9.%]{1,}"  name="peso" placeholder="coloque o peso da criança em Kg..." required>
+									<label class="w3-text-red"><b>Peso: (Kg)</b></label>
+									<input class="w3-input w3-border w3-border-blue-gray"  autocomplete="off" type="text" pattern="[0-9.%]{1,}"  name="peso" placeholder="Insira o resultado da consulta">
 								</div>
 								<div class="w3-half">
-									<label class="w3-text-red"><b>Altura: </b></label>
-									<input class="w3-input w3-border w3-border-blue-gray" autocomplete="off" type="text" name="altura" pattern="[0-9.%]{1,}" placeholder="coloque a altura da criança em cm..." required>
+									<label class="w3-text-red"><b>Altura: (cm)</b></label>
+									<input class="w3-input w3-border w3-border-blue-gray" autocomplete="off" type="text" name="altura" pattern="[0-9.%]{1,}" placeholder="Insira o resultado da consulta">
 								</div>
 							</div>
 							<br>
 							<div class="w3-row-padding">
 								<div class="w3-half">
-									<label class="w3-text-red"><b>Perimetro Cefalico: </b></label>
-									<input class="w3-input w3-border w3-border-blue-gray" type="text" autocomplete="off" pattern="[0-9.%]{1,}" name="perCefalico" placeholder="perimetro cefalico em cm..." required>
+									<label class="w3-text-red"><b>Perimetro Cefalico: (cm)</b></label>
+									<input class="w3-input w3-border w3-border-blue-gray" type="text" autocomplete="off" pattern="[0-9.%]{1,}" name="perCefalico" placeholder="Insira o resultado da consulta">
 								</div>
 								<div class="w3-half">
 									<label class="w3-text-red"><b>Observação: </b></label>
-									<input class="w3-input w3-border w3-border-blue-gray" type="text" autocomplete="off" name="obs" maxlength="255" placeholder="coloque uma observação da consulta...">
+									<input class="w3-input w3-border w3-border-blue-gray" type="text" autocomplete="off" name="obs" maxlength="255" placeholder="Insira dados da consulta">
 								</div>
 							</div>
 							<br>
 							<div class="w3-row-padding">
-								<div  class="w3-col" style="width:160px; float: right;;">
+								<div  class="w3-col" style="width:160px; float: right;">
 									<label class="w3-text-red"><b>Data Consulta: </b></label>
 									<input class="w3-input w3-border w3-border-blue-gray"  type="date" name="dataConsulta" required> <!-- type = date -->
 								</div>

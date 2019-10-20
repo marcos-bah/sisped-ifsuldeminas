@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 	<title>SISPED - Sistema de Análise de Dados Pediátricos</title>
 	<meta charset="UTF-8">
 	<link rel="icon" href="../image/sisped.ico">
@@ -147,15 +146,11 @@
 
 
 		if($prematuro == 'on'){
-
 			$prematuro = "1";
 			$diasPrematuro = isset($_POST['dias']) ? $_POST['dias'] :"0";
-
 		} else {
-
 			$prematuro = "0";
 			$diasPrematuro = "0";
-
 		}
 
 
@@ -192,7 +187,7 @@
 
 				  <label class="w3-text-red"><b>Sexo: </b></label>
 				  <select class="w3-select w3-border w3-border-blue-gray" name="option" required>
-					<option value="" disabled selected>Escolha..</option>
+					<option value="" disabled selected>Escolha...</option>
 					<option value="1">Menino</option>
 					<option value="2">Menina</option>
 				  </select>
@@ -211,10 +206,8 @@
 			</div>
 
 			<div class="w3-col" style="width:160px">
-				<br />
-				<label for="prematuro">Prematuro</label>
-				<input type="checkbox" onclick="habilitar();" class="myCheckBox w3-bottombar w3-bottom" style="top:100px;" name="prematuro" id="prematuro">
-
+				<label for="prematuro" class="w3-text-red"><b>Prematuro</b></label>
+				<input type="checkbox" onclick="habilitar();" class="myCheckBox" name="prematuro" id="prematuro">
 			</div>
 
 			<div class="w3-col" style="width:170px">

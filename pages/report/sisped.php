@@ -1,7 +1,5 @@
 <?php
 
-
-
 function parametros($filename){ //retorna os parametros
     $handle = fopen($filename, "r");
     $cabecalho  = fgetcsv($handle, 1000, ";"); //para que o codigo seja dinamico, ele procura o indice de cada coluna

@@ -1,3 +1,5 @@
+let controller = 1;
+
 function del(id) {
     bootbox.confirm({
         message: "Excluir os dados dessa criança?",
@@ -18,21 +20,15 @@ function del(id) {
                         //redirecionar, caregar pagina inicial
                         $('body').load('consultas.php'); 
 
-                    });
-                    
-                    
+                    });         
                 }
-        }
-    });
+            }
+        });
 }
-
-
 
 function zerar(){
     $('#form input').val("");
 }  
-
-
 
 function sexo(s){
     if(s=="f"){
@@ -58,13 +54,11 @@ function gerarTable(){
         $.getJSON("acoes/initTable.php",{id: id }, function(data){
         $("div.cc").html(data);
     });
-
-
     }, 500);
 
 }
 
-function modal(id){
+function consulta(id){
     console.log("entrou no modal");
     document.getElementById('modalConsulta').style.display='block';
     document.getElementById('idem').value = id;
@@ -72,37 +66,35 @@ function modal(id){
 }
 
 function habilitar(){
-        if (document.getElementById('prematuro').checked){
-                            document.getElementById('dias').disabled = false;
-
-        }else {
-                            document.getElementById('dias').disabled = true;
-                            document.getElementById('dias').value = 0;
-                        }
+    if(controller){
+        document.getElementById('dias').disabled = false;
+        document.getElementById('prematuro').innerHTML = "Sim";
+        document.getElementById('dias').value = 1;
+        controller = 0;
+    }else{
+        document.getElementById('dias').disabled = true;
+        document.getElementById('prematuro').innerHTML = "Não";
+        document.getElementById('dias').value = 0;
+        controller = 1;
     }
+}
 
-function update(id,nome,sexo,nasc,prematuro,dias){
+function update(id,nome,sexo,nasc,dias){
         if(sexo=="m"){
             sexo = 1;
         }else if(sexo=="f"){
             sexo = 2;
         }
 
-        if(prematuro){
-            if(!document.getElementById("prematuro").checked){
-                document.getElementById("prematuro").click();
-            }
+        if(dias > 0){
+            document.getElementById("prematuro").innerHTML = "Sim"; 
+            document.getElementById('dias').disabled = false;    
+        }else{
+            document.getElementById("prematuro").innerHTML = "Não";  
+            document.getElementById('dias').disabled = true;  
         }
-
-        if(!prematuro){
-            if(document.getElementById("prematuro").checked){
-                document.getElementById("prematuro").click();
-            }
-        }
-
 
         nasc = nasc.split("-");
-
 
         document.getElementById("id").value = id;
         document.getElementById("nome").value = nome;
@@ -122,9 +114,6 @@ function consultaUp(data, peso, altura, obs, per, id){
     document.getElementById("ConData").value = data[0] + '-'+ data[1] + '-' + data[2];
     document.getElementById("ConObs").value = obs;
 }
-
-
-   
 
     // Content Panels Display: "Listar" ; "Adicionar" e "Análise" -->
 
@@ -165,10 +154,10 @@ function openPanel(menuTabName, panelName) {
         $("#sideMenuCollapseButton").addClass("w3-hide-large");
         $(".w3-main").css("margin-left","300px");
         //w3_open();
-    }
+        }
     };
 
     //Redimensiona o grafico - responsividade
     window.onresize = function() {
-            myChart.resize();
+        myChart.resize();
     };
