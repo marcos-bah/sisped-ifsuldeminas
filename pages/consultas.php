@@ -63,7 +63,6 @@
 	
 	<!-- INCLIDE BOOTBOX -->
 	<script src="../js/bootbox.min.js"></script>
-
 </head>
 
 <body class="w3-light-grey">
@@ -740,13 +739,9 @@
             mySidebar.style.display = "none";
             overlayBg.style.display = "none";
         }
-
-
-
+		// END of DataTable 
 
 	</script>
-
-	<!-- END of DataTable -->
-
+	
 	</body>
 </html>
