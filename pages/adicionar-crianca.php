@@ -13,6 +13,9 @@
 	<!-- INCLUDE W3 JS -->
 	<script src="../js/w3.js"></script>
 
+	<!-- INCLUDE SISPED JS -->
+	<script src="../js/funcoes.js"></script>
+
 	<!-- INCLUDE Font Raleway -->
 	<link rel="stylesheet" href="../css/fontRaleway.css">
 
@@ -34,20 +37,6 @@
 	<!-- INCLUDE JQuery UI CSS -->
 	<link rel="stylesheet" href="../css/jquery-ui.min.css">
 
-
-	<style>
-
-		html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
-		.editRemoveButton{
-			height: 28px;
-			margin: 0px;
-		}
-		.editRemoveIcon{
-			vertical-align: top;
-		}
-
-	</style>
-
 </head>
 
 <body class="w3-light-grey">
@@ -55,24 +44,9 @@
 <!-- Top container -->
 <div class="w3-bar w3-top w3-green w3-large" style="z-index:4">
   <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();" id="sideMenuCollapseButton"><i class="fa fa-bars"></i>  Menu</button>
-  <!--<span class="w3-bar-item w3-right">Sistema de Análise de Dados Pediátricos</span>-->
   <a href="includes/exit.php" class="w3-bar-item w3-right w3-button"><i class="fa fa-sign-in"></i></a>
   <a href="#" class="w3-bar-item w3-right w3-button"><i class="fa fa-wrench"></i></a>
 </div>
-
-<script type="text/javascript">
-	function habilitar(){
-		if (document.getElementById('prematuro').checked){
-						 document.getElementById('dias').disabled = false;
-						 document.getElementById('dias').value = 1;
-
-		}else {
-						 document.getElementById('dias').disabled = true;
-						 document.getElementById('dias').value = 0;
-		}
-	}
-</script>
-
 
 <!-- Sidebar/menu -->
 
@@ -124,8 +98,8 @@
 
 	  <!-- Painel Adicionar -->
 
-	  <?php
-	  if($_POST){
+	<?php
+	if($_POST){
 		$nome = isset($_POST['nome']) ? $_POST['nome'] : null;
 
 		$sexo = isset($_POST['option']) ? $_POST['option'] : null;
@@ -135,34 +109,19 @@
 		$aux = explode("/", $nasc);
 
 		if(sizeof($aux) == 3 ){
-
 			$nasc = $aux[2] . "-" . $aux[1] . "-" . $aux[0];
-
 		}
 
-		$prematuro = isset($_POST['prematuro']) ? $_POST['prematuro'] : null;
-
-		$diasPrematuro = null;
-
-
-		if($prematuro == 'on'){
-			$prematuro = "1";
-			$diasPrematuro = isset($_POST['dias']) ? $_POST['dias'] :"0";
-		} else {
-			$prematuro = "0";
-			$diasPrematuro = "0";
-		}
-
-
+		$diasPrematuro = isset($_POST['dias']) ? $_POST['dias'] : "0";
 
 		//------------------------------------------------------------------------------
 		include("includes/dbconnection.php");
 
-		$sql = "INSERT INTO dadoscrianca (nome, sexo, nascimento, prematuro, diasPrematuro) VALUES ('$nome', '$sexo', '$nasc', $prematuro, $diasPrematuro)";
+		$sql = "INSERT INTO dadoscrianca (nome, sexo, nascimento, diasPrematuro) VALUES ('$nome', '$sexo', '$nasc', $diasPrematuro)";
 		mysqli_query($conn, $sql);
 		mysqli_close($conn);
-		}
-	  ?>
+	}
+	?>
 
 		<!-- dados inválidos permitidos, requer correção -->
 
@@ -170,7 +129,7 @@
 
 		<h2>Adicionar Criança</h2>
 
-		<form id="formCon" class="w3-container" style=" background-color:#fff;" action="adicionar-crianca.php" method="post">
+		<form id="formCon" class="w3-container" style=" background-color:#fff;" action="#" method="post">
 
 		<br/>
 
@@ -206,8 +165,8 @@
 			</div>
 
 			<div class="w3-col" style="width:160px">
-				<label for="prematuro" class="w3-text-red"><b>Prematuro</b></label>
-				<input type="checkbox" onclick="habilitar();" class="myCheckBox" name="prematuro" id="prematuro">
+				<label class="w3-text-red"><b>Prematuro: </b></label><br>
+				<button onclick="habilitar(); return false;" id="prematuro" class="w3-input w3-border w3-border-red w3-pale-red w3-border w3-border-blue-gray w3-center" name="prematuro">Não</button>
 			</div>
 
 			<div class="w3-col" style="width:170px">
@@ -221,7 +180,7 @@
 		<br />
 
 		<div class="w3-center">
-			<button onclick="enviar()" class="w3-btn w3-border w3-border-red w3-round w3-pale-red"><b>Confirma</b></button>
+			<button class="w3-btn w3-border w3-border-red w3-round w3-pale-red"><b>Confirmar</b></button>
 		</div>
 
 		<br />
@@ -271,23 +230,6 @@
 	}
 	
 </script>
-
-<!-- Fields formating -->
-<script>
-	$(document).ready(function(){
-
-		//Formata campos de 'DATA' e 'PREMATURO' da aba 'Editar'
-		/*$('.campoData').datepicker({dateFormat: 'dd/mm/yyyy'});
-		$('.campoData').mask("99/99/9999", {placeholder:"__/__/____"});*/
-<<<<<<< HEAD
-		$( ".myCheckBox" ).checkboxradio();
-	});
-=======
-
-		$( ".myCheckBox" ).checkboxradio();});
->>>>>>> 5f5e8e24dce5b8b41df94e5ce3bf76302edaeb84
-</script>
-<!-- END of Fields formating -->
 
 </body>
 </html>

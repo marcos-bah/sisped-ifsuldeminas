@@ -12,8 +12,13 @@
 
                 while($row = $result->fetch_array())
                 {
+
+                    $row['dataConsulta'] = ($row['dataConsulta'] == 0 || $row['dataConsulta'] == NULL) ? "Sem dado referente" : $row['dataConsulta'] ;
+                    $row['peso'] = ($row['peso'] == 0 || $row['peso'] == NULL) ? "Sem dado referente" : $row['peso'] ;
+                    $row['altura'] = ($row['altura'] == 0 || $row['altura'] == NULL) ? "Sem dado referente" : $row['altura'] ;
+                    $row['perimetroCefalico'] = ($row['perimetroCefalico'] == 0 || $row['perimetroCefalico'] == NULL) ? "Sem dado referente" : $row['perimetroCefalico'] ;
                     
-                    $par = "\"".$row['dataConsulta']."\",".$row['peso'].",".$row['altura'].",\"".$row['obs']."\",".$row['perimetroCefalico'].",".$row['idcon']."";
+                    $par = "\"".$row['dataConsulta']."\","."\"".$row['peso']."\",\"".$row['altura']."\",\"".$row['obs']."\",\"".$row['perimetroCefalico']."\",".$row['idcon']."";
                     
                    
                     $txt .= "<tr onclick='consultaUp(".$par.")'><td>".$row['dataConsulta']."</td><td>".$row['peso']."</td><td>".$row['altura']."</td><td>".$row['perimetroCefalico']."</td><td >".$row['obs']."</td></tr>";                   

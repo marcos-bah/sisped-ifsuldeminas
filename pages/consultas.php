@@ -11,9 +11,34 @@
 	<link rel="icon" href="../image/sisped.ico">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<!-- INCLUDE JQuery Library -->
+	<script src="../js/jquery-3.3.1.js"></script>
+
+	<!-- INCLUDE Jquery MASK for Inputs Fields -->
+	<script src="../js/jquery.mask.min.js"></script>
+
+	<!-- INCLUDE Table Pagination DataTable -->
+	<script src="../js/datatable/datatables.min.js"></script>
+
+	<!-- INCLUDE JQuery UI Lib -->
+	<script src="../js/jquery-ui.min.js"></script>
+
 	<!-- INCLUDE SISPED FUNCTIONS -->
 	<script src="../js/funcoes.js"></script>
 	<script src="../js/initTable.js"></script>
+
+	<!-- INCLUDE BOOTSTRAP -->
+	<script src="../js/bootstrap.min.js"></script>
+	
+	<!-- INCLIDE BOOTBOX -->
+	<script src="../js/bootbox.min.js"></script>
+
+	<!-- INCLUDE ECharts -->
+	<script src="../js/echarts.min.js"></script>
+	<script src="../js/echarts.common.min.js"></script>
+
+	<!-- INCLUDE W3 JS -->
+	<script src="../js/w3.js"></script>
 
 	<!-- INCLUDE SISPED CSS -->
 	<link rel="stylesheet" href="../css/sisped.css">
@@ -22,9 +47,6 @@
 	<link rel="stylesheet" href="../css/w3.css">
 	<link rel="stylesheet" href="../css/select.css">
 
-	<!-- INCLUDE W3 JS -->
-	<script src="../js/w3.js"></script>
-
 	<!-- INCLUDE Font Raleway -->
 	<link rel="stylesheet" href="../css/fontRaleway.css">
 
@@ -32,37 +54,17 @@
 	<link rel="stylesheet" href="../css/pagination.css">
 	<link rel="stylesheet" href="../css/datatable.min.css"> 
 
-	<!-- INCLUDE Table Pagination DataTable -->
-	<script src="../js/datatable/datatables.min.js"></script>
-
 	<!-- INCLUDE Font Awesome -->
 	<link rel="stylesheet" href="../css/font-awesome/css/font-awesome.min.css">
 
-	<!-- INCLUDE JQuery Library -->
-	<script src="../js/jquery-3.3.1.js"></script>
-
-	<!-- INCLUDE Jquery MASK for Inputs Fields -->
-	<script src="../js/jquery.mask.min.js"></script>
-
-	<!-- INCLUDE ECharts -->
-	<script src="../js/echarts.min.js"></script>
-	<script src="../js/echarts.common.min.js"></script>
-
 	<!-- INCLUDE Balloon Style for Tooltips -->
 	<link rel="stylesheet" href="../css/balloon.css">
-
-	<!-- INCLUDE JQuery UI Lib -->
-	<script src="../js/jquery-ui.min.js"></script>
 
 	<!-- INCLUDE JQuery UI CSS -->
 	<link rel="stylesheet" href="../css/jquery-ui.min.css">
 	
 	<!-- INCLUDE BOOTSTRAP -->
-	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"> -->
-	<script src="../js/bootstrap.min.js"></script>
-	
-	<!-- INCLIDE BOOTBOX -->
-	<script src="../js/bootbox.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"> 
 </head>
 
 <body class="w3-light-grey">
@@ -241,7 +243,7 @@
 				<nav class="navbar navbar-default" id="masculino">
 					<div class="container-fluid">
 					<div class="navbar-header">
-						<a class="navbar-brand" id="referencesR" href="#">Bertapelli</a>
+						<a class="navbar-brand optionR" id="referencesR" href="#">Bertapelli</a>
 					</div>
 						<ul class="nav navbar-nav">
 							<li class="dropdown who" style="display: none;">
@@ -318,7 +320,7 @@
 				<nav class="navbar navbar-default" id="feminino">
 					<div class="container-fluid">
 					<div class="navbar-header">
-						<a class="navbar-brand" id="referencesRR" href="#">Bertapelli</a>
+						<a class="navbar-brand optionR" id="referencesRR" href="#">Bertapelli</a>
 					</div>
 						<ul class="nav navbar-nav">
 							<li class="dropdown who" style="display: none;">
@@ -494,10 +496,10 @@
 			        data: dados,
 			        success: function(data)
 			        {
-				        console.log("Adicionado...");
 				        $('#modalConsulta').hide();
 						$('#form input').val("");
-						chartUpdate();
+						gerarTable();
+				        chartUpdate();
 			        }
 		        });
 		        
@@ -520,18 +522,18 @@
 						<input type="hidden" name='id' id="ide">
 							<div class="w3-half">
 								<label class="w3-text-red"><b>Peso: </b></label>
-								<input class="w3-input w3-border w3-border-blue-gray"  id="ConPeso" autocomplete="off" type="text" pattern="[0-9.%]{1,}"  name="peso" placeholder="coloque o peso da criança em Kg..." required>
+								<input class="w3-input w3-border w3-border-blue-gray"  id="ConPeso" autocomplete="off" type="text" pattern="[0-9.%]{1,}"  name="peso" placeholder="coloque o peso da criança em Kg...">
 							</div>
 							<div class="w3-half">
 								<label class="w3-text-red"><b>Altura: </b></label>
-								<input class="w3-input w3-border w3-border-blue-gray" id="ConAltura" autocomplete="off" type="text" name="altura" pattern="[0-9.%]{1,}" placeholder="coloque a altura da criança em cm..." required>
+								<input class="w3-input w3-border w3-border-blue-gray" id="ConAltura" autocomplete="off" type="text" name="altura" pattern="[0-9.%]{1,}" placeholder="coloque a altura da criança em cm...">
 							</div>
 						</div>
 						<br>
 						<div class="w3-row-padding">
 							<div class="w3-half">
 								<label class="w3-text-red"><b>Perimetro Cefalico: </b></label>
-								<input class="w3-input w3-border w3-border-blue-gray" id="ConPer" type="text" autocomplete="off" pattern="[0-9.%]{1,}" name="perCefalico" placeholder="perimetro cefalico em cm..." required>
+								<input class="w3-input w3-border w3-border-blue-gray" id="ConPer" type="text" autocomplete="off" pattern="[0-9.%]{1,}" name="perCefalico" placeholder="perimetro cefalico em cm...">
 							</div>
 							<div class="w3-half">
 								<label class="w3-text-red"><b>Observação: </b></label>
@@ -548,8 +550,8 @@
 					</div>
 					<br>
 					<div class="w3-center">
-						<div onclick="$('#modalUp').hide();" class="w3-btn w3-border w3-border-red w3-round w3-pale-red"><b>Cancelar</b></div>
 						<div onclick="$('#modalUp').hide(); delCon();" class="w3-btn w3-border w3-border-red w3-round w3-pale-red"><b>Excluir</b></div>
+						<div onclick="$('#modalUp').hide();" class="w3-btn w3-border w3-border-red w3-round w3-pale-red"><b>Cancelar</b></div>
 						<button class="w3-btn w3-border w3-border-green w3-round w3-pale-green" ><b class="loadModal">Atualizar</b></button>
 						<p></p>
 					</div>
@@ -657,15 +659,7 @@
 		} );
 		//Formata campo de busca da tabela
 		$('#childrenTable_filter input').addClass('w3-input w3-border-top w3-border-bottom w3-round-small w3-border-green');
-		$('#childrenTable_filter input').attr('placeholder','Procurar..');
-
-		//Formata campos de 'DATA' e 'PREMATURO' da aba 'Editar'
-		/*$('.campoData').datepicker({dateFormat: 'dd/mm/yyyy'});
-		$('.campoData').mask("99/99/9999", {placeholder:"__/__/____"});*/
-
-		$( ".myCheckBox" ).checkboxradio();
-		});
-
+		$('#childrenTable_filter input').attr('placeholder','Procurar...');
 
 		$(document).on("click", ".optionR", function(e){
 			bootbox.prompt({
@@ -738,10 +732,26 @@
         function w3_close() {
             mySidebar.style.display = "none";
             overlayBg.style.display = "none";
-        }
+		}
+		});
 		// END of DataTable 
 
 	</script>
+<!-- INCLUDE JQuery Library -->
+<script src="../js/jquery-3.3.1.js"></script>
+
+<!-- INCLUDE Jquery MASK for Inputs Fields -->
+<script src="../js/jquery.mask.min.js"></script>
+
+<!-- INCLUDE Table Pagination DataTable -->
+<script src="../js/datatable/datatables.min.js"></script>
+
+<!-- INCLUDE JQuery UI Lib -->
+<script src="../js/jquery-ui.min.js"></script>
+
+	<!-- INCLUDE BOOTSTRAP -->
+	<script src="../js/bootstrap.min.js"></script>
+	
 	
 	</body>
 </html>

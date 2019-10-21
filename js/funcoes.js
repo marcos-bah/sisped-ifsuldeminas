@@ -69,11 +69,19 @@ function habilitar(){
     if(controller){
         document.getElementById('dias').disabled = false;
         document.getElementById('prematuro').innerHTML = "Sim";
+        document.getElementById('prematuro').classList.remove("w3-pale-red");
+        document.getElementById('prematuro').classList.remove("w3-border-red");
+        document.getElementById('prematuro').classList.add("w3-pale-green");
+        document.getElementById('prematuro').classList.add("w3-border-green");
         document.getElementById('dias').value = 1;
         controller = 0;
     }else{
         document.getElementById('dias').disabled = true;
         document.getElementById('prematuro').innerHTML = "Não";
+        document.getElementById('prematuro').classList.remove("w3-pale-green");
+        document.getElementById('prematuro').classList.remove("w3-border-green");
+        document.getElementById('prematuro').classList.add("w3-pale-red");
+        document.getElementById('prematuro').classList.add("w3-border-red");
         document.getElementById('dias').value = 0;
         controller = 1;
     }
@@ -88,10 +96,14 @@ function update(id,nome,sexo,nasc,dias){
 
         if(dias > 0){
             document.getElementById("prematuro").innerHTML = "Sim"; 
-            document.getElementById('dias').disabled = false;    
+            document.getElementById('dias').disabled = false;  
+            document.getElementById('prematuro').classList.add("w3-pale-green");
+            document.getElementById('prematuro').classList.add("w3-border-green");  
         }else{
             document.getElementById("prematuro").innerHTML = "Não";  
             document.getElementById('dias').disabled = true;  
+            document.getElementById('prematuro').classList.add("w3-pale-red");
+            document.getElementById('prematuro').classList.add("w3-border-red");
         }
 
         nasc = nasc.split("-");
@@ -107,9 +119,22 @@ function update(id,nome,sexo,nasc,dias){
 function consultaUp(data, peso, altura, obs, per, id){
     document.getElementById('modalUp').style.display='block';
     document.getElementById("ide").value = id;
-    document.getElementById("ConAltura").value = altura;
-    document.getElementById("ConPeso").value = peso;
-    document.getElementById("ConPer").value = per;
+    if (altura != "Sem dado referente") {
+        document.getElementById("ConAltura").value = altura;
+    }else{
+        document.getElementById("ConAltura").value = "";
+    }
+    if (peso != "Sem dado referente") {
+        document.getElementById("ConPeso").value = peso;
+    }else{
+        document.getElementById("ConPeso").value = "";
+    }
+    if (per != "Sem dado referente") {
+        document.getElementById("ConPer").value = per;
+    }else{
+        document.getElementById("ConPer").value = "";
+    }
+
     data = data.split("-");
     document.getElementById("ConData").value = data[0] + '-'+ data[1] + '-' + data[2];
     document.getElementById("ConObs").value = obs;
