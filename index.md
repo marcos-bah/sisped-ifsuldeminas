@@ -25,7 +25,10 @@ Cumprindo esses passos, ainda é preciso extrair o arquivo ZIP na pasta **htdocs
 Ela encontra-se geralmente no seguinte caminho:
 
 > Windows  
-> **C:\xampp\htdocs**
+> **C:\xampp\htdocs**  
+
+> Linux  
+> **/opt/lampp/htdocs**
 
 Feito isso, basta acessar em seu navegador de preferência a seguinte url: http://localhost/sisped-ifsuldeminas
 ou ainda acessar [aqui](http://localhost/sisped-ifsuldeminas).
@@ -203,8 +206,8 @@ Existe ainda inúmeras linhas de código, mas isso deixamos no nosso repósitori
 
 # Screenshots
 
-![relatorio](https://github.com/marcos-bah/sisped-ifsuldeminas/blob/master/doc/pdf-P.png)
-![relatorio](https://github.com/marcos-bah/sisped-ifsuldeminas/blob/master/doc/pdf-R.png)
+![relatorio](https://github.com/marcos-bah/sisped-ifsuldeminas/blob/gh-pages/doc/pdf-P.png)
+![relatorio](https://github.com/marcos-bah/sisped-ifsuldeminas/blob/gh-pages/doc/pdf-R.png)
 
 # Ajude-nos
 
