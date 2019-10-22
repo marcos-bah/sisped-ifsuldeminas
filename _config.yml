@@ -4,3 +4,6 @@ description: Sistema de Analise de Dados Pediatricos.
 show_downloads: true
 google_analytics:
 theme: jekyll-theme-minimal
+social-network-links:
+  rss: true
+  email: "someone@example.com"
