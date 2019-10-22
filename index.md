@@ -24,14 +24,13 @@ Após o download é necessário ter um servidor WEB instalado, como o XAMPP.
 Cumprindo esses passos, ainda é preciso extrair o arquivo ZIP na pasta **htdocs**.
 Ela encontra-se geralmente no seguinte caminho:
 
-> Windows
-
+> Windows  
 > **C:\xampp\htdocs**
 
 Feito isso, basta acessar em seu navegador de preferência a seguinte url: http://localhost/sisped-ifsuldeminas
 ou ainda acessar [aqui](http://localhost/sisped-ifsuldeminas).
 
-> Lembrando que localhost pode ser trocado pelo seu ip:  
+> Lembrando que localhost pode ser trocado pelo seu ip para acesso em outros computadores:  
 `http://SEU-IP-AQUI/sisped-ifsuldeminas`
 
 Pronto, agora você tem em suas mãos uma ferramenta poderosa, brasileira, de fácil aprendizado e alta escabilidade. Lembrando que estamos sempre melhorando e inserindo novas funcionalidades.
@@ -42,6 +41,10 @@ Criada para ser simples e robusta, completa mas sem complicações.
 Somos uma ferramenta open source e sempre livre, gostamos de poder ajudar e fazer parte dessa comunidade e ainda mais de facilitar o trabalho pediatrico no Brasil, chegando em todos os locais: remotos ou metropoles, sempre visando um mundo melhor.   
 Venha você fazer parte disso.
 
+# Screenshots
+
+![relatorio](https://github.com/marcos-bah/sisped-ifsuldeminas/blob/master/doc/pdf-P.png)
+![relatorio](https://github.com/marcos-bah/sisped-ifsuldeminas/blob/master/doc/pdf-R.png)
 # Ajude-nos
 
 Gostaria de fazer parte? 
