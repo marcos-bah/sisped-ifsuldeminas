@@ -206,8 +206,8 @@ Existe ainda inúmeras linhas de código, mas isso deixamos no nosso repósitori
 
 # Screenshots
 
-![relatorio](https://github.com/marcos-bah/sisped-ifsuldeminas/blob/gh-pages/doc/pdf-P.png)
-![relatorio](https://github.com/marcos-bah/sisped-ifsuldeminas/blob/gh-pages/doc/pdf-R.png)
+![relatorio](doc/pdf-P.png)
+![relatorio](./doc/pdf-R.png)
 
 # Ajude-nos
 
