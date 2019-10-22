@@ -48,7 +48,7 @@ Gostaria de fazer parte?
 
 - Você pode usar
 Nós ficamos muito feliz de saber que tem pessoas incriveis usando nossa ferramenta para o bem e saber que está sendo útil para vocês é muito gratificante, sério, nós **amamos muito** vocês.
-- Você pode nos ajudar fazendo críticas ou sugestões
+- Você pode ajudar-nos fazendo críticas ou sugestões
 Acesse nosso projeto no github ( tem um link no canto superior esquerdo ), lá você poderá fazer issues ( um espaço para relatar erros ou sugerir modificações ) e assim torna ativa essa comunidade.
 - Você pode conectar
 Compartilhe com seus colegas de profissões ou hobbystas de T.I. para que juntos possam fazer parte dessa comunidade **linda**.
