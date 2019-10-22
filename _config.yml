@@ -7,3 +7,6 @@ theme: jekyll-theme-minimal
 social-network-links:
   rss: true
   email: "someone@example.com"
+staticman:
+  repository : "marcos-bah/sisped-ifsuldeminas"
+  branch     : master 
