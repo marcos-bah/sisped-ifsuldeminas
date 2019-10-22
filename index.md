@@ -18,8 +18,7 @@ SISPED Versão 0.1.1
 No canto superior esquerdo, é possivel encontrar os links para download, é recomendado em formato ZIP.
 Após o download é necessário ter um servidor WEB instalado, como o XAMPP. 
 
-> Caso não tenha, [baixe aqui](https://www.apachefriends.org/pt_br/download.html)
-
+> Caso não tenha, [baixe aqui](https://www.apachefriends.org/pt_br/download.html)   
 > Baixe a versão corespondente ao modelo computacional e siga as instruções de instalação.
 
 Cumprindo esses passos, ainda é preciso extrair o arquivo ZIP na pasta **htdocs**.
@@ -32,13 +31,16 @@ Ela encontra-se geralmente no seguinte caminho:
 Feito isso, basta acessar em seu navegador de preferência a seguinte url: http://localhost/sisped-ifsuldeminas
 ou ainda acessar [aqui](http://localhost/sisped-ifsuldeminas)
 
-> Lembrando que localhost pode ser trocado pelo seu ip: `http://SEU-IP-AQUI/sisped-ifsuldeminas`
+> Lembrando que localhost pode ser trocado pelo seu ip:  
+`http://SEU-IP-AQUI/sisped-ifsuldeminas`
 
 Pronto, agora você tem em suas mãos uma ferramenta poderosa, brasileira, de fácil aprendizado e alta escabilidade. Lembrando que estamos sempre melhorando e inserindo novas funcionalidades.
 
 ### Sobre
 
-Criada para ser simples e robusta, completa mas sem complicações. Somos uma ferramenta open source e sempre livre, gostamos de poder ajudar e fazer parte dessa comunidade e ainda mais de facilitar o trabalho pediatrico no Brasil, chegando em todos os locais: remotos ou metropoles, sempre visando um mundo melhor. Venha você fazer parte disso.
+Criada para ser simples e robusta, completa mas sem complicações.  
+Somos uma ferramenta open source e sempre livre, gostamos de poder ajudar e fazer parte dessa comunidade e ainda mais de facilitar o trabalho pediatrico no Brasil, chegando em todos os locais: remotos ou metropoles, sempre visando um mundo melhor.   
+Venha você fazer parte disso.
 
 ## Ajude-nos
 
