@@ -1,7 +1,7 @@
 # SISPED: Sistema de Análises de Dados Pediátricos
 
 SISPED é um sistema simples, fácil e intuitivo.
-Criado para ser utilizado em qualquer dispositivo, necessitando apenas de um computador matriz.
+Criado para ser utilizado em qualquer dispositivo, necessitando apenas de um computador e conhecimentos básicos de informática.
 
 ### UPDATES
 
