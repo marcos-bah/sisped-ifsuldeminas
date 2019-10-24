@@ -24,7 +24,7 @@ while($row = $result->fetch_array()){
 }
 
 $sql = "SELECT instituicao.nome, instituicao.endereco, instituicao.cnpj, dadoscrianca.nome, dadoscrianca.sexo, 
-dadosauxiliar.nome, dadosauxiliar.crm, dadoscrianca.prematuro  FROM `instituicao` 
+dadosauxiliar.nome, dadosauxiliar.crm, dadoscrianca.diasPrematuro  FROM `instituicao` 
 inner join `dadosauxiliar` 
 inner join `dadosconsulta` 
 inner join dadoscrianca 
@@ -38,7 +38,7 @@ while($row = $result->fetch_array())
             $nomeCrian = $row['3'];
             $nomeMedico = $row['5'];
             $crm = $row['6'];
-            $prematuroCrian = ($row['7'] == 1) ? "Sim" : "Não" ;
+            $prematuroCrian = ($row['7'] > 0) ? "Sim" : "Não" ;
             $enderecoInst = $row['1'];
             $sexo = ($row['4'] == "m") ? "Masculino" : "Feminino" ;
             $cnpj = $row['2'];             

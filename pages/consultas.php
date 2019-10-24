@@ -164,7 +164,7 @@
 								<td>";?> <b> <?php echo "".$dados['nome']."</b></td>\n";
 						echo "<td class='w3-center'>".$data[2]."/".$data[1]."/".$data[0]."</td>\n";
 						echo "<td class='w3-center'>".$dados['diasPrematuro']."</td>\n";
-						echo "<td class='w3-center'>";?> <a onclick="setTimeout(function(){ nextChart('../../csv/Weight-for-age/Z-scores_boys/5_years.csv', <?php echo $dados['idcrian'] ?>, 'm','peso'); document.getElementById('NCrianca').innerHTML= '<?php echo $dados['nome'] ?>';  }, 300);gerarTable();sexo('<?php echo $dados['sexo'] ?>');openPanel('analiseTabMenu','PainelAnalise');" class='w3-button w3-hover-aqua w3-light-blue w3-round editRemoveButton'><i class='fa fa-user-md editRemoveIcon'></i><?php echo"</a></td>\n";
+						echo "<td class='w3-center'>";?> <a onclick="setTimeout(function(){ nextChart('../../csv/WHO/Weight-for-age/Z-scores_boys/5_years.csv', <?php echo $dados['idcrian'] ?>, 'm','peso'); document.getElementById('NCrianca').innerHTML= '<?php echo $dados['nome'] ?>';  }, 300);gerarTable();sexo('<?php echo $dados['sexo'] ?>');openPanel('analiseTabMenu','PainelAnalise');" class='w3-button w3-hover-aqua w3-light-blue w3-round editRemoveButton'><i class='fa fa-user-md editRemoveIcon'></i><?php echo"</a></td>\n";
 						echo "<td class='w3-center'>";?> <a onclick="update( <?php echo $var;  ?> ),openPanel('editarTabMenu','PainelEditar');" class='w3-button w3-hover-sand w3-khaki w3-round editRemoveButton'><i class='fa fa-pencil editRemoveIcon'></i><?php echo"</a></td>\n";
 						echo "<td class='w3-center'>";?> <a onclick="consulta( <?php echo $dados['idcrian'] ?> )" class='w3-button w3-hover-sand w3-khaki w3-round editRemoveButton'><i class='fa fa-archive editRemoveIcon'></i><?php echo "</a> </td>\n";
 						echo "<td class='w3-center'>";?> <a onclick="del( <?php echo $dados['idcrian'] ?> )" class='w3-button w3-pale-red w3-hover-sand w3-red w3-round editRemoveButton'><i class='fa fa-trash-o editRemoveIcon'></i></a></td><?php echo"
@@ -209,7 +209,7 @@
 
 				<div class="w3-col" style="width:160px">
 					<label class="w3-text-red"><b>Prematuro: </b></label><br>
-					<button onclick="habilitar(); return false;" id="prematuro" class="w3-input w3-border w3-border-blue-gray w3-center" name="prematuro">Não</button>
+					<button onclick="habilitar(); return false;" id="prematuro" class="w3-input w3-border w3-center" name="prematuro">Não</button>
 				</div>
 
 				<div class="w3-col" style="width:160px">
@@ -248,12 +248,12 @@
 								<span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li class="dropdown-header">ZScores</li>
-									<li><a onclick="gerarCall('../../csv/Weight-for-age/Z-scores_boys/5_years.csv','m','peso')">5 years</a></li>
-									<li><a onclick="gerarCall('../../csv/Weight-for-age/Z-scores_boys/13_week.csv','w','peso')">13 week</a></li>
+									<li><a onclick="gerarCall('../../csv/WHO/Weight-for-age/Z-scores_boys/5_years.csv','m','peso')">5 years</a></li>
+									<li><a onclick="gerarCall('../../csv/WHO/Weight-for-age/Z-scores_boys/13_week.csv','w','peso')">13 week</a></li>
 									<li class="divider"></li>
 									<li class="dropdown-header">Percentiles</li>
-									<li><a onclick="gerarCall('../../csv/Weight-for-age/percentiles_boys/5_years.csv','m','peso')">5 years</a></li>
-									<li><a onclick="gerarCall('../../csv/Weight-for-age/percentiles_boys/13_weeks.csv','w','peso')">13 week</a></li>
+									<li><a onclick="gerarCall('../../csv/WHO/Weight-for-age/percentiles_boys/5_years.csv','m','peso')">5 years</a></li>
+									<li><a onclick="gerarCall('../../csv/WHO/Weight-for-age/percentiles_boys/13_weeks.csv','w','peso')">13 week</a></li>
 								</ul>
 							</li>
 
@@ -262,12 +262,12 @@
 								<span class="caret"></span></a>
 								<ul class="dropdown-menu">
 								<li class="dropdown-header">ZScores</li>
-								<li><a onclick="gerarCall('../../csv/Weight-for-length-height/Z-scores_boys/2_years.csv','y3','peso')">2 years</a></li>
-								<li><a onclick="gerarCall('../../csv/Weight-for-length-height/Z-scores_boys/2-5_years.csv','y4','peso')">2-5 years</a></li>
+								<li><a onclick="gerarCall('../../csv/WHO/Weight-for-length-height/Z-scores_boys/2_years.csv','y3','peso')">2 years</a></li>
+								<li><a onclick="gerarCall('../../csv/WHO/Weight-for-length-height/Z-scores_boys/2-5_years.csv','y4','peso')">2-5 years</a></li>
 								<li class="divider"></li>
 								<li class="dropdown-header">Percentiles</li>
-								<li><a onclick="gerarCall('../../csv/Weight-for-length-height/percentiles_boys/2_years.csv','y3','peso')">2 years</a></li>
-								<li><a onclick="gerarCall('../../csv/Weight-for-length-height/percentiles_boys/2-5_years.csv','y4','peso')">2-5 years</a></li>
+								<li><a onclick="gerarCall('../../csv/WHO/Weight-for-length-height/percentiles_boys/2_years.csv','y3','peso')">2 years</a></li>
+								<li><a onclick="gerarCall('../../csv/WHO/Weight-for-length-height/percentiles_boys/2-5_years.csv','y4','peso')">2-5 years</a></li>
 								</ul>
 							</li>
 
@@ -276,12 +276,12 @@
 								<span class="caret"></span></a>
 								<ul class="dropdown-menu">
 								<li class="dropdown-header">ZScores</li>
-								<li><a onclick="gerarCall('../../csv/Head-circumference-for-age/Zscores-boys/5_years.csv','y','perimetroCefalico')">5 years</a></li>
-								<li><a onclick="gerarCall('../../csv/Head-circumference-for-age/Zscores-boys/13_weeks.csv','w','perimetroCefalico')">13 week</a></li>
+								<li><a onclick="gerarCall('../../csv/WHO/Head-circumference-for-age/Zscores-boys/5_years.csv','y','perimetroCefalico')">5 years</a></li>
+								<li><a onclick="gerarCall('../../csv/WHO/Head-circumference-for-age/Zscores-boys/13_weeks.csv','w','perimetroCefalico')">13 week</a></li>
 								<li class="divider"></li>
 								<li class="dropdown-header">Percentiles</li>
-								<li><a onclick="gerarCall('../../csv/Head-circumference-for-age/percentiles-boys/5_years.csv','y','perimetroCefalico')">5 years</a></li>
-								<li><a onclick="gerarCall('../../csv/Head-circumference-for-age/percentiles-boys/13_weeks.csv','w','perimetroCefalico')">13 week</a></li>
+								<li><a onclick="gerarCall('../../csv/WHO/Head-circumference-for-age/percentiles-boys/5_years.csv','y','perimetroCefalico')">5 years</a></li>
+								<li><a onclick="gerarCall('../../csv/WHO/Head-circumference-for-age/percentiles-boys/13_weeks.csv','w','perimetroCefalico')">13 week</a></li>
 								</ul>
 							</li>
 
@@ -290,14 +290,14 @@
 								<span class="caret"></span></a>
 								<ul class="dropdown-menu">
 								<li class="dropdown-header">ZScores</li>
-								<li><a onclick="gerarCall('../../csv/BMI-for-age/Zscores-boys/2-5_years.csv','y2-5','bmi')">2-5 years</a></li>
-								<li><a onclick="gerarCall('../../csv/BMI-for-age/Zscores-boys/2_years.csv','y2','bmi')">2 years</a></li>
-								<li><a onclick="gerarCall('../../csv/BMI-for-age/Zscores-boys/13_weeks.csv','w2','bmi')">13 week</a></li>
+								<li><a onclick="gerarCall('../../csv/WHO/BMI-for-age/Zscores-boys/2-5_years.csv','y2-5','bmi')">2-5 years</a></li>
+								<li><a onclick="gerarCall('../../csv/WHO/BMI-for-age/Zscores-boys/2_years.csv','y2','bmi')">2 years</a></li>
+								<li><a onclick="gerarCall('../../csv/WHO/BMI-for-age/Zscores-boys/13_weeks.csv','w2','bmi')">13 week</a></li>
 								<li class="divider"></li>
 								<li class="dropdown-header">Percentiles</li>
-								<li><a onclick="gerarCall('../../csv/BMI-for-age/percentiles-boys/2-5_years.csv','y2-5','bmi')">2-5 years</a></li>
-								<li><a onclick="gerarCall('../../csv/BMI-for-age/percentiles-boys/2_years.csv','y2','bmi')">2 years</a></li>
-								<li><a onclick="gerarCall('../../csv/BMI-for-age/percentiles-boys/13_weeks.csv','w2','bmi')">13 week</a></li>
+								<li><a onclick="gerarCall('../../csv/WHO/BMI-for-age/percentiles-boys/2-5_years.csv','y2-5','bmi')">2-5 years</a></li>
+								<li><a onclick="gerarCall('../../csv/WHO/BMI-for-age/percentiles-boys/2_years.csv','y2','bmi')">2 years</a></li>
+								<li><a onclick="gerarCall('../../csv/WHO/BMI-for-age/percentiles-boys/13_weeks.csv','w2','bmi')">13 week</a></li>
 								</ul>
 							</li>
 
@@ -306,8 +306,8 @@
 								<span class="caret"></span></a>
 								<ul class="dropdown-menu">
 								<li class="dropdown-header">Percentiles</li>
-									<li><a onclick="gerarCall('../../csv/Bertapelli/estatura/3-20_years.csv','y20', 'altura')">3-20 Years</a></li>
-									<li><a onclick="gerarCall('../../csv/Bertapelli/estatura/0-36_month.csv','m', 'altura')">0-36 Month</a></li>
+									<li><a onclick="gerarCall('../../csv/WHO/Bertapelli/estatura/3-20_years.csv','y20', 'altura')">3-20 Years</a></li>
+									<li><a onclick="gerarCall('../../csv/WHO/Bertapelli/estatura/0-36_month.csv','m', 'altura')">0-36 Month</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -325,12 +325,12 @@
 								<span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li class="dropdown-header">ZScores</li>
-									<li><a onclick="gerarCall('../../csv/Weight-for-age/Z-scores_girls/5_years.csv','m','peso')">5 years</a></li>
-									<li><a onclick="gerarCall('../../csv/Weight-for-age/Z-scores_girls/13_week.csv','w','peso')">13 week</a></li>
+									<li><a onclick="gerarCall('../../csv/WHO/Weight-for-age/Z-scores_girls/5_years.csv','m','peso')">5 years</a></li>
+									<li><a onclick="gerarCall('../../csv/WHO/Weight-for-age/Z-scores_girls/13_week.csv','w','peso')">13 week</a></li>
 									<li class="divider"></li>
 									<li class="dropdown-header">Percentiles</li>
-									<li><a onclick="gerarCall('../../csv/Weight-for-age/percentiles_girls/5_years.csv','m','peso')">5 years</a></li>
-									<li><a onclick="gerarCall('../../csv/Weight-for-age/percentiles_girls/13_weeks.csv','w','peso')">13 week</a></li>
+									<li><a onclick="gerarCall('../../csv/WHO/Weight-for-age/percentiles_girls/5_years.csv','m','peso')">5 years</a></li>
+									<li><a onclick="gerarCall('../../csv/WHO/Weight-for-age/percentiles_girls/13_weeks.csv','w','peso')">13 week</a></li>
 								</ul>
 							</li>
 
@@ -339,12 +339,12 @@
 								<span class="caret"></span></a>
 								<ul class="dropdown-menu">
 								<li class="dropdown-header">ZScores</li>
-								<li><a onclick="gerarCall('../../csv/Weight-for-length-height/Z-scores_girls/2_years.csv','y3','peso')">2 years</a></li>
-								<li><a onclick="gerarCall('../../csv/Weight-for-length-height/Z-scores_girls/2-5_years.csv','y4','peso')">2-5 years</a></li>
+								<li><a onclick="gerarCall('../../csv/WHO/Weight-for-length-height/Z-scores_girls/2_years.csv','y3','peso')">2 years</a></li>
+								<li><a onclick="gerarCall('../../csv/WHO/Weight-for-length-height/Z-scores_girls/2-5_years.csv','y4','peso')">2-5 years</a></li>
 								<li class="divider"></li>
 								<li class="dropdown-header">Percentiles</li>
-								<li><a onclick="gerarCall('../../csv/Weight-for-length-height/percentiles_girls/2_years.csv','y3','peso')">2 years</a></li>
-								<li><a onclick="gerarCall('../../csv/Weight-for-length-height/percentiles_girls/2-5_years.csv','y4','peso')">2-5 years</a></li>
+								<li><a onclick="gerarCall('../../csv/WHO/Weight-for-length-height/percentiles_girls/2_years.csv','y3','peso')">2 years</a></li>
+								<li><a onclick="gerarCall('../../csv/WHO/Weight-for-length-height/percentiles_girls/2-5_years.csv','y4','peso')">2-5 years</a></li>
 								</ul>
 							</li>
 
@@ -353,12 +353,12 @@
 								<span class="caret"></span></a>
 								<ul class="dropdown-menu">
 								<li class="dropdown-header">ZScores</li>
-								<li><a onclick="gerarCall('../../csv/Head-circumference-for-age/Zscores-girls/5_years.csv','m','perimetroCefalico')">5 years</a></li>
-								<li><a onclick="gerarCall('../../csv/Head-circumference-for-age/Zscores-girls/13_weeks.csv','w','perimetroCefalico')">13 week</a></li>
+								<li><a onclick="gerarCall('../../csv/WHO/Head-circumference-for-age/Zscores-girls/5_years.csv','m','perimetroCefalico')">5 years</a></li>
+								<li><a onclick="gerarCall('../../csv/WHO/Head-circumference-for-age/Zscores-girls/13_weeks.csv','w','perimetroCefalico')">13 week</a></li>
 								<li class="divider"></li>
 								<li class="dropdown-header">Percentiles</li>
-								<li><a onclick="gerarCall('../../csv/Head-circumference-for-age/percentiles-girls/5_years.csv','m','perimetroCefalico')">5 years</a></li>
-								<li><a onclick="gerarCall('../../csv/Head-circumference-for-age/percentiles-girls/13_weeks.csv','w','perimetroCefalico')">13 week</a></li>
+								<li><a onclick="gerarCall('../../csv/WHO/Head-circumference-for-age/percentiles-girls/5_years.csv','m','perimetroCefalico')">5 years</a></li>
+								<li><a onclick="gerarCall('../../csv/WHO/Head-circumference-for-age/percentiles-girls/13_weeks.csv','w','perimetroCefalico')">13 week</a></li>
 								</ul>
 							</li>
 
@@ -367,14 +367,14 @@
 								<span class="caret"></span></a>
 								<ul class="dropdown-menu">
 								<li class="dropdown-header">ZScores</li>
-								<li><a onclick="gerarCall('../../csv/BMI-for-age/Zscores-girls/2-5_years.csv','y2-5','bmi')">2-5 years</a></li>
-								<li><a onclick="gerarCall('../../csv/BMI-for-age/Zscores-girls/2_years.csv','y2','bmi')">2 years</a></li>
-								<li><a onclick="gerarCall('../../csv/BMI-for-age/Zscores-girls/13_weeks.csv','w2','bmi')">13 week</a></li>
+								<li><a onclick="gerarCall('../../csv/WHO/BMI-for-age/Zscores-girls/2-5_years.csv','y2-5','bmi')">2-5 years</a></li>
+								<li><a onclick="gerarCall('../../csv/WHO/BMI-for-age/Zscores-girls/2_years.csv','y2','bmi')">2 years</a></li>
+								<li><a onclick="gerarCall('../../csv/WHO/BMI-for-age/Zscores-girls/13_weeks.csv','w2','bmi')">13 week</a></li>
 								<li class="divider"></li>
 								<li class="dropdown-header">Percentiles</li>
-								<li><a onclick="gerarCall('../../csv/BMI-for-age/percentiles-girls/2-5_years.csv','y2-5','bmi')">2-5 years</a></li>
-								<li><a onclick="gerarCall('../../csv/BMI-for-age/percentiles-girls/2_years.csv','y2','bmi')">2 years</a></li>
-								<li><a onclick="gerarCall('../../csv/BMI-for-age/percentiles-girls/13_weeks.csv','w2','bmi')">13 week</a></li>
+								<li><a onclick="gerarCall('../../csv/WHO/BMI-for-age/percentiles-girls/2-5_years.csv','y2-5','bmi')">2-5 years</a></li>
+								<li><a onclick="gerarCall('../../csv/WHO/BMI-for-age/percentiles-girls/2_years.csv','y2','bmi')">2 years</a></li>
+								<li><a onclick="gerarCall('../../csv/WHO/BMI-for-age/percentiles-girls/13_weeks.csv','w2','bmi')">13 week</a></li>
 								</ul>
 							</li>
 

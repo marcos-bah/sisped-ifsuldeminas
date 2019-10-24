@@ -69,19 +69,15 @@ function habilitar(){
     if(controller){
         document.getElementById('dias').disabled = false;
         document.getElementById('prematuro').innerHTML = "Sim";
-        document.getElementById('prematuro').classList.remove("w3-pale-red");
-        document.getElementById('prematuro').classList.remove("w3-border-red");
-        document.getElementById('prematuro').classList.add("w3-pale-green");
-        document.getElementById('prematuro').classList.add("w3-border-green");
+        document.getElementById('prematuro').classList.remove("w3-red");
+        document.getElementById('prematuro').classList.add("w3-green");
         document.getElementById('dias').value = 1;
         controller = 0;
     }else{
         document.getElementById('dias').disabled = true;
         document.getElementById('prematuro').innerHTML = "Não";
-        document.getElementById('prematuro').classList.remove("w3-pale-green");
-        document.getElementById('prematuro').classList.remove("w3-border-green");
-        document.getElementById('prematuro').classList.add("w3-pale-red");
-        document.getElementById('prematuro').classList.add("w3-border-red");
+        document.getElementById('prematuro').classList.remove("w3-green");
+        document.getElementById('prematuro').classList.add("w3-red");
         document.getElementById('dias').value = 0;
         controller = 1;
     }
@@ -97,13 +93,11 @@ function update(id,nome,sexo,nasc,dias){
         if(dias > 0){
             document.getElementById("prematuro").innerHTML = "Sim"; 
             document.getElementById('dias').disabled = false;  
-            document.getElementById('prematuro').classList.add("w3-pale-green");
-            document.getElementById('prematuro').classList.add("w3-border-green");  
+            document.getElementById('prematuro').classList.add("w3-green");
         }else{
             document.getElementById("prematuro").innerHTML = "Não";  
             document.getElementById('dias').disabled = true;  
-            document.getElementById('prematuro').classList.add("w3-pale-red");
-            document.getElementById('prematuro').classList.add("w3-border-red");
+            document.getElementById('prematuro').classList.add("w3-red");
         }
 
         nasc = nasc.split("-");

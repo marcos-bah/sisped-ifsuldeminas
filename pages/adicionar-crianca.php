@@ -166,7 +166,7 @@
 
 			<div class="w3-col" style="width:160px">
 				<label class="w3-text-red"><b>Prematuro: </b></label><br>
-				<button onclick="habilitar(); return false;" id="prematuro" class="w3-input w3-border w3-border-red w3-pale-red w3-border w3-border-blue-gray w3-center" name="prematuro">Não</button>
+				<button onclick="habilitar(); return false;" id="prematuro" class="w3-input w3-border w3-red w3-center" name="prematuro">Não</button>
 			</div>
 
 			<div class="w3-col" style="width:170px">
