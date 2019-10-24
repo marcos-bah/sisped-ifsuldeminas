@@ -26,6 +26,9 @@
         }
 
     function imc($p, $a){
+        if($p == 0 or $a == 0 or $p == NULL or $a == NULL){
+            return NULL;
+        }
         //IMC (peso em kg dividido pelo quadrado da altura em metro)
         return round(($p/(($a/100)**2)),2);
     }

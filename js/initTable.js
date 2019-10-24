@@ -8,10 +8,8 @@ function gerarCall(aux,time, pesq){
     console.log("Backup .done");
 };
 
-
 function nextChart(nome, id, time, pesq){
 
-    
     document.getElementById('Bkid').value = id;  
     document.getElementById("Bknome").value = nome;
     document.getElementById("Bktime").value = time;
