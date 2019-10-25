@@ -49,7 +49,7 @@ mysqli_close($conn);
 function chart($dataCrianca, $x, $y){
 
     //create a PHPlot object with pixel image
-    $plot = new PHPlot(1900,1020);
+    $plot = new PHPlot(1480,720);
 
     $plot->SetXScaleType("linear");
     $plot->SetXDataLabelType('custom');
@@ -67,7 +67,7 @@ function chart($dataCrianca, $x, $y){
     $plot->SetPlotType('lines');
     $plot->SetLineWidths(4);
     $plot->SetLegend(array('SD3', 'SD2', 'SD0', 'SD2neg', 'SD3neg', "Crianca"));
-    $plot->SetLegendPosition(1, 0, 'plot', 1, 0, -10, 800);
+    $plot->SetLegendPosition(1, 0, 'plot', 1, 0, -10, 500);
     
 
     $res = parametros($_GET['p']);
