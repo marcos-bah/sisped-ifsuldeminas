@@ -2,11 +2,6 @@ title: SISPED IFSULDEMINAS
 logo: /image/sisped-logo2.png
 description: Sistema de Analise de Dados Pediatricos.
 show_downloads: true
-google_analytics: ""
-author:
-  social:
-    email:    mail@qwtel.com
-    rss:      https://hydejack.com/feed.xml # make sure you provide an absolute URL
-    download: https://github.com/hydecorp/hydejack/archive/v8.5.2.zip
-theme: jekyll-theme-minimal
-
+github :
+   zip_url : http://example.com/download.zip 
+  another_url : outro valor
