@@ -3,5 +3,6 @@ description: Sistema de Analise de Dados Pediatricos.
 logo: image/sisped-logo2.png
 show_downloads: true
 github:
-  zip_url : http://example.com/download.zip 
+  zip_url : https://github.com/marcos-bah/sisped-ifsuldeminas/zipball/master
+  tar_url : https://github.com/marcos-bah/sisped-ifsuldeminas/tarball/master
 theme: jekyll-theme-minimal
