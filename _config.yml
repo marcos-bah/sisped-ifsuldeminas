@@ -4,3 +4,4 @@ logo: image/sisped-logo2.png
 show_downloads: true
 github:
   zip_url : http://example.com/download.zip 
+theme: jekyll-theme-minimal
