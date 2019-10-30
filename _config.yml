@@ -1,5 +1,6 @@
 title: SISPED IFSULDEMINAS
 description: Sistema de Analise de Dados Pediatricos.
-show_downloads: false
+image: image/sisped-logo2.png
+show_downloads: true
 github:
   zip_url : http://example.com/download.zip 
