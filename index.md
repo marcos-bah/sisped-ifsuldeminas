@@ -19,9 +19,9 @@ Criado para ser utilizado em qualquer dispositivo, necessitando apenas de um com
 
 ![alt text][GIF]
 
-[SISPED]: https://github.com/marcos-bah/sisped-ifsuldeminas/blob/master/image/sisped-logo2.png "SISPED"
+[SISPED]: ./image/sisped-logo2.png "SISPED"
 
-[GIF]: https://github.com/marcos-bah/sisped-ifsuldeminas/blob/master/image/sisped.gif "SISPED"
+[GIF]: ./image/sisped.gif "SISPED"
 
 ### UPDATES
 
