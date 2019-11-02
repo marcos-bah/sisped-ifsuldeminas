@@ -58,7 +58,7 @@ Pronto, agora você tem em suas mãos uma ferramenta poderosa, brasileira, de f�
 
 # Sobre
 
-Criada para ser simples e robusta, completa mas sem complicações.  
+Criada para ser simples, robusta e completa, mas sem complicações.  
 Somos uma ferramenta open source e sempre livre, gostamos de poder ajudar e fazer parte dessa comunidade e ainda mais de facilitar o trabalho pediatrico no Brasil, chegando em todos os locais: remotos ou metropoles, sempre visando um mundo melhor.   
 Venha você fazer parte disso.
 
@@ -72,11 +72,11 @@ Venha você fazer parte disso.
 Gostaria de fazer parte? 
 
 - Você pode usar  
-Nós ficamos muito feliz de saber que tem pessoas incriveis usando nossa ferramenta para o bem e saber que está sendo útil para vocês é muito gratificante, sério, nós **amamos muito** vocês.
+Nós ficamos muito feliz de saber que tem pessoas incriveis usando nossa ferramenta para o bem e saber que está sendo útil para vocês é muito gratificante.
 - Você pode ajudar-nos fazendo críticas ou sugestões  
-Acesse nosso projeto no github ( tem um link no canto superior esquerdo ), lá você poderá fazer issues ( um espaço para relatar erros ou sugerir modificações ) e assim torna ativa essa comunidade.
+Acesse nosso projeto no github ( tem um link no canto superior esquerdo ), lá você poderá fazer _issues_ ( um espaço para relatar erros ou sugerir modificações ) e assim torna ativa essa comunidade.
 - Você pode conectar  
-Compartilhe com seus colegas de profissões ou hobbystas de T.I. para que juntos possam fazer parte dessa comunidade **linda**.
+Compartilhe com seus colegas de profissões ou hobbystas de T.I. para que juntos possam fazer parte dessa comunidade incrivel.
 
 # Quem somos
 
