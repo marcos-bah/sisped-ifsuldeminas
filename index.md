@@ -10,9 +10,7 @@
 [Status]: https://img.shields.io/badge/Estado-Em%20Desenvolvimento-brightgreen "Status"
 [Plataformas]: https://img.shields.io/badge/Vers%C3%A3o-%200.1.1%20-blue "Plataformas suportadas"
 
-![alt text][SISPED]
-
-# Sem complicações
+### Sem complicações
 
 SISPED é um sistema simples, fácil e intuitivo.    
 Criado para ser utilizado em qualquer dispositivo, necessitando apenas de um computador e conhecimentos básicos de informática.
