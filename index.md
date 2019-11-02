@@ -80,10 +80,10 @@ Compartilhe com seus colegas de profissões ou hobbystas de T.I. para que juntos
 
 # Quem somos
 
-Nós somos aqueles que trocam aquele final de semana de churras na casa de amigos por uma maratona de programação com chopps de café.
+Mais do que programadores, somos semeadores de ideias incriveis como esta, mas não fazemos nada sozinhos.
 Esse projeto só foi possivel graças a duas pessoas e uma instituição muito massa. Então vamos lá aos agradecimentos.  
-Primeiro, Max Olinto, idealizador e professor do IFSULDEMINAS Campus Av. Carmo de Minas.  
-Segundo, Juliete Ramos, orientadora e professora do IFSULDEMINAS Campus Av. Carmo de Minas.  
+Em primeiro, ao Max Olinto, idealizador e professor do IFSULDEMINAS Campus Av. Carmo de Minas.  
+Em segundo, a Juliete Ramos, orientadora e professora do IFSULDEMINAS Campus Av. Carmo de Minas.  
 Ah, e claro, ao IFSULDEMINAS Campus Av. Carmo de Minas, o pessoal de lá é demais. Vale a pena coferir mais [acesse](https://portal.cdm.ifsuldeminas.edu.br/).
 
 
