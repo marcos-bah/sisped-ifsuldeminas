@@ -28,7 +28,6 @@
 		</div>
 	  </div>
 	</div>
-
 	<div class="w3-container w3-bottom w3-center" style="bottom: 15px;">
 		 <img src="../image/ifsuldeminas.png" style="width: 250px" alt="Logo IFSULDEMINAS"/>
 	</div>

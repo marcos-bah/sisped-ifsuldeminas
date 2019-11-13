@@ -45,14 +45,12 @@
 
 	<!-- INCLUDE W3 CSS -->
 	<link rel="stylesheet" href="../css/w3.css">
-	<link rel="stylesheet" href="../css/select.css">
 
 	<!-- INCLUDE Font Raleway -->
 	<link rel="stylesheet" href="../css/fontRaleway.css">
 
 	<!-- INCLUDE custom Pagination Style -->
 	<link rel="stylesheet" href="../css/pagination.css">
-	<link rel="stylesheet" href="../css/datatable.min.css"> 
 
 	<!-- INCLUDE Font Awesome -->
 	<link rel="stylesheet" href="../css/font-awesome/css/font-awesome.min.css">
@@ -387,6 +385,31 @@
 									<li><a onclick="gerarCall('../../csv/Bertapelli/estatura/0-36_month.csv','m', 'altura')">0-36 Month</a></li>
 								</ul>
 							</li>
+							<li class="dropdown bertapelli">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#">IMC por Idade
+								<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+								<li class="dropdown-header">Percentiles</li>
+									<li><a onclick="gerarCall('../../csv/Bertapelli/imc/feminino/IMC_Criancas_Feminino_2a18Anos.xlsx','y20', 'altura')">2-18 Anos</a></li>
+								</ul>
+							</li>
+							<li class="dropdown bertapelli">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#">Perimetro Cefalico
+								<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+								<li class="dropdown-header">Percentiles</li>
+									<li><a onclick="gerarCall('../../csv/Bertapelli/perimetro-cefalico/feminino/PerimetroCefalico(cm)_Criancas_Feminino_0a24Meses.xlsx','y20', 'altura')">0-24 Meses</a></li>
+								</ul>
+							</li>
+							<li class="dropdown bertapelli">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#">Peso por Idade
+								<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+								<li class="dropdown-header">Percentiles</li>
+									<li><a onclick="gerarCall('../../csv/Bertapelli/peso-idade/feminino/Peso(Kg)_Criancas_Feminino_0a36Meses.xlsx','y20', 'altura')">0-36 Meses</a></li>
+									<li><a onclick="gerarCall('../../csv/Bertapelli/peso-idade/feminino/Peso(Kg)_Jovens_Feminino_3a20Anos.xlsx','y20', 'altura')">3-20 Anos</a></li>
+								</ul>
+							</li>
 						</ul>
 					</div>
 				</nav>
@@ -486,6 +509,8 @@
         jQuery(document).ready(function(){
 	        jQuery('#form').submit(function(){
 		        var dados = jQuery( this ).serialize();
+				console.log(dados);
+				
 
 		        jQuery.ajax({
 			        type: "POST",
