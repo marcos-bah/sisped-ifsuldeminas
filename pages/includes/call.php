@@ -50,8 +50,8 @@
                 //13 semanas
                 $data = array();
                 for ($kk = 0; $kk <= 13; $kk++){
-                    if(!array_key_exists($kk, $data){
-                        $data[$kk] = Null;
+                    if(!array_key_exists($kk, $data)){
+                        $data[$kk] = null;
                     }
                 }
                 while($row = $r->fetch_array()){
