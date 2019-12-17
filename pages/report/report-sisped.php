@@ -6,10 +6,16 @@ include("../includes/dbconnection.php"); // funcoes para se conectar ao banco de
 include('phplot/phplot.php'); // biblioteca para geracao de graficos
 
 $id = $_GET['id']; // identificador da crianca
+$atual = new DateTime();
+$atual = str_replace(" ", "", $atual->format('d-m-Y H:i:s'));
+$atual = str_replace(":", "", $atual);
 
-$hash = "SISPED Projeto 2019"; // hash com a validacao do relatorio
+$cod = sha1($id.$atual); 
+$chartName = $id;
+
+$hash = "https://urso-sisped.000webhostapp.com?q=".$cod; // hash com a validacao do relatorio
      
-$image = $id; // filename da imagem a ser gerado pela biblioteca de QR Code
+$image = $id.$atual; // filename da imagem a ser gerado pela biblioteca de QR Code
 
 QRcode::png($hash, "tmp/".$image."-qr.png", QR_ECLEVEL_L, 4, 5);
 
@@ -46,7 +52,7 @@ while($row = $result->fetch_array())
  
 mysqli_close($conn);
 
-function chart($dataCrianca, $x, $y){
+function chart($dataCrianca, $x, $y, $chartName){
 
     //create a PHPlot object with pixel image
     $plot = new PHPlot(1480,720);
@@ -108,13 +114,13 @@ function chart($dataCrianca, $x, $y){
     $plot->SetXTickPos('none');
 
     $plot->SetIsInline(True);
-    $plot->SetOutputFile("tmp/test.png"); 
+    $plot->SetOutputFile("tmp/".$chartName.".png"); 
 
     //Draw it
     $plot->DrawGraph();
 }
 
-chart($dataCrianca, $tempo, $_GET['pesq']);
+chart($dataCrianca, $tempo, $_GET['pesq'], $chartName);
 
 class PDF extends FPDF{
     // Page header
@@ -167,7 +173,7 @@ class PDF extends FPDF{
         // Data
         $fill = false;
         $cont = 0;
-        $limite = 17;
+        $limite = 18;
         foreach($data as $row){
             $this->SetDrawColor(0,90,0);
             $cont++;
@@ -186,7 +192,23 @@ class PDF extends FPDF{
                 $this->AddPage();
                 $cont = 0;
                 $this->Ln(15);
-                $limite = 30;
+                $limite = 28;
+                $this->SetFillColor(0,110,0);
+        $this->SetTextColor(255);
+        $this->SetDrawColor(0,90,0);
+        $this->SetLineWidth(.3);
+        $this->SetFont('','B');
+        // Header
+        $this->Cell(5);
+        $w = array(35, 35, 35, 35, 38);
+        for($i=0;$i<count($header);$i++)
+            $this->Cell($w[$i],6,utf8_decode($header[$i]),1,0,'C',true);
+        $this->Ln();
+        // Color and font restoration
+        $this->SetFillColor(224,235,255);
+        $this->SetTextColor(0);
+        $this->SetFont('');
+        // Data
             }
         }
         // Closing line
@@ -287,15 +309,16 @@ $pdf->FancyTable($header,$data);
 $pdf->Ln(13);
 
 function footerPage($pdf){
+    global $image;
     $pdf->SetDrawColor(0,0,0);
     $pdf->SetFont('Times','',10);
     $pdf->Rect(140,215,60,60);
-    $pdf->Image("tmp/".$_GET['id'].'-qr.png',145,220,50);
+    $pdf->Image("tmp/".$image.'-qr.png',145,220,50);
     $pdf->SetY(-82);
 
-    $pdf->Cell(0,5,utf8_decode('¹ Perimetro se refere ao perimetro cefalico, logo, a circunferencia do encefalo.'),0,1);
-    $pdf->Cell(0,5,utf8_decode('² Situação é determinada pelo algoritmo que avalia caso a caso os dados obtidos.'),0,1);
-    $pdf->Cell(0,5,utf8_decode('³ Esse documento pode ser autenticado a qualquer momento pelo QR Code ao lado.'),0,1);
+    $pdf->Cell(0,5,utf8_decode('¹ Esse documento pode ser autenticado a qualquer momento pelo QR Code ao lado.'),0,1);
+    $pdf->Cell(0,5,utf8_decode('² O documento poderá demorar cerca de 24 horas para poder ser autenticado.'),0,1);
+    $pdf->Cell(0,5,utf8_decode('³ Verifique se essa unidade possui suporte para validação QR.'),0,1);
 
     $pdf->Ln(36);
     $pdf->Cell(20);
@@ -304,20 +327,22 @@ function footerPage($pdf){
     $pdf->Cell(100,10,utf8_decode("Profissional Responsável"),'T',0,'C');
 }
 
-function chartPage($pdf){ //geracao de pagina com grafico
+footerPage($pdf);
+
+function chartPage($pdf, $chartName){ //geracao de pagina com grafico
     $pdf->AddPage("L");
 
     $pdf->SetFont('Times','B',14);
     $pdf->Ln(10);
     $pdf->Cell(0,10,utf8_decode('Gráficos '),0,1);
-    $pdf->Image('tmp/test.png',10,40,280);
+    $pdf->Image('tmp/'.$chartName.'.png',10,40,280);
 }
 
 
-chartPage($pdf);
+chartPage($pdf, $chartName);
 
 $pdf->Output();
 
 unlink("tmp/".$image."-qr.png");
-unlink("tmp/test.png");
+unlink("tmp/".$chartName.".png");
 ?>

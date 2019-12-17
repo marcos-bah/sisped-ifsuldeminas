@@ -1,6 +1,7 @@
 <?php
 // session_start inicia a sessão
 session_start();
+include_once('initSystem.php');
 // as variáveis login e senha recebem os dados digitados na página anterior
 $login = $_POST['login'];
 $senha = sha1(md5($_POST['senha'])); //hash

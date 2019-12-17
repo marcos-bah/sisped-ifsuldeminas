@@ -518,6 +518,10 @@
 			        data: dados,
 			        success: function(data)
 			        {
+						console.log(dados);
+						console.log(data);
+						
+						
 				        $('#modalConsulta').hide();
 						$('#form input').val("");
 						gerarTable();
