@@ -5,6 +5,8 @@ include('phpqrcode/qrlib.php'); // outputs image directly into browser, as PNG s
 include("../includes/dbconnection.php"); // funcoes para se conectar ao banco de dados
 include('phplot/phplot.php'); // biblioteca para geracao de graficos
 
+$qr = false; //gera o qr
+
 $id = $_GET['id']; // identificador da crianca
 $atual = new DateTime();
 $atual = str_replace(" ", "", $atual->format('d-m-Y H:i:s'));
@@ -13,14 +15,20 @@ $atual = str_replace(":", "", $atual);
 $cod = sha1($id.$atual); 
 $chartName = $id;
 
-$hash = "https://urso-sisped.000webhostapp.com?q=".$cod; // hash com a validacao do relatorio
-     
-$image = $id.$atual; // filename da imagem a ser gerado pela biblioteca de QR Code
+$limite1 = 22;
+$limite2 = 30;
+$left = 60;
 
-QRcode::png($hash, "tmp/".$image."-qr.png", QR_ECLEVEL_L, 4, 5);
+if($qr){
+    $hash = "https://urso-sisped.000webhostapp.com?q=".$cod; // hash com a validacao do relatorio
+    $image = $id.$atual; // filename da imagem a ser gerado pela biblioteca de QR Code
+    QRcode::png($hash, "tmp/".$image."-qr.png", QR_ECLEVEL_L, 4, 5);
+    $limite1 = 18;
+    $limite2 = 28;
+    $left = 0;
+}  
 
 // inicio das consultas ao banco de dados
-
 $sql = "SELECT * FROM dadosconsulta where idCrianca = $id order by dataConsulta desc"; // retorna dados referentes a crinca, dados das consultas
 $result = $conn->query($sql);
 $lines = array();
@@ -71,6 +79,7 @@ function chart($dataCrianca, $x, $y, $chartName){
     $plot->SetDrawDataBorders(true);
     $plot->SetDataColors(array('black', 'red', 'DarkGreen', 'red', "black", "blue" ));
     $plot->SetPlotType('lines');
+    $plot->SetLineStyles(array('solid', 'solid','solid','solid','solid' ,'solid'));
     $plot->SetLineWidths(4);
     $plot->SetLegend(array('SD3', 'SD2', 'SD0', 'SD2neg', 'SD3neg', "Crianca"));
     $plot->SetLegendPosition(1, 0, 'plot', 1, 0, -10, 500);
@@ -105,7 +114,8 @@ function chart($dataCrianca, $x, $y, $chartName){
     $plot->SetDataValues($result);
 
     //Set titles
-    $plot->SetTitle(str_replace(".csv", "", substr($res['grafico_name'], 10)));
+
+    $plot->SetTitle(str_replace("/", " - ", str_replace(".csv", "", substr($res['grafico_name'], 10))));
     $plot->SetXTitle($x);
     $plot->SetYTitle($y, 'both');
 
@@ -156,6 +166,7 @@ class PDF extends FPDF{
     //generateTable
     function FancyTable($header, $data){
         // Colors, line width and bold font
+        global $limite1, $limite2;
         $this->SetFillColor(0,110,0);
         $this->SetTextColor(255);
         $this->SetDrawColor(0,90,0);
@@ -173,7 +184,7 @@ class PDF extends FPDF{
         // Data
         $fill = false;
         $cont = 0;
-        $limite = 18;
+        $limite = $limite1;
         foreach($data as $row){
             $this->SetDrawColor(0,90,0);
             $cont++;
@@ -192,7 +203,7 @@ class PDF extends FPDF{
                 $this->AddPage();
                 $cont = 0;
                 $this->Ln(15);
-                $limite = 28;
+                $limite = $limite2;
                 $this->SetFillColor(0,110,0);
         $this->SetTextColor(255);
         $this->SetDrawColor(0,90,0);
@@ -287,7 +298,7 @@ $pdf->SetFont('Times','B',12);
 $pdf->Cell(20,10,utf8_decode('Médico: '),0,0);
 $pdf->Cell(5);
 $pdf->SetFont('Times','',12);
-$pdf->Cell(100,10,$nomeMedico,0,0);
+$pdf->Cell(100,10,utf8_decode($nomeMedico),0,0);
 $pdf->Cell(5);
 $pdf->SetFont('Times','B',12);
 $pdf->Cell(10,10,utf8_decode('CRM: '),0,0);
@@ -309,20 +320,22 @@ $pdf->FancyTable($header,$data);
 $pdf->Ln(13);
 
 function footerPage($pdf){
-    global $image;
-    $pdf->SetDrawColor(0,0,0);
-    $pdf->SetFont('Times','',10);
-    $pdf->Rect(140,215,60,60);
-    $pdf->Image("tmp/".$image.'-qr.png',145,220,50);
-    $pdf->SetY(-82);
+    global $image, $qr, $left;
 
-    $pdf->Cell(0,5,utf8_decode('¹ Esse documento pode ser autenticado a qualquer momento pelo QR Code ao lado.'),0,1);
-    $pdf->Cell(0,5,utf8_decode('² O documento poderá demorar cerca de 24 horas para poder ser autenticado.'),0,1);
-    $pdf->Cell(0,5,utf8_decode('³ Verifique se essa unidade possui suporte para validação QR.'),0,1);
+    if($qr){
+        $pdf->SetDrawColor(0,0,0);
+        $pdf->SetFont('Times','',10);
+        $pdf->Rect(140,215,60,60);
+        $pdf->Image("tmp/".$image.'-qr.png',145,220,50);
+        $pdf->SetY(-82);
+
+        $pdf->Cell(0,5,utf8_decode('¹ Esse documento pode ser autenticado a qualquer momento pelo QR Code ao lado.'),0,1);
+        $pdf->Cell(0,5,utf8_decode('² O documento poderá demorar cerca de 24 horas para poder ser autenticado.'),0,1);
+        $pdf->Cell(0,5,utf8_decode('³ Verifique se essa unidade possui suporte para validação QR.'),0,1);
+    }
 
     $pdf->Ln(36);
-    $pdf->Cell(20);
-
+    $pdf->Cell(25+$left);
     $pdf->SetFont('Times','',12);
     $pdf->Cell(100,10,utf8_decode("Profissional Responsável"),'T',0,'C');
 }

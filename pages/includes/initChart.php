@@ -159,6 +159,24 @@
                 $dataCrianca = array_slice($dataCrianca, 0, 24);
         break;
 
+        case 'y2-18':
+            $tempo = 'anos';
+            for ($e = 0; $e <= 16; $e++){
+                if(!array_key_exists($e, $dataCrianca)){
+                    $dataCrianca[$e] = Null;
+                }
+            }
+            while($row = $r->fetch_array()){
+                $d1 = new DateTime($row['nascimento']);
+                $d2 = new DateTime($row['dataConsulta']);
+                $pos = dif($d1,$d2);
+                $dataCrianca[$pos] = imc($row['peso'],$row['altura']);
+                unset($pos);
+                $set = $row['diasPrematuro'];
+                }
+                $dataCrianca = array_slice($dataCrianca, 0, 16);
+        break;
+
         case 'y2-5':
             $tempo = 'meses';
             for ($e = 0; $e <= 60; $e++){

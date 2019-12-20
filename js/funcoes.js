@@ -65,6 +65,28 @@ function consulta(id){
     console.log(id);
 }
 
+async function configuracao(){
+    await jQuery.ajax({
+        type: "POST",
+        url: "acoes/configInit.php",
+        dataType: "json",
+        success: function(res)
+        {
+            console.log(res);
+            
+            document.getElementsByName("inst")[0].value = res[0][3];
+            document.getElementsByName("end")[0].value = res[0][4];
+            document.getElementsByName("cnpj")[0].value = res[0][2];
+            document.getElementsByName("nomeaux")[0].value = res[0][0];
+            document.getElementsByName("cpf")[0].value = res[0][6];
+            document.getElementsByName("crm")[0].value = res[0][1];
+            document.getElementsByName("user")[0].value = res[0][5];  
+        }
+    });
+    console.log("entrou na config");
+    document.getElementById("modalConfig").style.display="block";
+}
+
 function habilitar(){
     if(controller){
         document.getElementById('dias').disabled = false;

@@ -7,19 +7,19 @@ $cabecalho  = fgetcsv($handle, 1000, ";"); //para que o codigo seja dinamico, el
 for ($i = 0; $i < count($cabecalho); $i++){
 	if ($cabecalho[$i] == "Week" or $cabecalho[$i] == "Month" or $cabecalho[$i] == "Height" or $cabecalho[$i] == "Length" or $cabecalho[$i] == "Years" or $cabecalho[$i] == "Idade(meses)" or  $cabecalho[$i] == "Idade(anos)"){ // o x muda em diferentes tipos de charts
 		$idenM = $i;
-	}elseif ($cabecalho[$i] == "SD3neg" or $cabecalho[$i] == "P3" or $cabecalho[$i] == "3.00%" or $cabecalho[$i] == "3,00%") {
+	}elseif ($cabecalho[$i] == "SD3neg" or $cabecalho[$i] == "P3" or $cabecalho[$i] == "3.00%" or $cabecalho[$i] == "3%" or $cabecalho[$i] == "5%") {
 		$idenSD3n = $i;
-	}elseif ($cabecalho[$i] == "SD2neg" or $cabecalho[$i] == "P15" or $cabecalho[$i] == "10.00%" or $cabecalho[$i] == "10,00%") {
+	}elseif ($cabecalho[$i] == "SD2neg" or $cabecalho[$i] == "P15" or $cabecalho[$i] == "10.00%" or $cabecalho[$i] == "10%") {
 		$idenSD2n = $i;
-	}elseif ($cabecalho[$i] == "SD1neg" or $cabecalho[$i] == "P25" or $cabecalho[$i] == "25.00%" or $cabecalho[$i] == "25,00%") {
+	}elseif ($cabecalho[$i] == "SD1neg" or $cabecalho[$i] == "P25" or $cabecalho[$i] == "25.00%" or $cabecalho[$i] == "25%" or $cabecalho[$i] == "25%") {
 		$idenSD1n = $i;
-	}elseif ($cabecalho[$i] == "SD0" or $cabecalho[$i] == "P50" or $cabecalho[$i] == "50.00%" or $cabecalho[$i] == "50,00%") {
+	}elseif ($cabecalho[$i] == "SD0" or $cabecalho[$i] == "P50" or $cabecalho[$i] == "50.00%" or $cabecalho[$i] == "50%") {
 		$idenSD0 = $i;
-	}elseif ($cabecalho[$i] == "SD3" or $cabecalho[$i] == "P97" or $cabecalho[$i] == "97.00%" or $cabecalho[$i] == "97,00%") {
+	}elseif ($cabecalho[$i] == "SD3" or $cabecalho[$i] == "P97" or $cabecalho[$i] == "97.00%" or $cabecalho[$i] == "97%" or $cabecalho[$i] == "95%") {
 		$idenSD3 = $i;
-	}elseif ($cabecalho[$i] == "SD2" or $cabecalho[$i] == "P85" or $cabecalho[$i] == "90.00%" or $cabecalho[$i] == "90,00%") {
+	}elseif ($cabecalho[$i] == "SD2" or $cabecalho[$i] == "P85" or $cabecalho[$i] == "90.00%" or $cabecalho[$i] == "90%") {
 		$idenSD2 = $i;
-	}elseif ($cabecalho[$i] == "SD1" or $cabecalho[$i] == "P75" or $cabecalho[$i] == "75.00%" or $cabecalho[$i] == "75,00%") {
+	}elseif ($cabecalho[$i] == "SD1" or $cabecalho[$i] == "P75" or $cabecalho[$i] == "75.00%" or $cabecalho[$i] == "75%") {
 		$idenSD1 = $i;
 	}
 }

@@ -97,6 +97,9 @@
 			<a href="adicionar-crianca.php" class="w3-bar-item w3-button w3-padding">
 				<i class="fa fa-child"></i> Adicionar Criança
 			</a>
+			<div class="w3-bar-item w3-button w3-padding" onclick="configuracao();">
+				<i class="fa fa-cog fa-fw"></i> Configurações
+			</div>
 			<a href="includes/exit.php" class="w3-bar-item w3-button w3-padding">
 				<i class="fa fa-sign-out fa-fw"></i> Sair
 			</a>
@@ -300,12 +303,36 @@
 							</li>
 
 							<li class="dropdown bertapelli">
-								<a class="dropdown-toggle" data-toggle="dropdown" href="#">Estatura por Idade <!-- requer atenção -->
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#">Estatura por Idade
 								<span class="caret"></span></a>
 								<ul class="dropdown-menu">
 								<li class="dropdown-header">Percentiles</li>
-									<li><a onclick="gerarCall('../../csv/WHO/Bertapelli/estatura/3-20_years.csv','y20', 'altura')">3-20 Years</a></li>
-									<li><a onclick="gerarCall('../../csv/WHO/Bertapelli/estatura/0-36_month.csv','m', 'altura')">0-36 Month</a></li>
+									<li><a onclick="gerarCall('../../csv/Bertapelli/estatura/masculino/3a20anos.csv','y20', 'altura')">3 a 20 Anos</a></li>
+									<li><a onclick="gerarCall('../../csv/Bertapelli/estatura/masculino/0a36meses.csv','m', 'altura')">0 a 36 Meses</a></li>
+								</ul>
+							</li>
+							<li class="dropdown bertapelli">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#">IMC por Idade
+								<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+								<li class="dropdown-header">Percentiles</li>
+									<li><a onclick="gerarCall('../../csv/Bertapelli/imc/masculino/2a18anos.csv','y2-18', 'imc')">2 a 18 Anos</a></li>
+								</ul>
+							</li>
+							<li class="dropdown bertapelli">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#">Perimetro Cefalico
+								<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+								<li class="dropdown-header">Percentiles</li>
+									<li><a onclick="gerarCall('../../csv/Bertapelli/perimetro-cefalico/masculino/0a24meses.csv','m', 'perimetroCefalico')">0 a 24 Meses</a></li>
+								</ul>
+							</li>
+							<li class="dropdown bertapelli">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#">Peso por Idade
+								<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+								<li class="dropdown-header">Percentiles</li>
+									<li><a onclick="gerarCall('../../csv/Bertapelli/peso/masculino/3a20anos.csv','y20', 'peso')">3 a 20 anos</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -381,8 +408,8 @@
 								<span class="caret"></span></a>
 								<ul class="dropdown-menu">
 								<li class="dropdown-header">Percentiles</li>
-									<li><a onclick="gerarCall('../../csv/Bertapelli/estatura/3-20_years.csv','y20', 'altura')">3-20 Years</a></li>
-									<li><a onclick="gerarCall('../../csv/Bertapelli/estatura/0-36_month.csv','m', 'altura')">0-36 Month</a></li>
+									<li><a onclick="gerarCall('../../csv/Bertapelli/estatura/feminino/3a20anos.csv','y20', 'altura')">3-20 Years</a></li>
+									<li><a onclick="gerarCall('../../csv/Bertapelli/estatura/feminino/0a36meses.csv','m', 'altura')">0-36 Month</a></li>
 								</ul>
 							</li>
 							<li class="dropdown bertapelli">
@@ -390,7 +417,7 @@
 								<span class="caret"></span></a>
 								<ul class="dropdown-menu">
 								<li class="dropdown-header">Percentiles</li>
-									<li><a onclick="gerarCall('../../csv/Bertapelli/imc/feminino/IMC_Criancas_Feminino_2a18Anos.xlsx','y20', 'altura')">2-18 Anos</a></li>
+									<li><a onclick="gerarCall('../../csv/Bertapelli/imc/feminino/2a18anos.csv','y2-18', 'imc')">2-18 Anos</a></li>
 								</ul>
 							</li>
 							<li class="dropdown bertapelli">
@@ -398,7 +425,7 @@
 								<span class="caret"></span></a>
 								<ul class="dropdown-menu">
 								<li class="dropdown-header">Percentiles</li>
-									<li><a onclick="gerarCall('../../csv/Bertapelli/perimetro-cefalico/feminino/PerimetroCefalico(cm)_Criancas_Feminino_0a24Meses.xlsx','y20', 'altura')">0-24 Meses</a></li>
+									<li><a onclick="gerarCall('../../csv/Bertapelli/perimetro-cefalico/feminino/0a24meses.csv','y20', 'perimetroCefalico')">0-24 Meses</a></li>
 								</ul>
 							</li>
 							<li class="dropdown bertapelli">
@@ -406,8 +433,7 @@
 								<span class="caret"></span></a>
 								<ul class="dropdown-menu">
 								<li class="dropdown-header">Percentiles</li>
-									<li><a onclick="gerarCall('../../csv/Bertapelli/peso-idade/feminino/Peso(Kg)_Criancas_Feminino_0a36Meses.xlsx','y20', 'altura')">0-36 Meses</a></li>
-									<li><a onclick="gerarCall('../../csv/Bertapelli/peso-idade/feminino/Peso(Kg)_Jovens_Feminino_3a20Anos.xlsx','y20', 'altura')">3-20 Anos</a></li>
+									<li><a onclick="gerarCall('../../csv/Bertapelli/peso/feminino/3a20anos.csv','y20', 'peso')">3 a 20 anos</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -505,34 +531,35 @@
 		</div>
 	</div>
 </div>
-    <script type="text/javascript">
-        jQuery(document).ready(function(){
-	        jQuery('#form').submit(function(){
-		        var dados = jQuery( this ).serialize();
-				console.log(dados);
-				
 
-		        jQuery.ajax({
-			        type: "POST",
-			        url: "acoes/queryChildrenInsertion.php",
-			        data: dados,
-			        success: function(data)
-			        {
-						console.log(dados);
-						console.log(data);
-						
-						
-				        $('#modalConsulta').hide();
-						$('#form input').val("");
-						gerarTable();
-				        chartUpdate();
-			        }
-		        });
-		        
-		        return false;
-	        });
-        });
-    </script>    
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		jQuery('#form').submit(function(){
+			var dados = jQuery( this ).serialize();
+			console.log(dados);
+			
+
+			jQuery.ajax({
+				type: "POST",
+				url: "acoes/queryChildrenInsertion.php",
+				data: dados,
+				success: function(data)
+				{
+					console.log(dados);
+					console.log(data);
+					
+					
+					$('#modalConsulta').hide();
+					$('#form input').val("");
+					gerarTable();
+					chartUpdate();
+				}
+			});
+			
+			return false;
+		});
+	});
+</script>    
 
 <div id="modalUp" class="w3-modal">
 	<div class="w3-modal-content w3-card-4">
@@ -589,6 +616,111 @@
 	  </footer>
 	</div>
 </div>
+
+<!-- Modal Configuracao -->
+<div id="modalConfig" class="w3-modal">
+	<div class="w3-modal-content w3-card-4">
+	  <header class="w3-container w3-green">
+		<h2></h2>
+	  </header>
+
+	  <div class="w3-container">
+			<div class="w3-container">
+				<h2>Configurações</h2>
+					<form id="formConfig" class="w3-container" style="background-color:#fff;" action="" method="post">
+						<div class="w3-row-padding">
+							<div class="w3-row-padding">
+								<div class="w3-half">
+									<label class="w3-text-red"><b>Instituição: </b></label>
+									<input class="w3-input w3-border w3-border-blue-gray" required  autocomplete="off" type="text"  name="inst" placeholder="Nome da Instituição">
+								</div>
+								<div class="w3-half">
+									<label class="w3-text-red"><b>Endereço: </b></label>
+									<input class="w3-input w3-border w3-border-blue-gray" required autocomplete="off" type="text" name="end"  placeholder="Endereço da Instituição">
+								</div>
+							</div>
+							<br>
+							<div class="w3-row-padding">
+								<div class="w3-half">
+									<label class="w3-text-red"><b>CNPJ: </b></label>
+									<input class="w3-input w3-border w3-border-blue-gray" required type="text" autocomplete="off" name="cnpj" placeholder="Codifo legal da Instituição">
+								</div>
+								<div class="w3-half">
+									
+								</div>
+							</div><br>
+							<div class="w3-row-padding">
+								<div class="w3-half">
+									<label class="w3-text-red"><b>Nome Auxiliar: </b></label>
+									<input class="w3-input w3-border w3-border-blue-gray" required autocomplete="off" type="text"  name="nomeaux" placeholder="Nome do Auxiliar ou Médico">
+								</div>
+								<div class="w3-half">
+									<label class="w3-text-red"><b>CPF: </b></label>
+									<input class="w3-input w3-border w3-border-blue-gray" required autocomplete="off" type="text" name="cpf" pattern="[0-9.%]{1,}" placeholder="CPF do Auxiliar ou Médico">
+								</div>
+							</div>
+							<br>
+							<div class="w3-row-padding">
+								<div class="w3-half">
+									<label class="w3-text-red"><b>CRM: (Opcional)</b></label>
+									<input class="w3-input w3-border w3-border-blue-gray" type="text" autocomplete="off"  name="crm" placeholder="CRM do profissional">
+								</div>
+								<div class="w3-half">
+									
+								</div>
+							</div><br>
+							<div class="w3-row-padding">
+								<div class="w3-half">
+									<label class="w3-text-red"><b>Nome Usuario: </b></label>
+									<input class="w3-input w3-border w3-border-blue-gray"  autocomplete="off" required type="text"  name="user" placeholder="Usuário">
+								</div>
+								<div class="w3-half">
+									<label class="w3-text-red"><b>Senha: (Opcional)</b></label>
+									<input class="w3-input w3-border w3-border-blue-gray" autocomplete="off" type="password" name="senha" placeholder="Sua nova senha">
+								</div>
+							</div>
+							<br>
+							<div class="w3-row-padding">
+								<div class="w3-half">
+									<label class="w3-text-red"><b>Senha Anterior: (Validação)</b></label>
+									<input class="w3-input w3-border w3-border-blue-gray" type="password" autocomplete="off" required name="aut" placeholder="Sua senha atual">
+								</div>
+								<div class="w3-half">
+									
+								</div>
+							</div><br>
+						</div><br>
+						<div class="w3-center">
+							<div onclick="$('#modalConfig').hide();" class="w3-btn w3-border w3-border-red w3-round w3-pale-red"><b>Cancelar</b></div>
+							<button class="w3-btn w3-border w3-border-green w3-round w3-pale-green"><b>Atualizar</b></button>
+							<p></p>
+						</div>
+					</form>
+	  		</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		jQuery('#formConfig').submit(function(){
+			var dados = jQuery( this ).serialize();
+		
+			jQuery.ajax({
+				type: "POST",
+				url: "acoes/config.php",
+				data: dados,
+				success: function(data)
+				{	
+					alert(data);
+					$('#modalConfig').hide();
+					$('#formConfig input').val("");
+				}
+			});
+			return false;
+		});
+	});
+</script>    
 
     <input id="Bknome" type="hidden"></input>
     <input id="Bkpesq" type="hidden"></input>
