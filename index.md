@@ -56,7 +56,7 @@ Já na página web, faça login.
 > Usuario: **admin**  
 > Senha: **senha**
 
-### Em outros OS. (Forma manual)
+### Linux ou outro SO (Instalação manual)
 
 No canto superior esquerdo, é possivel encontrar os links para download, é recomendado em formato ZIP.
 Após o download é necessário ter um servidor WEB instalado, como o XAMPP. 
@@ -91,13 +91,13 @@ Venha você fazer parte disso.
 
 Dúvidas sobre a plataforma?
 
-**P: Ela possui algum vinculo com alguma instituição pediatrica?**
+**P: O sistema possui algum vinculo com alguma instituição pediatrica?**  
 R: Não, SISPED foi desenvolvido entre os anos de 2018 e 2019 no IFSULDEMINAS, encerrando-se no dia 15 de dezembro de 2019, mas ainda tendo suporte de sua equipe idealizadora, mas sem vinculo com o IFSULDEMINAS ou quaisquer outra instituição pública ou privada.
 
-**P: Os resultados da plataforma são oficiais e correspondem com a realidade?**
+**P: Os resultados da plataforma são oficiais e correspondem com a realidade?**  
 R: Os gráficos gerados como referencias são oficiais e estão públicados de forma pública em teses de doudorado, sites da Sociedade Brasileira de Pediátria e da Organização Mundial da Saúde, mas recomendamos fortemente a presença de um especialidasta, a plataforma não foge da possiblidade de erros ou equivocos, a presença de um profissional garante, auxilia e comprova os dados fornecidos pelo sistema.
 
-**P: Tenho dúvidas ainda, como faço?**
+**P: Tenho dúvidas ainda, como faço?**  
 R: A plataforma não possui representantes, mas colaboradores, os contados se encontram no final dessa página e eles estão a disposição para sanar qualquer dúvida, sugestão ou reclamação.
 
 # Quem somos
