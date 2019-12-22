@@ -12,7 +12,6 @@
 
 ![alt text][SISPED]
 # Conheça a Plataforma
-![alt text][GIF]
 
 [SISPED]: https://github.com/marcos-bah/sisped-ifsuldeminas/blob/master/image/sisped-logo2.png "SISPED"
 
