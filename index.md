@@ -5,10 +5,10 @@
 ![alt text][Versao]
 ![alt text][Licenca]
 
-[Versao]: https://img.shields.io/badge/Plataformas-Windows%20%7C%20Mac%20%7C%20Linux-lightgrey "Versão atual do sistema"
+[Versao]: https://img.shields.io/badge/Plataformas-Windows%20%7C%20Mac%20%7C%20Linux-lightgrey "Plataformas suportadas"
 [Licenca]: https://img.shields.io/badge/Licen%C3%A7a-MIT-brightgreen "Somos Livres!"
 [Status]: https://img.shields.io/badge/Estado-Em%20Desenvolvimento-brightgreen "Status"
-[Plataformas]: https://img.shields.io/badge/Vers%C3%A3o-%201.0%20-blue "Plataformas suportadas"
+[Plataformas]: https://img.shields.io/badge/Vers%C3%A3o-%201.0%20-blue "Versão atual do sistema"
 
 ### Um _upgrade_ nas consultas. 
 
