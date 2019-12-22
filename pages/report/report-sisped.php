@@ -1,4 +1,8 @@
 <?php
+
+error_reporting(0);
+ini_set(“display_errors”, 0 );
+
 require('fpdf/fpdf.php'); // biblioteca para gerar o pdf
 include("sisped.php"); // funcoes para gerar o grafico
 include('phpqrcode/qrlib.php'); // outputs image directly into browser, as PNG stream 

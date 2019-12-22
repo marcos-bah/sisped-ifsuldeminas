@@ -509,7 +509,7 @@
 								</div>
 								<div class="w3-half">
 									<label class="w3-text-red"><b>Observação: </b></label>
-									<input class="w3-input w3-border w3-border-blue-gray" type="text" autocomplete="off" name="obs" maxlength="255" placeholder="Insira dados da consulta">
+									<input class="w3-input w3-border w3-border-blue-gray" type="text" autocomplete="off" name="obs" maxlength="20" placeholder="Insira dados da consulta">
 								</div>
 							</div>
 							<br>
@@ -590,7 +590,7 @@
 							</div>
 							<div class="w3-half">
 								<label class="w3-text-red"><b>Observação: </b></label>
-								<input class="w3-input w3-border w3-border-blue-gray" type="text" autocomplete="off" id="ConObs" name="obs" maxlength="255" placeholder="coloque uma observação da consulta...">
+								<input class="w3-input w3-border w3-border-blue-gray" type="text" autocomplete="off" id="ConObs" name="obs" maxlength="20" placeholder="coloque uma observação da consulta...">
 							</div>
 						</div>
 						<br>
