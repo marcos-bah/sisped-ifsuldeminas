@@ -16,8 +16,6 @@
 
 [SISPED]: https://github.com/marcos-bah/sisped-ifsuldeminas/blob/master/image/sisped-logo2.png "SISPED"
 
-[GIF]: https://github.com/marcos-bah/sisped-ifsuldeminas/blob/master/image/sisped.gif "SISPED"
-
 Banco de Dados em desenvolvimento: 
 
 ![alt text][Dark]
