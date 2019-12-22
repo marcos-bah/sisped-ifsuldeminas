@@ -8,7 +8,7 @@
 [Versao]: https://img.shields.io/badge/Plataformas-Windows%20%7C%20Mac%20%7C%20Linux-lightgrey "Versão atual do sistema"
 [Licenca]: https://img.shields.io/badge/Licen%C3%A7a-MIT-brightgreen "Somos Livres!"
 [Status]: https://img.shields.io/badge/Estado-Em%20Desenvolvimento-brightgreen "Status"
-[Plataformas]: https://img.shields.io/badge/Vers%C3%A3o-%200.1.1%20-blue "Plataformas suportadas"
+[Plataformas]: https://img.shields.io/badge/Vers%C3%A3o-%201.0%20-blue "Plataformas suportadas"
 
 ### Um _upgrade_ nas consultas. 
 
@@ -46,11 +46,13 @@ SISPED Versão 1.0
 #### Instalação
 
 Feito a instalação do XAMPP, faça o download do arquivo executável do SISPED.
-Siga as instruções e dê next.
-Abra um navegador web de sua preferência, e acesse: localhost/sisped-ifsuldeminas
 
 > Certifique-se de que exista a pasta:  
 > **C:\xampp\htdocs**  
+
+[Download executável](https://github.com/marcos-bah/sisped-ifsuldeminas/blob/gh-pages/doc/sisped-ifsuldeminas.exe)  
+Siga as instruções e dê next.
+Abra um navegador web de sua preferência, e acesse: localhost/sisped-ifsuldeminas
 
 Já na página web, faça login.
 > Usuario: **admin**  
