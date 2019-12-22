@@ -57,6 +57,9 @@ Já na página web, faça login.
 > Usuario: **admin**  
 > Senha: **senha**
 
+> **Dica:** para acesso em outros computadores:  
+`http://SEU-IP-AQUI/sisped-ifsuldeminas`
+
 ### Linux ou outro SO (Instalação manual)
 
 No canto superior esquerdo, é possivel encontrar os links para download, é recomendado em formato ZIP.
@@ -76,6 +79,10 @@ Ela encontra-se geralmente no seguinte caminho:
 
 Feito isso, basta acessar em seu navegador de preferência a seguinte url: http://localhost/sisped-ifsuldeminas
 ou ainda acessar [aqui](http://localhost/sisped-ifsuldeminas).
+
+Verifique se a pasta extraida é _sisped-ifsuldeminas_.  
+> Windows: **C:\xampp\htdocs\sisped-ifsuldeminas**   
+> Linux: **/opt/lampp/htdocs/sisped-ifsuldeminas**
 
 > Lembrando que localhost pode ser trocado pelo seu ip para acesso em outros computadores:  
 `http://SEU-IP-AQUI/sisped-ifsuldeminas`
@@ -109,7 +116,3 @@ Então vamos lá aos agradecimentos.
 Em primeiro, ao Max Olinto, idealizador e professor do IFSULDEMINAS Campus Av. Carmo de Minas.  
 Em segundo, a Juliete Ramos, orientadora e professora do IFSULDEMINAS Campus Av. Carmo de Minas.  
 Ah, e claro, ao IFSULDEMINAS Campus Av. Carmo de Minas. Se quiser saber mais [acesse](https://portal.cdm.ifsuldeminas.edu.br/).
-
-
-
-
