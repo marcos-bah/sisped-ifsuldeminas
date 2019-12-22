@@ -45,12 +45,11 @@ SISPED Versão 1.0
 
 #### Instalação
 
-Feito a instalação do XAMPP, faça o download do arquivo executável do SISPED.
+Feito a instalação do XAMPP, faça o download do arquivo [executável](https://github.com/marcos-bah/sisped-ifsuldeminas/blob/gh-pages/doc/sisped-ifsuldeminas.exe) do SISPED.
 
 > Certifique-se de que exista a pasta:  
 > **C:\xampp\htdocs**  
 
-[Download executável](https://github.com/marcos-bah/sisped-ifsuldeminas/blob/gh-pages/doc/sisped-ifsuldeminas.exe)  
 Siga as instruções e dê next.
 Abra um navegador web de sua preferência, e acesse: localhost/sisped-ifsuldeminas
 
